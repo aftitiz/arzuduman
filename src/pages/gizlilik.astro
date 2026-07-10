@@ -1,0 +1,40 @@
+---
+import content from '../data/content.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Reveal from '../components/Reveal.astro';
+
+const p = content.privacy;
+---
+
+<BaseLayout site={content.site} title={`${p.title} — ${content.site.name}`} description={p.metaDescription}>
+  <Nav nav={content.nav} />
+
+  <main style="background:#F3EEE4; min-height:100vh; padding:clamp(120px,16vh,180px) clamp(20px,6vw,88px) clamp(60px,8vw,100px);">
+    <article style="max-width:800px; margin:0 auto;">
+      <a href="/" style="display:inline-block; margin-bottom:28px; font-size:14px; font-weight:600; color:#B0763F;">{p.backLabel}</a>
+
+      <h1 style="margin:0 0 10px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,52px); line-height:1.06; letter-spacing:-0.01em; color:#1B2621;">{p.title}</h1>
+      <p style="margin:0 0 24px; font-size:13.5px; color:#8E9A90;">{p.updated}</p>
+
+      <div style="margin:0 0 32px; padding:16px 20px; border-radius:14px; background:#FBF7EE; border:1px solid rgba(196,131,79,0.35); border-left:4px solid #C4834F; font-size:13.5px; line-height:1.6; color:#6A5A44;">
+        {p.disclaimer}
+      </div>
+
+      <p style="margin:0 0 32px; font-size:16.5px; line-height:1.75; color:#3E463F;">{p.intro}</p>
+
+      {p.sections.map((s) => (
+        <section style="margin-bottom:30px;">
+          <h2 style="margin:0 0 12px; font-family:var(--serif); font-weight:600; font-size:clamp(21px,2.6vw,26px); color:#1B2621;">{s.heading}</h2>
+          {s.paragraphs.map((par) => (
+            <p style="margin:0 0 12px; font-size:15.5px; line-height:1.7; color:#3E463F;">{par}</p>
+          ))}
+        </section>
+      ))}
+    </article>
+  </main>
+
+  <Footer footer={content.footer} contact={content.site.contact} />
+  <Reveal />
+</BaseLayout>

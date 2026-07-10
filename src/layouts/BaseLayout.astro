@@ -1,7 +1,11 @@
 ---
 import '../styles/global.css';
 
-const { site, faqs = [] } = Astro.props;
+const { site, faqs = [], title, description } = Astro.props;
+
+// Sayfa bazlı başlık/açıklama; verilmezse site varsayılanları kullanılır.
+const pageTitle = title ?? site.title;
+const pageDescription = description ?? site.description;
 
 // Kanonik / OG mutlak URL'leri astro.config `site` üzerinden üretilir.
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
@@ -52,8 +56,8 @@ const faqLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{site.title}</title>
-    <meta name="description" content={site.description} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content={site.themeColor} />
     <meta name="author" content={site.name} />
@@ -62,16 +66,16 @@ const faqLd = {
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={site.title} />
-    <meta property="og:description" content={site.description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content={site.locale} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={site.title} />
-    <meta name="twitter:description" content={site.description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Fonts -->
@@ -84,7 +88,7 @@ const faqLd = {
 
     <!-- Yapısal veri -->
     <script type="application/ld+json" set:html={JSON.stringify(psychologistLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+    {faqs.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
   </head>
   <body>
     <div

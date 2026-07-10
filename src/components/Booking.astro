@@ -94,11 +94,15 @@ const L = booking.labels;
           <h3 class="bk-step-title" style="margin-bottom:6px;">{L.step4}</h3>
           <div data-summary style="padding:12px 14px; border-radius:12px; background:rgba(27,38,33,0.05); font-size:13.5px; color:#1B2621; margin-bottom:18px; line-height:1.5;"></div>
           <div style="display:flex; flex-direction:column; gap:12px;">
-            <input class="bk-input" data-field="name" placeholder={L.namePlaceholder} autocomplete="name" />
-            <input class="bk-input" data-field="phone" placeholder={L.phonePlaceholder} inputmode="tel" autocomplete="tel" />
-            <input class="bk-input" data-field="email" placeholder={L.emailPlaceholder} inputmode="email" autocomplete="email" />
-            <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} rows="3" style="resize:vertical;"></textarea>
+            <input class="bk-input" data-field="name" placeholder={L.namePlaceholder} aria-label={L.namePlaceholder} autocomplete="name" />
+            <input class="bk-input" data-field="phone" placeholder={L.phonePlaceholder} aria-label={L.phonePlaceholder} inputmode="tel" autocomplete="tel" />
+            <input class="bk-input" data-field="email" placeholder={L.emailPlaceholder} aria-label={L.emailPlaceholder} inputmode="email" autocomplete="email" />
+            <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} aria-label={L.notePlaceholder} rows="3" style="resize:vertical;"></textarea>
           </div>
+          <label style="display:flex; gap:10px; align-items:flex-start; margin-top:16px; cursor:pointer;">
+            <input type="checkbox" data-consent style="margin-top:3px; width:18px; height:18px; flex-shrink:0; accent-color:#C4834F; cursor:pointer;" />
+            <span style="font-size:12.5px; line-height:1.5; color:#55605A;">{L.consentBefore}<a href="/gizlilik" target="_blank" rel="noopener" style="color:#B0763F; text-decoration:underline;">{L.consentLink}</a>{L.consentAfter}</span>
+          </label>
           <div style="display:flex; gap:12px; margin-top:20px;">
             <button type="button" data-back class="bk-back">{L.back}</button>
             <button type="button" data-submit class="bk-primary flex off" disabled>{L.confirm}</button>
@@ -177,14 +181,15 @@ const L = booking.labels;
     const M = now.getMonth();
     const TODAY = now.getDate();
 
-    const state = { step: 1, format: null, date: null, time: null, form: { name: '', phone: '', email: '', note: '' } };
+    const state = { step: 1, format: null, date: null, time: null, consent: false, form: { name: '', phone: '', email: '', note: '' } };
 
     const monthLabel = monthNames[M] + ' ' + Y;
     const dateLabel = (d) => d + ' ' + monthNames[M] + ' ' + Y + ', ' + dayNames[new Date(Y, M, d).getDay()];
     const formatLabel = () => (state.format ? formatLabels[state.format] : '—');
     const formValid = () =>
       state.form.name.trim().length > 1 &&
-      (state.form.phone.trim().length > 5 || state.form.email.trim().length > 4);
+      (state.form.phone.trim().length > 5 || state.form.email.trim().length > 4) &&
+      state.consent;
     const canProceed = () => ({ 1: !!state.format, 2: !!state.date, 3: !!state.time, 4: formValid() }[state.step] ?? true);
 
     // ---- Takvimi bir kez oluştur (içinde bulunulan ay) ----
@@ -204,7 +209,8 @@ const L = booking.labels;
       b.type = 'button';
       b.className = 'bk-day' + (disabled ? ' disabled' : '');
       b.textContent = String(d);
-      if (!disabled) b.dataset.day = String(d);
+      if (disabled) { b.disabled = true; b.setAttribute('aria-disabled', 'true'); }
+      else b.dataset.day = String(d);
       grid.appendChild(b);
     }
 
@@ -242,14 +248,17 @@ const L = booking.labels;
 
     // ---- Mesaj + link ----
     function buildMessage() {
-      return [
+      const lines = [
         L.messageIntro,
         '• ' + L.summaryFormat + ': ' + formatLabel(),
         '• ' + L.summaryDate + ': ' + (state.date ? dateLabel(state.date) : '-'),
         '• ' + L.summaryTime + ': ' + (state.time || '-'),
         '• ' + L.messageName + ': ' + state.form.name,
-        '• ' + L.messagePhone + ': ' + (state.form.phone || '-'),
-      ].join('\n');
+      ];
+      if (state.form.phone.trim()) lines.push('• ' + L.messagePhone + ': ' + state.form.phone.trim());
+      if (state.form.email.trim()) lines.push('• ' + L.messageEmail + ': ' + state.form.email.trim());
+      if (state.form.note.trim()) lines.push('• ' + L.messageNote + ': ' + state.form.note.trim());
+      return lines.join('\n');
     }
     function buildUrl(msg) {
       if (wa.length >= 10) return { url: 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg), external: true };
@@ -266,9 +275,11 @@ const L = booking.labels;
       render();
     }
     function reset() {
-      state.step = 1; state.format = null; state.date = null; state.time = null;
+      state.step = 1; state.format = null; state.date = null; state.time = null; state.consent = false;
       state.form = { name: '', phone: '', email: '', note: '' };
       root.querySelectorAll('.bk-input').forEach((i) => (i.value = ''));
+      const cb = root.querySelector('[data-consent]');
+      if (cb) cb.checked = false;
       render();
     }
 
@@ -288,6 +299,9 @@ const L = booking.labels;
     root.addEventListener('input', (e) => {
       const f = e.target.closest('[data-field]');
       if (f) { state.form[f.dataset.field] = e.target.value; render(); }
+    });
+    root.addEventListener('change', (e) => {
+      if (e.target.matches('[data-consent]')) { state.consent = e.target.checked; render(); }
     });
 
     render();

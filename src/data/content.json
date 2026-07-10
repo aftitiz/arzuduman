@@ -32,13 +32,13 @@
   "nav": {
     "logo": "Arzu Duman",
     "links": [
-      { "label": "Hakkımda", "href": "#hakkimda" },
-      { "label": "Uzmanlık", "href": "#uzmanlik" },
-      { "label": "Süreç", "href": "#surec" },
-      { "label": "SSS", "href": "#sss" }
+      { "label": "Hakkımda", "href": "/#hakkimda" },
+      { "label": "Uzmanlık", "href": "/#uzmanlik" },
+      { "label": "Süreç", "href": "/#surec" },
+      { "label": "SSS", "href": "/#sss" }
     ],
     "cta": "Ön Görüşme",
-    "ctaHref": "#randevu",
+    "ctaHref": "/#randevu",
     "mobileCta": "Ön Görüşme Planla"
   },
 
@@ -165,10 +165,15 @@
       "reset": "Yeni randevu planla",
       "resend": "Randevu talebini tekrar aç",
       "adimLabel": "ADIM",
+      "consentBefore": "Randevu talebim kapsamında paylaştığım bilgilerin ",
+      "consentLink": "KVKK Aydınlatma Metni",
+      "consentAfter": " çerçevesinde işlenmesine açık rıza veriyorum.",
       "messageIntro": "Merhaba, bir ön görüşme talebim var:",
       "messageSubject": "Ön görüşme talebi",
       "messageName": "Ad",
-      "messagePhone": "Telefon"
+      "messagePhone": "Telefon",
+      "messageEmail": "E-posta",
+      "messageNote": "Not"
     },
     "kvkkNote": "Bilgileriniz KVKK kapsamında yalnızca randevu için kullanılır ve üçüncü kişilerle paylaşılmaz.",
     "confirmLine": "En kısa sürede (genellikle 48 saat içinde) sizinle iletişime geçip görüşmeyi kesinleştireceğim."
@@ -191,15 +196,77 @@
     "closingEyebrow": "Hazır olduğunuzda",
     "closingWords": ["dur.", "nefes al.", "başla."],
     "ctaLabel": "Ücretsiz ön görüşme planlayın",
-    "ctaHref": "#randevu",
+    "ctaHref": "/#randevu",
     "brandName": "Arzu Duman",
     "tagline": "Uzman Klinik Psikolog · Yetişkinlere yönelik online & yüz yüze terapi.",
     "contactHeading": "İletişim",
     "hoursHeading": "Çalışma Saatleri",
     "links": [
-      { "label": "Gizlilik & KVKK", "href": "#" },
-      { "label": "SSS", "href": "#sss" }
+      { "label": "Gizlilik & KVKK", "href": "/gizlilik" },
+      { "label": "SSS", "href": "/#sss" }
     ],
     "copyright": "© 2026 Arzu Duman · Tüm hakları saklıdır."
+  },
+
+  "privacy": {
+    "title": "Gizlilik ve KVKK Aydınlatma Metni",
+    "metaDescription": "Arzu Duman — Uzman Klinik Psikolog. Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve gizlilik politikası.",
+    "backLabel": "← Ana sayfaya dön",
+    "updated": "Yürürlük tarihi: [gerçek tarih ile değiştirin]",
+    "disclaimer": "Bu metin bir taslaktır. Yayınlamadan önce köşeli parantez içindeki alanları kendi bilgilerinizle doldurun ve metni bir hukuk danışmanına gözden geçirtin.",
+    "intro": "6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, veri sorumlusu sıfatıyla kişisel verilerinizi aşağıda açıklanan çerçevede işliyoruz.",
+    "sections": [
+      {
+        "heading": "1. Veri Sorumlusu",
+        "paragraphs": [
+          "Kişisel verileriniz, veri sorumlusu Uzman Klinik Psikolog Arzu Duman tarafından işlenmektedir.",
+          "İletişim: merhaba@arzuduman.com · +90 (000) 000 00 00 · İstanbul. (Bu bilgileri gerçek iletişim bilgilerinizle güncelleyin.)"
+        ]
+      },
+      {
+        "heading": "2. İşlenen Kişisel Veriler",
+        "paragraphs": [
+          "Randevu formu aracılığıyla: ad-soyad, iletişim bilgileri (telefon ve/veya e-posta), tercih ettiğiniz görüşme formatı, tarih ve saat.",
+          "Formda isteğe bağlı olarak paylaştığınız açıklama, sağlığınıza ilişkin özel nitelikli kişisel veri içerebilir. Bu alanı doldurmak tamamen sizin tercihinizdedir."
+        ]
+      },
+      {
+        "heading": "3. İşleme Amaçları",
+        "paragraphs": [
+          "Verileriniz; ön görüşme talebinizin değerlendirilmesi, sizinle iletişime geçilmesi, randevunun planlanması ve size sunulacak danışmanlık hizmetinin yürütülmesi amacıyla işlenir."
+        ]
+      },
+      {
+        "heading": "4. Hukuki Sebep",
+        "paragraphs": [
+          "Kişisel verileriniz açık rızanıza (KVKK m. 5/1) dayanılarak işlenir. Paylaşmanız hâlinde sağlığa ilişkin özel nitelikli verileriniz yalnızca açık rızanız (KVKK m. 6) kapsamında işlenir."
+        ]
+      },
+      {
+        "heading": "5. Aktarım",
+        "paragraphs": [
+          "Verileriniz, yasal zorunluluklar dışında üçüncü kişilerle paylaşılmaz.",
+          "Randevu talebinizi WhatsApp seçeneğiyle iletmeniz hâlinde, mesajınız ve içindeki bilgiler WhatsApp (Meta) altyapısı üzerinden iletilir ve bu hizmetin kendi gizlilik koşullarına tabidir. Bunun yerine e-posta ile iletişimi tercih edebilirsiniz."
+        ]
+      },
+      {
+        "heading": "6. Saklama Süresi",
+        "paragraphs": [
+          "Kişisel verileriniz, işleme amacının gerektirdiği süre ve ilgili mevzuatta öngörülen süreler boyunca saklanır; sürenin sonunda silinir, yok edilir veya anonim hâle getirilir."
+        ]
+      },
+      {
+        "heading": "7. Haklarınız (KVKK m. 11)",
+        "paragraphs": [
+          "Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını öğrenme, eksik/yanlış işlenmişse düzeltilmesini, şartları oluştuğunda silinmesini/yok edilmesini isteme ve işlemenin kanuna aykırı olması hâlinde doğan zararın giderilmesini talep etme haklarına sahipsiniz."
+        ]
+      },
+      {
+        "heading": "8. Başvuru",
+        "paragraphs": [
+          "Haklarınıza ilişkin taleplerinizi merhaba@arzuduman.com adresine iletebilirsiniz. Talebiniz en kısa sürede ve en geç 30 gün içinde sonuçlandırılır."
+        ]
+      }
+    ]
   }
 }

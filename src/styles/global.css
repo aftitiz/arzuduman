@@ -96,6 +96,13 @@ body.is-mobile .mobile-cta-spacer { display: block; }
   .nav-links { display: none; }
 }
 
+/* ---------- Klavye odak halkası (erişilebilirlik) ---------- */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 /* ---------- Hareket azaltma ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
