@@ -1,16 +1,10 @@
 ---
-import '../styles/global.css';
+import content from '../data/content.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<!doctype html>
-<html lang="tr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arzu Duman</title>
-  </head>
-  <body>
-    <main style="min-height:100vh; color:#F1EBDE; display:grid; place-items:center; font-family:var(--sans);">
-      iskelet çalışıyor
-    </main>
-  </body>
-</html>
+
+<BaseLayout site={content.site} faqs={content.faq.items}>
+  <main id="top">
+    {/* Bölümler Task 4–8'de eklenecek */}
+  </main>
+</BaseLayout>
