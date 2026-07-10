@@ -8,6 +8,7 @@ import About from '../components/About.astro';
 import Specialties from '../components/Specialties.astro';
 import Process from '../components/Process.astro';
 import Testimonials from '../components/Testimonials.astro';
+import Booking from '../components/Booking.astro';
 import Reveal from '../components/Reveal.astro';
 ---
 
@@ -20,7 +21,8 @@ import Reveal from '../components/Reveal.astro';
     <Specialties specialties={content.specialties} />
     <Process process={content.process} />
     <Testimonials testimonials={content.testimonials} />
-    {/* Diğer bölümler Task 7–8'de eklenecek */}
+    <Booking booking={content.booking} contact={content.site.contact} />
+    {/* Diğer bölümler Task 8'de eklenecek */}
   </main>
   <Reveal />
 </BaseLayout>

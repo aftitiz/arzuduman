@@ -1,0 +1,295 @@
+---
+import Eyebrow from './Eyebrow.astro';
+const { booking, contact } = Astro.props;
+const L = booking.labels;
+---
+
+<section id="randevu" style="position:relative; overflow:hidden; background:#0E1A16; padding:clamp(80px,10vw,132px) clamp(20px,6vw,88px);">
+  <div aria-hidden="true" style="position:absolute; bottom:-14%; left:-8%; width:min(56vw,600px); height:min(56vw,600px); border-radius:50%; background:radial-gradient(circle, rgba(214,154,106,0.18), rgba(214,154,106,0) 66%); filter:blur(26px); animation:drift2 26s ease-in-out infinite; pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2; max-width:1080px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(32px,5vw,60px); align-items:stretch;">
+    <!-- Sol sütun -->
+    <div data-reveal style="flex:1 1 320px; min-width:280px; color:#F1EBDE;">
+      <Eyebrow label={booking.eyebrow} color="#D69A6A" line="#D69A6A" />
+      <h2 style="margin:0 0 20px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.4vw,56px); line-height:1.02; letter-spacing:-0.01em; color:#F1EBDE;">{booking.headingBefore}<span style="font-style:italic; color:#E4B486;">{booking.headingAccent}</span>{booking.headingAfter}</h2>
+      <p style="margin:0 0 30px; font-size:16.5px; line-height:1.7; color:#B9C3BA; max-width:440px;">{booking.subtitle}</p>
+      <div style="display:flex; flex-direction:column; gap:15px;">
+        {booking.perks.map((p) => (
+          <div style="display:flex; gap:13px; align-items:center;">
+            <span style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:rgba(214,154,106,0.16); color:#E4B486; font-size:13px;">✓</span>
+            <span style="font-size:15px; color:#D5DCD5;">{p}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Sihirbaz kartı -->
+    <div data-reveal data-reveal-delay="120" style="flex:1.05 1 400px; min-width:300px;">
+      <div
+        data-booking
+        data-whatsapp={contact.whatsapp}
+        data-email={contact.email}
+        style="background:#F6F1E7; border-radius:26px; padding:clamp(22px,3vw,34px); box-shadow:0 44px 100px rgba(0,0,0,0.44); border:1px solid rgba(241,235,222,0.08);"
+      >
+        <!-- İlerleme noktaları -->
+        <div data-dots style="align-items:center; gap:8px; margin-bottom:26px;">
+          <div class="bk-dot"></div><div class="bk-dot"></div><div class="bk-dot"></div><div class="bk-dot"></div>
+        </div>
+
+        <!-- ADIM 1: format -->
+        <div data-step="1">
+          <div class="bk-step-tag">{L.adimLabel} 1 / 4</div>
+          <h3 class="bk-step-title">{L.step1}</h3>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            {booking.formats.map((f) => (
+              <button type="button" class="bk-format" data-format={f.id}>
+                <span style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:rgba(27,38,33,0.07); font-size:21px;">{f.icon}</span>
+                <span style="flex:1;">
+                  <span style="display:block; font-size:16px; font-weight:600; color:#1B2621;">{f.title}</span>
+                  <span style="display:block; font-size:13px; color:#6A756D; margin-top:2px;">{f.desc}</span>
+                </span>
+                <span class="bk-format-dot"></span>
+              </button>
+            ))}
+          </div>
+          <button type="button" data-next class="bk-primary full off" disabled style="margin-top:24px;">{L.continue}</button>
+        </div>
+
+        <!-- ADIM 2: takvim -->
+        <div data-step="2" hidden>
+          <div class="bk-step-tag">{L.adimLabel} 2 / 4</div>
+          <h3 class="bk-step-title" style="margin-bottom:4px;">{L.step2}</h3>
+          <p data-month style="margin:0 0 18px; font-size:13.5px; color:#6A756D;"></p>
+          <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:6px;">
+            {booking.weekdayLabels.map((w) => (
+              <div style="text-align:center; font-size:11px; font-weight:700; color:#A6ADA2; padding:4px 0;">{w}</div>
+            ))}
+          </div>
+          <div data-cal-grid style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px;"></div>
+          <div style="display:flex; gap:12px; margin-top:24px;">
+            <button type="button" data-back class="bk-back">{L.back}</button>
+            <button type="button" data-next class="bk-primary flex off" disabled>{L.continue}</button>
+          </div>
+        </div>
+
+        <!-- ADIM 3: saat -->
+        <div data-step="3" hidden>
+          <div class="bk-step-tag">{L.adimLabel} 3 / 4</div>
+          <h3 class="bk-step-title" style="margin-bottom:4px;">{L.step3}</h3>
+          <p data-date-label style="margin:0 0 18px; font-size:13.5px; color:#6A756D;"></p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+            {booking.timeSlots.map((t) => (
+              <button type="button" class="bk-time" data-time={t}>{t}</button>
+            ))}
+          </div>
+          <div style="display:flex; gap:12px; margin-top:24px;">
+            <button type="button" data-back class="bk-back">{L.back}</button>
+            <button type="button" data-next class="bk-primary flex off" disabled>{L.continue}</button>
+          </div>
+        </div>
+
+        <!-- ADIM 4: iletişim -->
+        <div data-step="4" hidden>
+          <div class="bk-step-tag">{L.adimLabel} 4 / 4</div>
+          <h3 class="bk-step-title" style="margin-bottom:6px;">{L.step4}</h3>
+          <div data-summary style="padding:12px 14px; border-radius:12px; background:rgba(27,38,33,0.05); font-size:13.5px; color:#1B2621; margin-bottom:18px; line-height:1.5;"></div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <input class="bk-input" data-field="name" placeholder={L.namePlaceholder} autocomplete="name" />
+            <input class="bk-input" data-field="phone" placeholder={L.phonePlaceholder} inputmode="tel" autocomplete="tel" />
+            <input class="bk-input" data-field="email" placeholder={L.emailPlaceholder} inputmode="email" autocomplete="email" />
+            <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} rows="3" style="resize:vertical;"></textarea>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:20px;">
+            <button type="button" data-back class="bk-back">{L.back}</button>
+            <button type="button" data-submit class="bk-primary flex off" disabled>{L.confirm}</button>
+          </div>
+          <p style="margin:14px 0 0; font-size:11.5px; line-height:1.5; color:#A6ADA2; text-align:center;">{booking.kvkkNote}</p>
+        </div>
+
+        <!-- ADIM 5: onay -->
+        <div data-step="5" hidden>
+          <div style="text-align:center; padding:12px 0;">
+            <div style="display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:rgba(214,154,106,0.16); color:#C4834F; margin:0 auto 20px; font-size:30px;">✓</div>
+            <h3 style="margin:0 0 12px; font-family:var(--serif); font-weight:600; font-size:29px; color:#1B2621;">{L.doneTitlePrefix}, <span data-done-name></span>.</h3>
+            <p style="margin:0 0 20px; font-size:15px; line-height:1.6; color:#55605A;">{booking.confirmLine}</p>
+            <div style="padding:16px 18px; border-radius:14px; background:rgba(27,38,33,0.05); text-align:left; font-size:14px; color:#1B2621; line-height:1.7; margin-bottom:22px;">
+              <div><strong>{L.summaryFormat}:</strong> <span data-done-format></span></div>
+              <div><strong>{L.summaryDate}:</strong> <span data-done-date></span></div>
+              <div><strong>{L.summaryTime}:</strong> <span data-done-time></span></div>
+            </div>
+            <a data-open-link href="#" rel="noopener" class="btn-accent" style="display:block; width:100%; padding:14px; border-radius:14px; font-size:15px; font-weight:700; margin-bottom:10px; box-sizing:border-box;">{L.resend}</a>
+            <button type="button" data-reset style="width:100%; padding:12px; border:none; border-radius:14px; background:transparent; color:#8CA093; font-size:14px; font-weight:600; font-family:inherit; cursor:pointer;">{L.reset}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  [data-booking] .bk-step-tag { font-size:12px; font-weight:700; letter-spacing:0.06em; color:#C4834F; margin-bottom:6px; }
+  [data-booking] .bk-step-title { margin:0 0 18px; font-family:var(--serif); font-weight:600; font-size:27px; color:#1B2621; }
+
+  [data-booking] [data-dots] { display:flex; }
+  [data-booking] .bk-dot { flex:1; height:5px; border-radius:999px; background:rgba(27,38,33,0.12); transition:background .35s ease; }
+  [data-booking] .bk-dot.on { background:#D69A6A; }
+
+  [data-booking] .bk-format { display:flex; align-items:center; gap:14px; text-align:left; padding:18px; border-radius:16px; border:1.5px solid rgba(27,38,33,0.14); background:#fff; cursor:pointer; font-family:inherit; transition:border-color .2s ease, background .2s ease; }
+  [data-booking] .bk-format:hover { border-color:#C4834F; }
+  [data-booking] .bk-format-dot { display:flex; flex-shrink:0; width:22px; height:22px; border-radius:50%; border:2px solid rgba(27,38,33,0.25); background:transparent; transition:border-color .2s ease, background .2s ease; }
+  [data-booking] .bk-format.sel { border-color:#C4834F; background:rgba(214,154,106,0.08); }
+  [data-booking] .bk-format.sel .bk-format-dot { border-color:#C4834F; background:#C4834F; }
+
+  [data-booking] .bk-time { padding:14px 6px; border:1.5px solid rgba(27,38,33,0.16); border-radius:12px; background:#fff; color:#2E3630; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:all .18s ease; }
+  [data-booking] .bk-time:hover { border-color:#C4834F; }
+  [data-booking] .bk-time.sel { border-color:#C4834F; background:rgba(214,154,106,0.10); color:#B0763F; }
+
+  [data-booking] .bk-day { aspect-ratio:1/1; border:none; border-radius:12px; background:rgba(27,38,33,0.05); color:#2E3630; font-size:14px; font-weight:500; font-family:inherit; cursor:pointer; transition:background .18s ease; }
+  [data-booking] .bk-day:hover:not(.disabled):not(.sel) { background:rgba(27,38,33,0.11); }
+  [data-booking] .bk-day.sel { background:#1B2621; color:#F6F1E7; font-weight:700; }
+  [data-booking] .bk-day.disabled { background:transparent; color:#C7CDC4; opacity:.5; cursor:default; }
+  [data-booking] .bk-day.blank { background:transparent; opacity:0; cursor:default; }
+
+  [data-booking] .bk-input { padding:14px 16px; border:1.5px solid rgba(27,38,33,0.18); border-radius:12px; background:#fff; font-size:15px; font-family:inherit; color:#1B2621; outline:none; transition:border-color .2s ease; }
+  [data-booking] .bk-input:focus { border-color:#C4834F; }
+
+  [data-booking] .bk-primary { padding:14px; border:none; border-radius:14px; background:#1B2621; color:#F6F1E7; font-size:15.5px; font-weight:600; font-family:inherit; cursor:pointer; transition:background .25s ease; }
+  [data-booking] .bk-primary.full { width:100%; padding:15px; }
+  [data-booking] .bk-primary.flex { flex:1; }
+  [data-booking] .bk-primary.off { background:rgba(27,38,33,0.28); cursor:not-allowed; }
+
+  [data-booking] .bk-back { padding:14px 20px; border:1.5px solid rgba(27,38,33,0.2); border-radius:14px; background:transparent; color:#1B2621; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; }
+</style>
+
+<script define:vars={{
+  monthNames: booking.monthNames,
+  dayNames: booking.dayNames,
+  formatLabels: booking.formatLabels,
+  L,
+}}>
+  const root = document.querySelector('[data-booking]');
+  if (root) {
+    const wa = (root.dataset.whatsapp || '').replace(/\D/g, '');
+    const email = root.dataset.email || '';
+
+    const now = new Date();
+    const Y = now.getFullYear();
+    const M = now.getMonth();
+    const TODAY = now.getDate();
+
+    const state = { step: 1, format: null, date: null, time: null, form: { name: '', phone: '', email: '', note: '' } };
+
+    const monthLabel = monthNames[M] + ' ' + Y;
+    const dateLabel = (d) => d + ' ' + monthNames[M] + ' ' + Y + ', ' + dayNames[new Date(Y, M, d).getDay()];
+    const formatLabel = () => (state.format ? formatLabels[state.format] : '—');
+    const formValid = () =>
+      state.form.name.trim().length > 1 &&
+      (state.form.phone.trim().length > 5 || state.form.email.trim().length > 4);
+    const canProceed = () => ({ 1: !!state.format, 2: !!state.date, 3: !!state.time, 4: formValid() }[state.step] ?? true);
+
+    // ---- Takvimi bir kez oluştur (içinde bulunulan ay) ----
+    const grid = root.querySelector('[data-cal-grid]');
+    const first = new Date(Y, M, 1);
+    const startDay = (first.getDay() + 6) % 7; // Pazartesi başlangıç
+    const daysInMonth = new Date(Y, M + 1, 0).getDate();
+    for (let i = 0; i < startDay; i++) {
+      const b = document.createElement('div');
+      b.className = 'bk-day blank';
+      grid.appendChild(b);
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dow = new Date(Y, M, d).getDay();
+      const disabled = dow === 0 || dow === 6 || d <= TODAY;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'bk-day' + (disabled ? ' disabled' : '');
+      b.textContent = String(d);
+      if (!disabled) b.dataset.day = String(d);
+      grid.appendChild(b);
+    }
+
+    // ---- Render ----
+    function render() {
+      root.querySelectorAll('[data-step]').forEach((el) => {
+        el.hidden = Number(el.dataset.step) !== state.step;
+      });
+      root.querySelector('[data-dots]').style.display = state.step <= 4 ? 'flex' : 'none';
+      root.querySelectorAll('.bk-dot').forEach((d, idx) => d.classList.toggle('on', state.step >= idx + 1));
+      root.querySelectorAll('[data-format]').forEach((b) => b.classList.toggle('sel', b.dataset.format === state.format));
+      root.querySelectorAll('[data-time]').forEach((b) => b.classList.toggle('sel', b.dataset.time === state.time));
+      root.querySelectorAll('[data-day]').forEach((b) => b.classList.toggle('sel', Number(b.dataset.day) === state.date));
+
+      const active = root.querySelector('[data-step="' + state.step + '"]');
+      if (active) {
+        const prim = active.querySelector('.bk-primary');
+        if (prim) {
+          const ok = canProceed();
+          prim.disabled = !ok;
+          prim.classList.toggle('off', !ok);
+        }
+      }
+
+      root.querySelector('[data-month]').textContent = monthLabel;
+      const summary = [formatLabel(), state.date ? dateLabel(state.date) : '', state.time].filter(Boolean).join(' · ');
+      root.querySelector('[data-date-label]').textContent = state.date ? dateLabel(state.date) : '';
+      root.querySelector('[data-summary]').textContent = summary;
+
+      root.querySelector('[data-done-name]').textContent = state.form.name;
+      root.querySelector('[data-done-format]').textContent = formatLabel();
+      root.querySelector('[data-done-date]').textContent = state.date ? dateLabel(state.date) : '';
+      root.querySelector('[data-done-time]').textContent = state.time || '';
+    }
+
+    // ---- Mesaj + link ----
+    function buildMessage() {
+      return [
+        L.messageIntro,
+        '• ' + L.summaryFormat + ': ' + formatLabel(),
+        '• ' + L.summaryDate + ': ' + (state.date ? dateLabel(state.date) : '-'),
+        '• ' + L.summaryTime + ': ' + (state.time || '-'),
+        '• ' + L.messageName + ': ' + state.form.name,
+        '• ' + L.messagePhone + ': ' + (state.form.phone || '-'),
+      ].join('\n');
+    }
+    function buildUrl(msg) {
+      if (wa.length >= 10) return { url: 'https://wa.me/' + wa + '?text=' + encodeURIComponent(msg), external: true };
+      return { url: 'mailto:' + email + '?subject=' + encodeURIComponent(L.messageSubject) + '&body=' + encodeURIComponent(msg), external: false };
+    }
+    function confirmBooking() {
+      const msg = buildMessage();
+      const { url, external } = buildUrl(msg);
+      const link = root.querySelector('[data-open-link]');
+      if (link) { link.href = url; if (external) link.target = '_blank'; }
+      if (external) window.open(url, '_blank', 'noopener');
+      else window.location.href = url;
+      state.step = 5;
+      render();
+    }
+    function reset() {
+      state.step = 1; state.format = null; state.date = null; state.time = null;
+      state.form = { name: '', phone: '', email: '', note: '' };
+      root.querySelectorAll('.bk-input').forEach((i) => (i.value = ''));
+      render();
+    }
+
+    // ---- Olaylar ----
+    root.addEventListener('click', (e) => {
+      const fmt = e.target.closest('[data-format]');
+      if (fmt) { state.format = fmt.dataset.format; render(); return; }
+      const day = e.target.closest('.bk-day[data-day]');
+      if (day) { state.date = Number(day.dataset.day); render(); return; }
+      const time = e.target.closest('[data-time]');
+      if (time) { state.time = time.dataset.time; render(); return; }
+      if (e.target.closest('[data-next]')) { if (canProceed()) { state.step = Math.min(state.step + 1, 5); render(); } return; }
+      if (e.target.closest('[data-back]')) { state.step = Math.max(state.step - 1, 1); render(); return; }
+      if (e.target.closest('[data-submit]')) { if (formValid()) confirmBooking(); return; }
+      if (e.target.closest('[data-reset]')) { reset(); return; }
+    });
+    root.addEventListener('input', (e) => {
+      const f = e.target.closest('[data-field]');
+      if (f) { state.form[f.dataset.field] = e.target.value; render(); }
+    });
+
+    render();
+  }
+</script>

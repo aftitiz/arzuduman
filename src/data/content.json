@@ -162,8 +162,12 @@
       "summaryDate": "Tarih",
       "summaryTime": "Saat",
       "reset": "Yeni randevu planla",
+      "resend": "Randevu talebini tekrar aç",
+      "adimLabel": "ADIM",
       "messageIntro": "Merhaba, bir ön görüşme talebim var:",
-      "messageSubject": "Ön görüşme talebi"
+      "messageSubject": "Ön görüşme talebi",
+      "messageName": "Ad",
+      "messagePhone": "Telefon"
     },
     "kvkkNote": "Bilgileriniz KVKK kapsamında yalnızca randevu için kullanılır ve üçüncü kişilerle paylaşılmaz.",
     "confirmLine": "En kısa sürede (genellikle 48 saat içinde) sizinle iletişime geçip görüşmeyi kesinleştireceğim."
