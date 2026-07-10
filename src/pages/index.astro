@@ -9,6 +9,9 @@ import Specialties from '../components/Specialties.astro';
 import Process from '../components/Process.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Booking from '../components/Booking.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+import MobileCta from '../components/MobileCta.astro';
 import Reveal from '../components/Reveal.astro';
 ---
 
@@ -22,7 +25,9 @@ import Reveal from '../components/Reveal.astro';
     <Process process={content.process} />
     <Testimonials testimonials={content.testimonials} />
     <Booking booking={content.booking} contact={content.site.contact} />
-    {/* Diğer bölümler Task 8'de eklenecek */}
+    <Faq faq={content.faq} />
   </main>
+  <Footer footer={content.footer} contact={content.site.contact} />
+  <MobileCta nav={content.nav} />
   <Reveal />
 </BaseLayout>

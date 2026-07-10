@@ -38,7 +38,8 @@
       { "label": "SSS", "href": "#sss" }
     ],
     "cta": "Ön Görüşme",
-    "ctaHref": "#randevu"
+    "ctaHref": "#randevu",
+    "mobileCta": "Ön Görüşme Planla"
   },
 
   "hero": {

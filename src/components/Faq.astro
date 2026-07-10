@@ -1,0 +1,54 @@
+---
+import Eyebrow from './Eyebrow.astro';
+const { faq } = Astro.props;
+---
+
+<section id="sss" style="background:#F3EEE4; padding:clamp(72px,9vw,128px) clamp(20px,6vw,88px);">
+  <div style="max-width:820px; margin:0 auto;">
+    <div data-reveal style="text-align:center; margin-bottom:clamp(40px,5vw,54px);">
+      <Eyebrow label={faq.eyebrow} center={true} />
+      <h2 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-0.01em; color:#1B2621;">{faq.heading}</h2>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      {faq.items.map((f, i) => (
+        <div data-faq style="border:1px solid rgba(27,38,33,0.12); border-radius:16px; background:#FBF7EE; overflow:hidden;">
+          <button
+            type="button"
+            aria-expanded="false"
+            aria-controls={`faq-panel-${i}`}
+            style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; text-align:left; padding:22px 24px; border:none; background:transparent; cursor:pointer; font-family:inherit;"
+          >
+            <span style="font-size:17px; font-weight:600; color:#1B2621;">{f.q}</span>
+            <span class="faq-icon" aria-hidden="true" style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:rgba(27,38,33,0.06); color:#C4834F; font-size:18px; transition:transform .3s ease;">+</span>
+          </button>
+          <div id={`faq-panel-${i}`} class="faq-panel" role="region" style="max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.4,0,.2,1);">
+            <p style="margin:0; padding:0 24px 24px; font-size:15px; line-height:1.7; color:#4A5249;">{f.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-faq]').forEach((item) => {
+    const btn = item.querySelector('button');
+    const panel = item.querySelector('.faq-panel');
+    const icon = item.querySelector('.faq-icon');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      icon.style.transform = open ? 'rotate(0deg)' : 'rotate(45deg)';
+      panel.style.maxHeight = open ? '0px' : panel.scrollHeight + 'px';
+    });
+  });
+  // Pencere boyutu değişince açık panellerin yüksekliğini tazele
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('[data-faq]').forEach((item) => {
+      const btn = item.querySelector('button');
+      const panel = item.querySelector('.faq-panel');
+      if (btn.getAttribute('aria-expanded') === 'true') panel.style.maxHeight = panel.scrollHeight + 'px';
+    });
+  });
+</script>
