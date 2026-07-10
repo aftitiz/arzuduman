@@ -1,0 +1,77 @@
+---
+const { hero } = Astro.props;
+---
+
+<header
+  id="top"
+  data-hero
+  style="position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; background:#0E1A16; padding:clamp(128px,17vh,190px) clamp(20px,6vw,88px) clamp(90px,10vh,120px);"
+>
+  <!-- Drift eden gradyan lekeler -->
+  <div aria-hidden="true" style="position:absolute; top:-12%; right:-6%; width:min(72vw,780px); height:min(72vw,780px); border-radius:50%; background:radial-gradient(circle at 40% 40%, rgba(122,158,142,0.30), rgba(122,158,142,0) 68%); filter:blur(22px); animation:drift1 22s ease-in-out infinite; pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute; bottom:-16%; left:-8%; width:min(60vw,640px); height:min(60vw,640px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(214,154,106,0.20), rgba(214,154,106,0) 66%); filter:blur(26px); animation:drift2 28s ease-in-out infinite; pointer-events:none;"></div>
+
+  <!-- Nefes alan orb -->
+  <div aria-hidden="true" style="position:absolute; top:50%; right:5%; transform:translateY(-50%); z-index:1; width:clamp(190px,40vw,460px); height:clamp(190px,40vw,460px); pointer-events:none;">
+    <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 42% 40%, rgba(168,196,176,0.55), rgba(122,158,142,0.16) 54%, rgba(122,158,142,0) 72%); filter:blur(4px); animation:breathe 8s ease-in-out infinite;"></div>
+    <div style="position:absolute; inset:6%; border-radius:50%; border:1px solid rgba(241,235,222,0.20); animation:breatheRing 8s ease-in-out infinite;"></div>
+    <div style="position:absolute; inset:20%; border-radius:50%; border:1px solid rgba(241,235,222,0.10); animation:breatheRing 8s ease-in-out infinite .3s;"></div>
+    <div
+      data-breath
+      data-words={JSON.stringify(hero.orbWords)}
+      style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:clamp(19px,2vw,28px); color:rgba(241,235,222,0.85); transition:opacity .45s ease, transform .45s ease;"
+    >
+      {hero.orbWords[0]}
+    </div>
+  </div>
+
+  <!-- İmleç ışığı -->
+  <div data-spotlight aria-hidden="true" style="position:absolute; top:0; left:0; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(214,154,106,0.16), rgba(214,154,106,0) 60%); opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1; will-change:transform;"></div>
+
+  <div style="position:relative; z-index:2; max-width:1200px; margin:0 auto; width:100%;">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:clamp(24px,4vw,34px); animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:40ms;">
+      <span style="width:40px; height:1px; background:#D69A6A;"></span>
+      <span style="font-size:12px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:#9FACA1;">{hero.eyebrow}</span>
+    </div>
+
+    <h1 style="margin:0 0 clamp(26px,4vw,36px); font-family:var(--serif); font-weight:500; font-size:clamp(40px,10.5vw,150px); line-height:0.94; letter-spacing:-0.015em; color:#F1EBDE;">
+      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:150ms;">{hero.titleLine1}</span>
+      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:260ms;">{hero.titleLine2Before}<span class="shimmer-accent" style="font-style:italic;">{hero.titleAccent}</span></span>
+      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:370ms;">{hero.titleLine3}</span>
+    </h1>
+
+    <p style="margin:0 0 clamp(30px,4vw,42px); max-width:560px; font-size:clamp(16px,1.5vw,19px); line-height:1.72; color:#C6CFC7; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:480ms;">{hero.subtitle}</p>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:580ms;">
+      <a
+        href={hero.ctaPrimaryHref}
+        data-magnet
+        class="btn-accent"
+        style="display:inline-flex; align-items:center; gap:10px; padding:17px 30px; border-radius:999px; font-size:15.5px; font-weight:700; box-shadow:0 16px 42px rgba(214,154,106,0.32); will-change:transform;"
+      >
+        {hero.ctaPrimary}<span style="font-size:18px;">→</span>
+      </a>
+      <a
+        href={hero.ctaSecondaryHref}
+        class="btn-ghost"
+        style="display:inline-flex; align-items:center; gap:9px; padding:17px 24px; border-radius:999px; border:1px solid rgba(241,235,222,0.25); color:#F1EBDE; font-size:15px; font-weight:600;"
+      >
+        {hero.ctaSecondary}
+      </a>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:44px; font-size:13px; color:#8E9A90; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:680ms;">
+      {hero.trust.map((item, i) => (
+        <>
+          {i > 0 && <span style="width:4px; height:4px; border-radius:50%; background:#D69A6A;"></span>}
+          <span>{item}</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <div style="position:absolute; left:50%; bottom:24px; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; color:#8E9A90;">
+    <span style="font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; font-weight:600;">{hero.scrollHint}</span>
+    <span style="font-size:18px; animation:bob 2.4s ease-in-out infinite;">↓</span>
+  </div>
+</header>
