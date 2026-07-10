@@ -1,0 +1,32 @@
+---
+import Eyebrow from './Eyebrow.astro';
+const { testimonials } = Astro.props;
+---
+
+<section id="deneyimler" style="background:#ECE5D7; padding:clamp(72px,9vw,128px) clamp(20px,6vw,88px);">
+  <div style="max-width:1120px; margin:0 auto;">
+    <div data-reveal style="max-width:660px; margin:0 auto clamp(44px,5vw,60px); text-align:center;">
+      <Eyebrow label={testimonials.eyebrow} center={true} />
+      <h2 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-0.01em; color:#1B2621;">{testimonials.heading}</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px;">
+      {testimonials.items.map((t, i) => (
+        <figure
+          data-reveal
+          data-reveal-delay={i * 90}
+          style="margin:0; display:flex; flex-direction:column; gap:18px; padding:34px 32px; border-radius:22px; background:#FBF7EE; border:1px solid rgba(27,38,33,0.09); box-shadow:0 20px 50px rgba(27,38,33,0.08);"
+        >
+          <span aria-hidden="true" style="font-family:var(--serif); font-size:64px; line-height:0.4; color:#D0A377;">“</span>
+          <blockquote style="margin:0; font-family:var(--serif); font-weight:500; font-size:22px; line-height:1.4; color:#2E3630;">{t.quote}</blockquote>
+          <figcaption style="margin-top:auto; display:flex; align-items:center; gap:12px; padding-top:16px; border-top:1px solid rgba(27,38,33,0.10);">
+            <span style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:rgba(27,38,33,0.06); font-family:var(--serif); font-size:16px; color:#1B2621;">{t.initials}</span>
+            <span style="font-size:13px; color:#6A6B63; font-weight:500;">{t.meta}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <p data-reveal style="max-width:640px; margin:26px auto 0; text-align:center; font-size:12.5px; color:#9A8B72;">{testimonials.note}</p>
+  </div>
+</section>
