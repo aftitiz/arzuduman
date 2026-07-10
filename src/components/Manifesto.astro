@@ -1,0 +1,19 @@
+---
+import Eyebrow from './Eyebrow.astro';
+const { manifesto } = Astro.props;
+---
+
+<section style="background:#F3EEE4; padding:clamp(90px,13vw,168px) clamp(20px,6vw,88px);">
+  <div style="max-width:1000px; margin:0 auto; text-align:center;">
+    <div data-reveal>
+      <Eyebrow label={manifesto.eyebrow} center={true} mb="30px" lineWidth="26px" spacing="0.22em" />
+    </div>
+    <p
+      data-reveal
+      data-reveal-delay="90"
+      style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.6vw,64px); line-height:1.16; letter-spacing:-0.01em; color:#1B2621; text-wrap:balance;"
+    >
+      {manifesto.quoteBefore}<span style="font-style:italic; color:#B0763F;">{manifesto.quoteAccent}</span>{manifesto.quoteAfter}
+    </p>
+  </div>
+</section>

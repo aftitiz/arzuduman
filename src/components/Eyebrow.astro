@@ -1,0 +1,18 @@
+---
+// Bölüm üstü küçük etiket: "— çizgi — ETİKET". Tasarımda 6 yerde tekrar eder.
+const {
+  label,
+  color = '#B08A5E',
+  line = '#C4834F',
+  center = false,
+  mb = '20px',
+  lineWidth = '22px',
+  spacing = '0.2em',
+} = Astro.props;
+---
+
+<div
+  style={`display:${center ? 'inline-flex' : 'flex'}; align-items:center; gap:12px; margin-bottom:${mb}; font-size:12px; font-weight:700; letter-spacing:${spacing}; text-transform:uppercase; color:${color};`}
+>
+  <span style={`width:${lineWidth}; height:1px; background:${line};`}></span>{label}
+</div>

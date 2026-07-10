@@ -1,0 +1,31 @@
+---
+import Eyebrow from './Eyebrow.astro';
+const { specialties } = Astro.props;
+---
+
+<section id="uzmanlik" style="background:#F3EEE4; padding:clamp(72px,9vw,128px) clamp(20px,6vw,88px);">
+  <div style="max-width:1160px; margin:0 auto;">
+    <div data-reveal style="max-width:680px; margin-bottom:clamp(40px,5vw,60px);">
+      <Eyebrow label={specialties.eyebrow} />
+      <h2 style="margin:0 0 16px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-0.01em; color:#1B2621;">{specialties.heading}</h2>
+      <p style="margin:0; font-size:16.5px; line-height:1.7; color:#55605A;">{specialties.intro}</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;">
+      {specialties.items.map((s, i) => (
+        <div
+          data-reveal
+          data-reveal-delay={(i % 3) * 80}
+          class="card-lift"
+          style="position:relative; padding:30px 28px; border-radius:20px; background:#FBF7EE; border:1px solid rgba(27,38,33,0.09);"
+        >
+          <div style="font-family:var(--serif); font-size:40px; font-weight:600; color:#D0A377; line-height:1; margin-bottom:18px;">
+            {String(i + 1).padStart(2, '0')}
+          </div>
+          <h3 style="margin:0 0 10px; font-family:var(--serif); font-weight:600; font-size:24px; color:#1B2621;">{s.title}</h3>
+          <p style="margin:0; font-size:14.5px; line-height:1.62; color:#55605A;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
