@@ -1,0 +1,103 @@
+/* ============================================================
+   Arzu Duman — global stiller
+   Tasarım token'ları, reset, keyframe'ler ve tekrar eden
+   hover/focus yardımcıları. (Bölüm-özel stiller bileşenlerde.)
+   ============================================================ */
+
+:root {
+  --bg: #0E1A16;
+  --bg-footer: #0B1512;
+  --ink: #1B2621;
+
+  --accent: #C4834F;
+  --accent-2: #D69A6A;
+  --accent-3: #E7B183;
+  --accent-4: #E4B486;
+  --accent-deep: #B0763F;
+  --accent-soft: #D0A377;
+
+  --paper-1: #F1EBDE;
+  --paper-2: #F3EEE4;
+  --paper-3: #ECE5D7;
+  --paper-4: #FBF7EE;
+  --paper-5: #F6F1E7;
+
+  --green-1: #7A9E8E;
+  --green-2: #A8C4B0;
+
+  --muted-1: #B9C3BA;
+  --muted-2: #C6CFC7;
+  --muted-3: #8E9A90;
+  --muted-4: #55605A;
+  --muted-5: #2E3630;
+
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Manrope', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-2); }
+::selection { background: var(--accent-2); color: var(--bg); }
+
+/* ---------- Keyframe'ler (tasarımdan) ---------- */
+@keyframes breathe     { 0%,100% { transform: scale(1); opacity: .62; } 50% { transform: scale(1.14); opacity: 1; } }
+@keyframes breatheRing { 0%,100% { transform: scale(1); opacity: .45; } 50% { transform: scale(1.24); opacity: .85; } }
+@keyframes drift1      { 0%,100% { transform: translate(0,0); } 50% { transform: translate(64px,-44px); } }
+@keyframes drift2      { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-54px,54px); } }
+@keyframes bob         { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+@keyframes shimmer     { 0% { background-position: 180% center; } 100% { background-position: -80% center; } }
+@keyframes dropIn      { from { opacity: 0; transform: translateY(-46px); } to { opacity: 1; transform: translateY(0); } }
+
+.shimmer-accent {
+  background: linear-gradient(100deg,#D69A6A 0%,#D69A6A 40%,#F1D2AC 50%,#D69A6A 60%,#D69A6A 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+
+/* ---------- Tekrar eden hover/focus yardımcıları ---------- */
+.btn-accent { background: var(--accent-2); color: #14231C; transition: background .25s ease, box-shadow .3s ease, transform .2s ease; }
+.btn-accent:hover { background: var(--accent-3); }
+
+.btn-ghost { transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+.btn-ghost:hover { background: rgba(241,235,222,.07); border-color: rgba(241,235,222,.5); }
+
+.nav-link { color: var(--muted-1); transition: color .2s ease; }
+.nav-link:hover { color: var(--paper-1); }
+
+.card-lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease; }
+.card-lift:hover { transform: translateY(-8px); box-shadow: 0 28px 56px rgba(27,38,33,.13); border-color: rgba(196,131,79,.4); }
+
+.field { transition: border-color .2s ease; }
+.field:focus { border-color: var(--accent); outline: none; }
+
+/* ---------- Mobil / masaüstü görünürlük ---------- */
+/* Nav linkleri masaüstünde görünür, mobilde gizli. Body'ye JS ile .is-mobile eklenir. */
+.nav-links { display: flex; }
+.mobile-cta { display: none; }
+.mobile-cta-spacer { display: none; }
+body.is-mobile .nav-links { display: none; }
+body.is-mobile .mobile-cta { display: block; }
+body.is-mobile .mobile-cta-spacer { display: block; }
+
+/* JS yüklenmeden önce (no-js) mobilde de linkler gizlensin diye yedek kırılım */
+@media (max-width: 859px) {
+  .nav-links { display: none; }
+}
+
+/* ---------- Hareket azaltma ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
+}
