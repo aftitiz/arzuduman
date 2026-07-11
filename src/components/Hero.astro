@@ -1,5 +1,6 @@
 ---
-// Portre: /public/images/arzu.jpg bırakılınca görünür; yoksa yer tutucu (monogram) kalır.
+// Portre: /public/images/arzu-hero.jpg (arzu.jpg'den türetilen 1:1 kare kırpım) görünür; yoksa yer tutucu (monogram) kalır.
+// Fotoğraf değişince türevi yenile:  node scripts/generate-portrait.mjs
 // Hero görseli ekranın üstünde → erken (eager) yüklenir.
 const { hero } = Astro.props;
 ---
@@ -62,7 +63,7 @@ const { hero } = Astro.props;
           <path d="M22 106 C 40 70, 52 44, 66 16" stroke="#5E7A66" stroke-width="2" stroke-linecap="round"/>
           <path d="M46 60 C 56 52, 68 52, 76 44 M46 60 C 42 48, 44 38, 38 30" stroke="#5E7A66" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
-        <img src="/images/arzu.jpg" alt="Uzman Klinik Psikolog Arzu Duman" width="900" height="1200" decoding="async" fetchpriority="high" onerror="this.remove()" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 28%; z-index:3;" />
+        <img src="/images/arzu-hero.jpg" alt="Uzman Klinik Psikolog Arzu Duman" width="1000" height="1000" decoding="async" fetchpriority="high" onerror="this.remove()" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:3;" />
       </div>
 
       <div class="glass" style="position:absolute; z-index:2; left:-4%; bottom:11%; display:flex; align-items:center; gap:11px; padding:13px 17px; border-radius:16px; box-shadow:0 20px 44px rgba(38,48,42,0.16);">

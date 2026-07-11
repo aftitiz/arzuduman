@@ -30,9 +30,9 @@ const whiteRing = Buffer.from(
 
 // Yüz+omuz kadrajı — kaynak çözünürlükten bağımsız olsun diye oranlarla tanımlı.
 // (Fotoğraf boyutu değişse de aynı kadrajı korur.)
-const FACE_LEFT = 0.138; // sol kenar (genişliğin oranı)
-const FACE_TOP = 0.171; // üst kenar (yüksekliğin oranı)
-const FACE_SIZE = 0.762; // kare kadraj kenarı (genişliğin oranı)
+const FACE_LEFT = 0.2; // sol kenar (genişliğin oranı)
+const FACE_TOP = 0.125; // üst kenar (yüksekliğin oranı)
+const FACE_SIZE = 0.8; // kare kadraj kenarı (genişliğin oranı)
 const meta = await sharp('public/images/arzu.jpg').metadata();
 const cropSize = Math.round(meta.width * FACE_SIZE);
 const photoCircle = await sharp('public/images/arzu.jpg')
