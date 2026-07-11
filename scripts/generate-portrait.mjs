@@ -8,8 +8,8 @@ import sharp from 'sharp';
 
 // Geniş 4:5 kadraj (Hakkımda) — yüz + gövde + ortam.
 const aboutRegion = { left: 200, top: 200, width: 1000, height: 1250 };
-// Kare kadraj (Hero) — kemerle aynı yatay alan ve ölçek, üstten biraz kısa.
-const heroRegion = { left: 200, top: 225, width: 1000, height: 1000 };
+// Kare kadraj (Hero) — en geniş: tam foto genişliği (daire için maksimum uzak kadraj).
+const heroRegion = { left: 0, top: 160, width: 1200, height: 1200 };
 
 // Fotoğraf değişirse bu iki bloğu yeni yüz konumuna göre güncelle.
 await sharp('public/images/arzu.jpg')
