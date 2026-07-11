@@ -59,48 +59,95 @@
     }, 4000);
   }
 
-  // ---- Scroll-reveal ----
+  // ---- Scroll-reveal (KURŞUN GEÇİRMEZ: içerik hiçbir cihazda görünmez kalamaz) ----
+  // Tasarım: içeriği ANINDA gizle (geçiş YOK → başlangıçta ters/yanlış yönde solma olmaz),
+  // görünür alana girince İÇERİ doğru yumuşakça soldur. Observer bir cihazda hiç
+  // tetiklenmese bile birden çok güvenlik ağı (ilk kare + yük + 1.2sn + scroll taraması)
+  // görünür alandaki her öğeyi açar — kullanıcının gördüğü hiçbir şey boş/bozuk kalmaz.
+  // JS ya da IntersectionObserver yoksa (ya da hareket azaltma açıksa): hiç gizleme →
+  // içerik varsayılan olarak görünür kalır. Yani en kötü durumda animasyon olmaz, ama
+  // içerik ASLA kaybolmaz.
+  const EASE = 'cubic-bezier(.2,.7,.2,1)';
   const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
-  revealEls.forEach((el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
+  const showReveal = (el) => {
+    if (el.dataset.revealed) return;
+    el.dataset.revealed = '1';
     const d = el.getAttribute('data-reveal-delay') || '0';
-    el.style.transition =
-      'opacity .9s cubic-bezier(.2,.7,.2,1) ' + d + 'ms, transform .9s cubic-bezier(.2,.7,.2,1) ' + d + 'ms';
-  });
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'none';
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.16, rootMargin: '0px 0px -6% 0px' }
-  );
-  revealEls.forEach((el) => io.observe(el));
+    el.style.transition = 'opacity .9s ' + EASE + ' ' + d + 'ms, transform .9s ' + EASE + ' ' + d + 'ms';
+    // Geçiş tanımlandıktan SONRA (bir sonraki karede) görünür değere geç → temiz "içeri" solma.
+    requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+  };
+  if (!reduce && 'IntersectionObserver' in window) {
+    revealEls.forEach((el) => {
+      el.style.transition = 'none';           // gizleme anında olsun, animasyonsuz
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { showReveal(e.target); io.unobserve(e.target); } });
+      },
+      { threshold: 0, rootMargin: '0px 0px -8% 0px' }
+    );
+    revealEls.forEach((el) => io.observe(el));
 
-  // ---- Büyüyen bağlantı çizgileri ----
+    // Güvenlik ağları: görünür alandaki hiçbir öğe (observer kaçırsa bile) gizli kalmaz.
+    // Yalnızca görünür/görünüre giren öğeleri açar → ekran dışı içerik animasyonunu korur.
+    const sweep = () => {
+      let pending = false;
+      for (const el of revealEls) {
+        if (el.dataset.revealed) continue;
+        const r = el.getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.98 && r.bottom >= 0) { showReveal(el); io.unobserve(el); }
+        else pending = true;
+      }
+      return pending;
+    };
+    const onSweep = () => requestAnimationFrame(() => { if (!sweep()) window.removeEventListener('scroll', onSweep); });
+    window.addEventListener('scroll', onSweep, { passive: true });
+    requestAnimationFrame(sweep);                                  // ilk kare
+    window.addEventListener('load', () => setTimeout(sweep, 100)); // yük sonrası
+    setTimeout(sweep, 1200);                                       // yavaş cihazlar için ek ağ
+  }
+
+  // ---- Büyüyen bağlantı çizgileri (aynı güvenlik ağı mantığı) ----
   const growEls = Array.from(document.querySelectorAll('[data-grow]'));
-  growEls.forEach((el) => {
-    el.style.transformOrigin = 'top';
-    el.style.transform = 'scaleY(0)';
+  const showGrow = (el) => {
+    if (el.dataset.grown) return;
+    el.dataset.grown = '1';
     el.style.transition = 'transform 1s cubic-bezier(.4,0,.2,1)';
-  });
-  const io2 = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.style.transform = 'scaleY(1)';
-          io2.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
-  growEls.forEach((el) => io2.observe(el));
+    requestAnimationFrame(() => { el.style.transform = 'scaleY(1)'; });
+  };
+  if (!reduce && 'IntersectionObserver' in window) {
+    growEls.forEach((el) => {
+      el.style.transformOrigin = 'top';
+      el.style.transition = 'none';
+      el.style.transform = 'scaleY(0)';
+    });
+    const io2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { showGrow(e.target); io2.unobserve(e.target); } });
+      },
+      { threshold: 0, rootMargin: '0px 0px -8% 0px' }
+    );
+    growEls.forEach((el) => io2.observe(el));
+
+    const growSweep = () => {
+      let pending = false;
+      for (const el of growEls) {
+        if (el.dataset.grown) continue;
+        const r = el.getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.98 && r.bottom >= 0) { showGrow(el); io2.unobserve(el); }
+        else pending = true;
+      }
+      return pending;
+    };
+    const onGrowSweep = () => requestAnimationFrame(() => { if (!growSweep()) window.removeEventListener('scroll', onGrowSweep); });
+    window.addEventListener('scroll', onGrowSweep, { passive: true });
+    requestAnimationFrame(growSweep);
+    window.addEventListener('load', () => setTimeout(growSweep, 100));
+    setTimeout(growSweep, 1200);
+  }
 
   // ---- Yan index: aktif bölüm (viewport ortasındaki bölüm) ----
   const idxLinks = Array.from(document.querySelectorAll('[data-side-index] a'));
