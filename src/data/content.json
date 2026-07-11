@@ -12,12 +12,19 @@
     "seo": {
       "priceRange": "₺₺",
       "currency": "TRY",
-      "areaServed": ["Samsun", "İstanbul", "Türkiye"],
+      "areaServed": [
+        "Samsun",
+        "İstanbul",
+        "Türkiye"
+      ],
       "inPersonArea": "Samsun",
       "addressRegion": "Samsun",
       "streetAddress": "",
       "postalCode": "",
-      "geo": { "latitude": 41.2867, "longitude": 36.33 },
+      "geo": {
+        "latitude": 41.2867,
+        "longitude": 36.33
+      },
       "sameAs": []
     },
     "person": {
@@ -57,22 +64,32 @@
       }
     }
   },
-
   "nav": {
     "logo": "Arzu Duman",
     "links": [
-      { "label": "Hakkımda", "href": "/#hakkimda" },
-      { "label": "Uzmanlık", "href": "/#uzmanlik" },
-      { "label": "Süreç", "href": "/#surec" },
-      { "label": "SSS", "href": "/#sss" }
+      {
+        "label": "Hakkımda",
+        "href": "/#hakkimda"
+      },
+      {
+        "label": "Uzmanlık",
+        "href": "/#uzmanlik"
+      },
+      {
+        "label": "Süreç",
+        "href": "/#surec"
+      },
+      {
+        "label": "SSS",
+        "href": "/#sss"
+      }
     ],
     "cta": "Ön Görüşme",
     "ctaHref": "/#randevu",
     "mobileCta": "Ön Görüşme Planla"
   },
-
   "hero": {
-    "eyebrow": "Uzman Klinik Psikolog · Samsun & Online Terapi",
+    "eyebrow": "Uzman Klinik Psikolog",
     "titleLine1": "Burada,",
     "titleLine2Before": "bir ",
     "titleAccent": "nefes",
@@ -82,18 +99,23 @@
     "ctaPrimaryHref": "#randevu",
     "ctaSecondary": "Nasıl çalışıyorum?",
     "ctaSecondaryHref": "#surec",
-    "trust": ["Samsun'da yüz yüze & online", "%100 gizli", "Yalnızca yetişkin danışanlar"],
-    "orbWords": ["nefes al", "nefes ver"],
+    "trust": [
+      "Samsun'da yüz yüze & online",
+      "%100 gizli",
+      "Yalnızca yetişkin danışanlar"
+    ],
+    "orbWords": [
+      "nefes al",
+      "nefes ver"
+    ],
     "scrollHint": "Kaydırın"
   },
-
   "manifesto": {
     "eyebrow": "Bir hatırlatma",
     "quoteBefore": "Bazen en güçlü adım, ",
     "quoteAccent": "“yardıma ihtiyacım var”",
     "quoteAfter": " diyebilmektir."
   },
-
   "breath": {
     "eyebrow": "Bir nefes molası",
     "inhale": "nefes al",
@@ -103,7 +125,6 @@
     "lineAfter": " Çenenizi gevşetin. Şu birkaç saniye yalnızca sizin.",
     "cue": "Halka büyürken içinize çekin · küçülürken bırakın"
   },
-
   "about": {
     "eyebrow": "01 — Hakkımda",
     "heading": "Merhaba, ben Arzu.",
@@ -116,26 +137,51 @@
       "Bilişsel Davranışçı Terapi (BDT) ve Şema Terapi eğitimleri",
       "Yalnızca yetişkin danışanlarla, bireysel terapi odağında çalışma"
     ],
-    "values": ["Gizlilik", "Yargısız dinleme", "Empati", "Şeffaf süreç"],
+    "values": [
+      "Gizlilik",
+      "Yargısız dinleme",
+      "Empati",
+      "Şeffaf süreç"
+    ],
     "portrait": {
       "src": "/images/portrait.svg",
       "alt": "Uzman Klinik Psikolog Arzu Duman portresi",
       "placeholder": "Profesyonel portre fotoğrafınız"
     }
   },
-
   "specialties": {
     "eyebrow": "02 — Uzmanlık Alanları",
     "heading": "Hangi konuda destek arıyorsunuz?",
     "intro": "Yetişkinlikte en çok karşılaştığımız zorluklarda, kanıta dayalı yöntemlerle yanınızdayım. Yaşadığınız şey listede net değilse, ön görüşmede birlikte konuşabiliriz.",
     "items": [
-      { "title": "Kaygı & Anksiyete", "desc": "Sürekli tetikte hissetme, endişe döngüleri ve “ya olmazsa” düşünceleriyle çalışma." },
-      { "title": "İlişki & Çift Problemleri", "desc": "İletişim tıkanıklıkları, güven, sınırlar ve tekrarlayan çatışma kalıpları." },
-      { "title": "İş Stresi & Tükenmişlik", "desc": "Sınır koyamama, sürekli yorgunluk ve anlam kaybıyla baş etme." },
-      { "title": "Özgüven & Kişisel Gelişim", "desc": "Öz-değer ve “yeterince iyi değilim” inancını birlikte dönüştürme." },
-      { "title": "Panik Atak & Fobiler", "desc": "Panik ataklarını anlamlandırma, beden tepkilerini yönetme ve kaçınmayı azaltma." },
-      { "title": "Öfke & Duygu Düzenleme", "desc": "Duyguları bastırmadan ya da patlamadan, sağlıklı biçimde ifade edebilme." },
-      { "title": "Travma & Kayıp / Yas", "desc": "Zorlayıcı deneyimler ve kayıpların ardından güvenli bir iyileşme alanı." }
+      {
+        "title": "Kaygı & Anksiyete",
+        "desc": "Sürekli tetikte hissetme, endişe döngüleri ve “ya olmazsa” düşünceleriyle çalışma."
+      },
+      {
+        "title": "İlişki & Çift Problemleri",
+        "desc": "İletişim tıkanıklıkları, güven, sınırlar ve tekrarlayan çatışma kalıpları."
+      },
+      {
+        "title": "İş Stresi & Tükenmişlik",
+        "desc": "Sınır koyamama, sürekli yorgunluk ve anlam kaybıyla baş etme."
+      },
+      {
+        "title": "Özgüven & Kişisel Gelişim",
+        "desc": "Öz-değer ve “yeterince iyi değilim” inancını birlikte dönüştürme."
+      },
+      {
+        "title": "Panik Atak & Fobiler",
+        "desc": "Panik ataklarını anlamlandırma, beden tepkilerini yönetme ve kaçınmayı azaltma."
+      },
+      {
+        "title": "Öfke & Duygu Düzenleme",
+        "desc": "Duyguları bastırmadan ya da patlamadan, sağlıklı biçimde ifade edebilme."
+      },
+      {
+        "title": "Travma & Kayıp / Yas",
+        "desc": "Zorlayıcı deneyimler ve kayıpların ardından güvenli bir iyileşme alanı."
+      }
     ],
     "closing": {
       "title": "Sizinki listede yok mu?",
@@ -144,30 +190,59 @@
       "href": "#randevu"
     }
   },
-
   "process": {
     "eyebrow": "03 — Terapi Süreci",
     "heading": "İlk adımdan itibaren ne olacağını bilin.",
     "intro": "Belirsizlik kaygıyı artırır. O yüzden süreci baştan net anlatıyorum — hiçbir aşamada sürprizle karşılaşmazsınız.",
     "steps": [
-      { "n": "1", "title": "Ücretsiz Ön Görüşme", "tag": "15 DAKİKA", "desc": "Kısa bir görüntülü ya da telefon görüşmesiyle tanışırız. Ne yaşadığınızı anlatır, sorularınızı sorarsınız. Hiçbir yükümlülük yok." },
-      { "n": "2", "title": "Değerlendirme & Plan", "tag": "İLK SEANS", "desc": "İlk seansta hikâyenizi daha derinlemesine dinler, hedeflerinizi netleştiririz. Size özel bir yol haritası birlikte belirlenir." },
-      { "n": "3", "title": "Düzenli Seanslar", "tag": "HAFTALIK · 50 DK", "desc": "Genellikle haftada bir, 50 dakikalık seanslarla ilerleriz. Her seans güvenli, gizli ve tamamen size ayrılmış bir alandır." },
-      { "n": "4", "title": "İlerleme & Kapanış", "tag": "SÜRECİN SONU", "desc": "Değişimi birlikte gözlemler, kazanımlarınızı pekiştiririz. Hazır hissettiğinizde süreci sağlıklı bir kapanışla tamamlarız." }
+      {
+        "n": "1",
+        "title": "Ücretsiz Ön Görüşme",
+        "tag": "15 DAKİKA",
+        "desc": "Kısa bir görüntülü ya da telefon görüşmesiyle tanışırız. Ne yaşadığınızı anlatır, sorularınızı sorarsınız. Hiçbir yükümlülük yok."
+      },
+      {
+        "n": "2",
+        "title": "Değerlendirme & Plan",
+        "tag": "İLK SEANS",
+        "desc": "İlk seansta hikâyenizi daha derinlemesine dinler, hedeflerinizi netleştiririz. Size özel bir yol haritası birlikte belirlenir."
+      },
+      {
+        "n": "3",
+        "title": "Düzenli Seanslar",
+        "tag": "HAFTALIK · 50 DK",
+        "desc": "Genellikle haftada bir, 50 dakikalık seanslarla ilerleriz. Her seans güvenli, gizli ve tamamen size ayrılmış bir alandır."
+      },
+      {
+        "n": "4",
+        "title": "İlerleme & Kapanış",
+        "tag": "SÜRECİN SONU",
+        "desc": "Değişimi birlikte gözlemler, kazanımlarınızı pekiştiririz. Hazır hissettiğinizde süreci sağlıklı bir kapanışla tamamlarız."
+      }
     ]
   },
-
   "testimonials": {
     "eyebrow": "04 — Danışan Deneyimleri",
     "heading": "Değişimi yaşayanların sözleriyle.",
     "items": [
-      { "quote": "İlk seansa gelene kadar aylarca erteledim. Keşke daha önce başlasaydım — daha ilk görüşmede yargılanmadığımı hissettim.", "initials": "E.K.", "meta": "34 · Kaygı" },
-      { "quote": "Tükenmişliğin normal olduğunu sanıyordum. Birlikte sınır koymayı ve kendime alan açmayı öğrendim.", "initials": "M.T.", "meta": "41 · İş stresi" },
-      { "quote": "Eşimle aynı dili konuşamıyorduk. Bu süreç bize birbirimizi yeniden duymayı öğretti.", "initials": "S.A.", "meta": "38 · İlişki" }
+      {
+        "quote": "İlk seansa gelene kadar aylarca erteledim. Keşke daha önce başlasaydım — daha ilk görüşmede yargılanmadığımı hissettim.",
+        "initials": "E.K.",
+        "meta": "34 · Kaygı"
+      },
+      {
+        "quote": "Tükenmişliğin normal olduğunu sanıyordum. Birlikte sınır koymayı ve kendime alan açmayı öğrendim.",
+        "initials": "M.T.",
+        "meta": "41 · İş stresi"
+      },
+      {
+        "quote": "Eşimle aynı dili konuşamıyorduk. Bu süreç bize birbirimizi yeniden duymayı öğretti.",
+        "initials": "S.A.",
+        "meta": "38 · İlişki"
+      }
     ],
     "note": "* Gizlilik gereği isimler kısaltılmıştır. Bu alanı kendi danışan geri bildirimlerinizle değiştirebilirsiniz."
   },
-
   "booking": {
     "eyebrow": "04 — Ön Görüşme",
     "headingBefore": "15 dakika. ",
@@ -180,17 +255,63 @@
       "Genellikle 48 saat içinde dönüş"
     ],
     "formats": [
-      { "id": "online", "icon": "💻", "title": "Online görüşme", "desc": "Görüntülü — Türkiye'nin her yerinden, evinizin rahatlığında" },
-      { "id": "yuzyuze", "icon": "🪴", "title": "Yüz yüze", "desc": "Samsun ofisinde" }
+      {
+        "id": "online",
+        "icon": "💻",
+        "title": "Online görüşme",
+        "desc": "Görüntülü — Türkiye'nin her yerinden, evinizin rahatlığında"
+      },
+      {
+        "id": "yuzyuze",
+        "icon": "🪴",
+        "title": "Yüz yüze",
+        "desc": "Samsun ofisinde"
+      }
     ],
     "formatLabels": {
       "online": "Online görüşme",
       "yuzyuze": "Yüz yüze (Samsun ofisi)"
     },
-    "timeSlots": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
-    "weekdayLabels": ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
-    "dayNames": ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
-    "monthNames": ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+    "timeSlots": [
+      "10:00",
+      "11:00",
+      "12:00",
+      "14:00",
+      "15:00",
+      "16:00"
+    ],
+    "weekdayLabels": [
+      "Pzt",
+      "Sal",
+      "Çar",
+      "Per",
+      "Cum",
+      "Cmt",
+      "Paz"
+    ],
+    "dayNames": [
+      "Pazar",
+      "Pazartesi",
+      "Salı",
+      "Çarşamba",
+      "Perşembe",
+      "Cuma",
+      "Cumartesi"
+    ],
+    "monthNames": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
     "labels": {
       "step1": "Görüşme formatını seçin",
       "step2": "Bir gün seçin",
@@ -223,36 +344,61 @@
     "kvkkNote": "Bilgileriniz KVKK kapsamında yalnızca randevu için kullanılır ve üçüncü kişilerle paylaşılmaz.",
     "confirmLine": "En kısa sürede (genellikle 48 saat içinde) sizinle iletişime geçip görüşmeyi kesinleştireceğim."
   },
-
   "faq": {
     "eyebrow": "05 — Sıkça Sorulan Sorular",
     "heading": "Aklınızdaki soruların cevabı.",
     "items": [
-      { "q": "Bir seans ne kadar sürüyor?", "a": "Standart bir seans 50 dakikadır. Genellikle haftada bir görüşürüz, ancak sıklığı ihtiyacınıza göre birlikte belirleriz." },
-      { "q": "Online mı yüz yüze mi çalışıyorsunuz?", "a": "Her ikisi de mümkün. Görüntülü online seanslar yüz yüze kadar etkili ve daha esnektir; Türkiye'nin her yerinden (Samsun, İstanbul ve diğer illerden) katılabilirsiniz. Yüz yüze görüşmeler ise Samsun'daki ofiste gerçekleşir." },
-      { "q": "Görüştüklerimiz gizli kalıyor mu?", "a": "Kesinlikle. Paylaştığınız her şey mesleki etik ve KVKK kapsamında tam gizlilikle korunur. Yasal zorunluluklar dışında hiçbir bilgi paylaşılmaz." },
-      { "q": "İlk kez terapiye geleceğim, ne beklemeliyim?", "a": "Tedirginlik çok doğal. İlk görüşmede sizi bir şeye zorlamam; sadece tanışır, rahat hissettiğiniz kadar paylaşırsınız. Süreci sizin hızınızda kurgularız." },
-      { "q": "Randevu iptal / erteleme politikası nedir?", "a": "Randevunuzu en az 24 saat öncesinden haber vererek ücretsiz erteleyebilir veya iptal edebilirsiniz. Bu süreden sonra seans ücreti geçerli olabilir." },
-      { "q": "Terapi ne kadar sürer?", "a": "Bu tamamen size ve hedeflerinize bağlı. Bazı konular birkaç seansta ilerlerken bazıları daha uzun sürebilir. Beklentileri en baştan şeffafça konuşuruz." }
+      {
+        "q": "Bir seans ne kadar sürüyor?",
+        "a": "Standart bir seans 50 dakikadır. Genellikle haftada bir görüşürüz, ancak sıklığı ihtiyacınıza göre birlikte belirleriz."
+      },
+      {
+        "q": "Online mı yüz yüze mi çalışıyorsunuz?",
+        "a": "Her ikisi de mümkün. Görüntülü online seanslar yüz yüze kadar etkili ve daha esnektir; Türkiye'nin her yerinden (Samsun, İstanbul ve diğer illerden) katılabilirsiniz. Yüz yüze görüşmeler ise Samsun'daki ofiste gerçekleşir."
+      },
+      {
+        "q": "Görüştüklerimiz gizli kalıyor mu?",
+        "a": "Kesinlikle. Paylaştığınız her şey mesleki etik ve KVKK kapsamında tam gizlilikle korunur. Yasal zorunluluklar dışında hiçbir bilgi paylaşılmaz."
+      },
+      {
+        "q": "İlk kez terapiye geleceğim, ne beklemeliyim?",
+        "a": "Tedirginlik çok doğal. İlk görüşmede sizi bir şeye zorlamam; sadece tanışır, rahat hissettiğiniz kadar paylaşırsınız. Süreci sizin hızınızda kurgularız."
+      },
+      {
+        "q": "Randevu iptal / erteleme politikası nedir?",
+        "a": "Randevunuzu en az 24 saat öncesinden haber vererek ücretsiz erteleyebilir veya iptal edebilirsiniz. Bu süreden sonra seans ücreti geçerli olabilir."
+      },
+      {
+        "q": "Terapi ne kadar sürer?",
+        "a": "Bu tamamen size ve hedeflerinize bağlı. Bazı konular birkaç seansta ilerlerken bazıları daha uzun sürebilir. Beklentileri en baştan şeffafça konuşuruz."
+      }
     ]
   },
-
   "footer": {
     "closingEyebrow": "Hazır olduğunuzda",
-    "closingWords": ["dur.", "nefes al.", "başla."],
+    "closingWords": [
+      "dur.",
+      "nefes al.",
+      "başla."
+    ],
     "ctaLabel": "Ücretsiz ön görüşme planlayın",
     "ctaHref": "/#randevu",
     "brandName": "Arzu Duman",
-    "tagline": "Uzman Klinik Psikolog · Yetişkinlere yönelik online & yüz yüze terapi.",
+    "tagline": "Uzman Klinik Psikolog\nYetişkinlere yönelik online & yüz yüze terapi.",
     "contactHeading": "İletişim",
     "hoursHeading": "Çalışma Saatleri",
     "links": [
-      { "label": "Gizlilik & KVKK", "href": "/gizlilik" },
-      { "label": "SSS", "href": "/#sss" }
+      {
+        "label": "Gizlilik & KVKK",
+        "href": "/gizlilik"
+      },
+      {
+        "label": "SSS",
+        "href": "/#sss"
+      }
     ],
     "copyright": "© 2026 Arzu Duman · Tüm hakları saklıdır."
   },
-
   "privacy": {
     "title": "Gizlilik ve KVKK Aydınlatma Metni",
     "metaDescription": "Arzu Duman — Uzman Klinik Psikolog. Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve gizlilik politikası.",

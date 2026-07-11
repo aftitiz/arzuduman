@@ -117,6 +117,10 @@ const { hero } = Astro.props;
     50%      { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
   }
 
+  /* Kaydırma başlayınca ipucu yumuşakça kaybolur */
+  .hero-scroll { transition: opacity .45s ease, visibility .45s ease; }
+  .hero-scroll.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
   @media (max-width: 900px) {
     .hero-wrap { grid-template-columns: 1fr !important; gap: 46px !important; }
     [data-hero] { min-height: auto !important; align-items: flex-start !important; padding-top: 116px !important; }
@@ -124,3 +128,13 @@ const { hero } = Astro.props;
     .hero-scroll { display: none !important; }
   }
 </style>
+
+<script>
+  // Sayfa kaydırılmaya başlayınca "Kaydırın" ipucunu gizle, en tepeye dönünce tekrar göster.
+  const scrollHint = document.querySelector('.hero-scroll');
+  if (scrollHint) {
+    const toggleHint = () => scrollHint.classList.toggle('is-hidden', window.scrollY > 24);
+    window.addEventListener('scroll', toggleHint, { passive: true });
+    toggleHint();
+  }
+</script>

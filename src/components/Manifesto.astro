@@ -84,14 +84,14 @@ const { manifesto } = Astro.props;
             const ch = target[ci];
             segs[si].textContent += ch;
             ci++;
-            let delay = 72 + Math.random() * 48;
-            if (ch === ',' || ch === '.') delay += 440;
-            else if (ch === '”' || ch === '“') delay += 210;
+            let delay = 42 + Math.random() * 28;
+            if (ch === ',' || ch === '.') delay += 260;
+            else if (ch === '”' || ch === '“') delay += 130;
             setTimeout(step, delay);
           } else {
             si++;
             ci = 0;
-            setTimeout(step, 80);
+            setTimeout(step, 50);
           }
         };
         step();
