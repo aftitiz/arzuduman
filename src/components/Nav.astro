@@ -21,9 +21,51 @@ const { nav } = Astro.props;
 
   <a
     href={nav.ctaHref}
-    class="btn-accent"
-    style="display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:999px; font-size:13.5px; font-weight:700; white-space:nowrap;"
+    class="btn-accent nav-cta"
+    style="align-items:center; gap:8px; padding:11px 20px; border-radius:999px; font-size:13.5px; font-weight:700; white-space:nowrap;"
   >
     {nav.cta}
   </a>
+
+  <button
+    type="button"
+    class="nav-toggle"
+    data-nav-toggle
+    aria-label="Menüyü aç"
+    aria-expanded="false"
+    aria-controls="nav-overlay"
+  >
+    <span class="nav-toggle-bars" aria-hidden="true"></span>
+  </button>
 </nav>
+
+<!-- Mobil tam ekran menü -->
+<div class="nav-overlay" id="nav-overlay" data-nav-overlay aria-hidden="true">
+  <nav class="nav-overlay-menu" aria-label="Mobil menü">
+    {nav.links.map((link) => (
+      <a href={link.href} class="nav-menu-link">{link.label}</a>
+    ))}
+    <a href={nav.ctaHref} class="btn-accent nav-menu-cta">{nav.cta}<span aria-hidden="true">→</span></a>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const overlay = document.querySelector('[data-nav-overlay]');
+  if (toggle && overlay) {
+    const setOpen = (open) => {
+      overlay.classList.toggle('open', open);
+      overlay.setAttribute('aria-hidden', String(!open));
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => setOpen(!overlay.classList.contains('open')));
+    overlay.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    // Overlay boşluğuna dokununca kapat
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) setOpen(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) setOpen(false);
+    });
+  }
+</script>
