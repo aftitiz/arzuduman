@@ -28,9 +28,20 @@ const whiteRing = Buffer.from(
   `<svg width="${RD}" height="${RD}"><circle cx="${RD / 2}" cy="${RD / 2}" r="${RD / 2}" fill="#FBF7F0"/></svg>`,
 );
 
-// arzu.jpg 1050x1400 — yüz ~x545 / y490'da; yüz+omuz gösteren kare kadraj.
+// Yüz+omuz kadrajı — kaynak çözünürlükten bağımsız olsun diye oranlarla tanımlı.
+// (Fotoğraf boyutu değişse de aynı kadrajı korur.)
+const FACE_LEFT = 0.138; // sol kenar (genişliğin oranı)
+const FACE_TOP = 0.171; // üst kenar (yüksekliğin oranı)
+const FACE_SIZE = 0.762; // kare kadraj kenarı (genişliğin oranı)
+const meta = await sharp('public/images/arzu.jpg').metadata();
+const cropSize = Math.round(meta.width * FACE_SIZE);
 const photoCircle = await sharp('public/images/arzu.jpg')
-  .extract({ left: 145, top: 240, width: 800, height: 800 })
+  .extract({
+    left: Math.round(meta.width * FACE_LEFT),
+    top: Math.round(meta.height * FACE_TOP),
+    width: cropSize,
+    height: cropSize,
+  })
   .resize(D, D)
   .composite([{ input: circleMask, blend: 'dest-in' }])
   .png()

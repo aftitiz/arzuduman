@@ -204,13 +204,9 @@ a:hover { color: var(--sage); }
 .nav-links { display: flex; }
 .nav-cta { display: inline-flex; }
 .nav-toggle { display: none; }
-.mobile-cta { display: none; }
-.mobile-cta-spacer { display: none; }
 body.is-mobile .nav-links { display: none; }
 body.is-mobile .nav-cta { display: none; }
 body.is-mobile .nav-toggle { display: inline-flex; }
-body.is-mobile .mobile-cta { display: block; }
-body.is-mobile .mobile-cta-spacer { display: block; }
 @media (max-width: 859px) {
   .nav-links { display: none; }
   .nav-cta { display: none; }

@@ -7,16 +7,13 @@ const { breath } = Astro.props;
   aria-label="Bir nefes molası"
   style="position:relative; overflow:hidden; min-height:clamp(540px,78vh,740px); display:flex; align-items:center; justify-content:center; background:radial-gradient(135% 100% at 50% 42%, var(--night-2) 0%, var(--night) 56%, var(--night-deep) 100%); color:var(--cream-on-dark); padding:clamp(64px,8vw,104px) var(--pad-x);"
 >
-  <!-- Dikey kenar vignette: üst/alt en koyuya iner → temiz, keskin nocturne kenarı (kremden iz yok) -->
   <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, var(--night-deep) 0%, transparent 22%, transparent 78%, var(--night-deep) 100%);"></div>
-  <!-- Mum-ışığı: sıcak şampanya havuzu (serin gecede sıcak oda) -->
   <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(58% 58% at 50% 42%, rgba(232,196,140,0.30), transparent 62%);"></div>
 
   <div data-reveal style="position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; gap:clamp(30px,4vw,46px); max-width:720px;">
 
     <span class="eyebrow" style="color:var(--amber);">{breath.eyebrow}</span>
 
-    <!-- Nefes halkası -->
     <div class="bi-orb" aria-hidden="true">
       <span class="bi-ring bi-ring-3"></span>
       <span class="bi-ring bi-ring-2"></span>
