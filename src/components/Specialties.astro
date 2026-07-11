@@ -3,33 +3,27 @@ import Eyebrow from './Eyebrow.astro';
 const { specialties } = Astro.props;
 ---
 
-<section
-  id="uzmanlik"
-  data-index-section
-  data-label="Uzmanlık"
-  style="position:relative; background:var(--ink-2); padding:clamp(84px,11vw,150px) var(--pad-x);"
->
-  <div style="max-width:1240px; margin:0 auto;">
+<section id="uzmanlik" class="section-full" style="position:relative; overflow:hidden; background:linear-gradient(180deg,var(--tone-3),var(--tone-4)); padding:clamp(52px,6vw,88px) var(--pad-x);">
+  <div aria-hidden="true" class="aur" style="bottom:-12%; left:-8%; width:min(46vw,520px); height:min(46vw,520px); background:radial-gradient(circle,rgba(224,180,120,0.22),transparent 66%); animation:drift2 28s ease-in-out infinite;"></div>
+
+  <div style="position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto;">
     <div class="spec-grid" style="display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.5fr); gap:clamp(40px,6vw,96px); align-items:start;">
 
-      <!-- Sol: başlık bloğu -->
       <div data-reveal class="spec-head">
         <Eyebrow label={specialties.eyebrow} />
-        <h2 style="margin:0 0 20px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--bone);">{specialties.heading}</h2>
-        <p style="margin:0; max-width:420px; font-size:16.5px; line-height:1.74; color:var(--mist);">{specialties.intro}</p>
+        <h2 style="margin:0 0 20px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--ink);">{specialties.heading}</h2>
+        <p style="margin:0; max-width:420px; font-size:16.5px; line-height:1.74; color:var(--ink-soft);">{specialties.intro}</p>
       </div>
 
-      <!-- Sağ: editoryal içindekiler listesi -->
       <ul class="spec-list" style="list-style:none; margin:0; padding:0; border-top:1px solid var(--line);">
         {specialties.items.map((s, i) => (
           <li data-reveal data-reveal-delay={(i % 4) * 60} style="border-bottom:1px solid var(--line);">
             <div class="spec-row">
-              <span class="spec-num label-mono">{String(i + 1).padStart(2, '0')}</span>
+              <span class="spec-num">{String(i + 1).padStart(2, '0')}</span>
               <div class="spec-body">
                 <h3 class="spec-title">{s.title}</h3>
                 <p class="spec-desc">{s.desc}</p>
               </div>
-              <span class="spec-arrow" aria-hidden="true">→</span>
             </div>
           </li>
         ))}
@@ -40,40 +34,23 @@ const { specialties } = Astro.props;
 
 <style>
   .spec-row {
-    display: grid;
-    grid-template-columns: 52px minmax(0, 1fr) 28px;
-    align-items: baseline;
-    gap: clamp(14px, 2vw, 28px);
-    padding: clamp(20px, 2.4vw, 30px) 6px;
-    transition: padding .4s cubic-bezier(.2,.7,.2,1);
+    display: grid; grid-template-columns: 52px minmax(0, 1fr);
+    align-items: baseline; gap: clamp(14px, 2vw, 28px);
+    padding: clamp(11px, 1.4vw, 17px) 6px;
   }
-  .spec-num { color: var(--mist-dim); padding-top: 8px; transition: color .35s ease; }
+  .spec-num {
+    font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--sage); padding-top: 5px; transition: color .35s ease;
+  }
   .spec-title {
-    margin: 0 0 6px;
-    font-family: var(--serif); font-weight: 500;
-    font-size: clamp(23px, 2.6vw, 33px); line-height: 1.1; letter-spacing: -0.01em;
-    color: var(--bone); transition: color .35s ease;
+    margin: 0 0 4px; font-family: var(--serif); font-weight: 500;
+    font-size: clamp(20px, 2.2vw, 27px); line-height: 1.12; letter-spacing: -0.01em;
+    color: var(--ink); transition: color .35s ease;
   }
-  .spec-desc {
-    margin: 0; max-width: 46ch;
-    font-size: 14.5px; line-height: 1.62; color: var(--mist);
-  }
-  .spec-arrow {
-    align-self: center; font-size: 19px; color: var(--gold);
-    opacity: 0; transform: translateX(-8px);
-    transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
-  }
-  .spec-list li { transition: background .35s ease; }
-  .spec-list li:hover { background: var(--ink-3); }
-  .spec-list li:hover .spec-row { padding-left: 18px; padding-right: 18px; }
-  .spec-list li:hover .spec-num { color: var(--gold); }
-  .spec-list li:hover .spec-arrow { opacity: 1; transform: none; }
+  .spec-desc { margin: 0; max-width: 46ch; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
 
-  @media (max-width: 880px) {
-    .spec-grid { grid-template-columns: 1fr !important; }
-  }
+  @media (max-width: 880px) { .spec-grid { grid-template-columns: 1fr !important; } }
   @media (max-width: 520px) {
     .spec-row { grid-template-columns: 40px minmax(0,1fr); }
-    .spec-arrow { display: none; }
   }
 </style>

@@ -1,4 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#0E1A16"/>
-  <text x="32" y="46" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="600" fill="#D69A6A">A</text>
+  <defs>
+    <radialGradient id="fg-glow" cx="50%" cy="36%" r="62%">
+      <stop offset="0%" stop-color="#1E2E28"/>
+      <stop offset="100%" stop-color="#0F1A18"/>
+    </radialGradient>
+    <linearGradient id="fg-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EAC998"/>
+      <stop offset="55%" stop-color="#E0B478"/>
+      <stop offset="100%" stop-color="#C0835A"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#fg-glow)"/>
+  <circle cx="32" cy="23" r="17" fill="#E0B478" opacity="0.10"/>
+  <text x="32" y="47" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="43" font-weight="500" font-style="italic" fill="url(#fg-gold)">A</text>
 </svg>

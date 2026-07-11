@@ -5,111 +5,128 @@ const { hero } = Astro.props;
 <header
   id="top"
   data-hero
-  data-index-section
-  data-label="Başlangıç"
-  style="position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; background:var(--ink); padding:clamp(120px,15vh,180px) var(--pad-x) clamp(88px,10vh,120px);"
+  style="position:relative; overflow:hidden; min-height:100svh; display:flex; align-items:center; background:linear-gradient(180deg,var(--tone-0),var(--tone-1)); padding:clamp(120px,15vh,168px) var(--pad-x) clamp(56px,8vh,88px);"
 >
-  <!-- Havuzlanan sıcak ışık (başlığın arkasında sabit) -->
-  <div aria-hidden="true" style="position:absolute; top:44%; left:16%; width:min(90vw,900px); height:min(90vw,900px); transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.12), rgba(201,161,107,0) 60%); pointer-events:none;"></div>
-
-  <!-- Drift eden yumuşak lekeler -->
-  <div aria-hidden="true" style="position:absolute; top:-14%; right:-8%; width:min(72vw,760px); height:min(72vw,760px); border-radius:50%; background:radial-gradient(circle at 40% 40%, rgba(134,164,145,0.24), rgba(134,164,145,0) 68%); filter:blur(26px); animation:drift1 24s ease-in-out infinite; pointer-events:none;"></div>
-  <div aria-hidden="true" style="position:absolute; bottom:-18%; left:-10%; width:min(58vw,620px); height:min(58vw,620px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.16), rgba(201,161,107,0) 66%); filter:blur(30px); animation:drift2 30s ease-in-out infinite; pointer-events:none;"></div>
-
-  <!-- Nefes alan ışık orb'u (imza) -->
-  <div data-orb aria-hidden="true" style="position:absolute; top:50%; right:6%; transform:translateY(-50%); z-index:1; width:clamp(200px,42vw,500px); height:clamp(200px,42vw,500px); pointer-events:none;">
-    <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 44% 40%, rgba(227,197,147,0.42), rgba(134,164,145,0.14) 52%, rgba(134,164,145,0) 72%); filter:blur(5px); animation:breathe 8s ease-in-out infinite;"></div>
-    <div style="position:absolute; inset:5%; border-radius:50%; border:1px solid rgba(239,231,214,0.18); animation:breatheRing 8s ease-in-out infinite;"></div>
-    <div style="position:absolute; inset:20%; border-radius:50%; border:1px solid rgba(201,161,107,0.20); animation:breatheRing 8s ease-in-out infinite .3s;"></div>
-    <div style="position:absolute; inset:36%; border-radius:50%; border:1px solid rgba(239,231,214,0.08); animation:breatheRing 8s ease-in-out infinite .6s;"></div>
-    <div
-      data-breath
-      data-words={JSON.stringify(hero.orbWords)}
-      style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.1vw,30px); color:rgba(239,231,214,0.88); transition:opacity .45s ease, transform .45s ease;"
-    >
-      {hero.orbWords[0]}
-    </div>
-  </div>
+  <!-- Canlı aurora mesh -->
+  <div aria-hidden="true" class="aur" style="top:-14%; right:-6%; width:min(60vw,660px); height:min(60vw,660px); background:radial-gradient(circle,rgba(224,180,120,0.42),transparent 66%); animation:drift1 22s ease-in-out infinite;"></div>
+  <div aria-hidden="true" class="aur" style="bottom:-20%; left:-8%; width:min(52vw,560px); height:min(52vw,560px); background:radial-gradient(circle,rgba(126,154,134,0.38),transparent 66%); animation:drift2 28s ease-in-out infinite;"></div>
+  <div aria-hidden="true" class="aur" style="top:28%; left:36%; width:min(40vw,440px); height:min(40vw,440px); background:radial-gradient(circle,rgba(247,220,180,0.4),transparent 68%); animation:drift1 26s ease-in-out infinite reverse;"></div>
 
   <!-- İmleç ışığı -->
-  <div data-spotlight aria-hidden="true" style="position:absolute; top:0; left:0; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(201,161,107,0.14), rgba(201,161,107,0) 60%); opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1; will-change:transform;"></div>
+  <div data-spotlight aria-hidden="true" style="position:absolute; top:0; left:0; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(224,180,120,0.22), rgba(224,180,120,0) 60%); opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1; will-change:transform;"></div>
 
-  <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; width:100%;">
+  <div class="hero-wrap" style="position:relative; z-index:2; max-width:1260px; margin:0 auto; width:100%; display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,0.98fr); gap:clamp(36px,5vw,72px); align-items:center;">
 
-    <!-- Editoryal masthead -->
-    <div class="hero-masthead" style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:clamp(22px,4vw,34px); margin-bottom:clamp(26px,4vw,38px); border-bottom:1px solid var(--line); animation:dropIn .9s var(--ease) both; animation-delay:40ms;">
-      <span class="hero-eyebrow" style="display:flex; align-items:center; gap:14px;">
-        <span class="hero-eyebrow-line" style="width:32px; height:1px; background:var(--gold);"></span>
+    <!-- Sol: mesaj -->
+    <div class="hero-copy">
+      <div class="eyebrow-row" style="margin-bottom:clamp(22px,3vw,30px); animation:dropIn .8s var(--ease) both;">
         <span class="eyebrow">{hero.eyebrow}</span>
-      </span>
-      <span class="hero-mast-right label-mono" style="white-space:nowrap;">İstanbul · Online &amp; yüz yüze</span>
+      </div>
+
+      <h1 style="margin:0 0 clamp(20px,2.6vw,28px); font-family:var(--serif); font-weight:500; font-size:clamp(38px,4.6vw,62px); line-height:1.08; letter-spacing:-0.018em; color:var(--ink);">
+        <span style="display:block; animation:dropIn .9s var(--ease) both; animation-delay:.1s;">{hero.titleLine1}</span>
+        <span style="display:block; animation:dropIn .9s var(--ease) both; animation-delay:.2s;">{hero.titleLine2Before}<span class="glow-accent" style="font-style:italic;">{hero.titleAccent}</span></span>
+        <span style="display:block; animation:dropIn .9s var(--ease) both; animation-delay:.3s;">{hero.titleLine3}</span>
+      </h1>
+
+      <p style="margin:0 0 clamp(28px,3.4vw,38px); max-width:510px; font-size:clamp(16px,1.5vw,18.5px); line-height:1.72; color:var(--ink-soft); animation:dropIn .9s var(--ease) both; animation-delay:.4s;">{hero.subtitle}</p>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; animation:dropIn .9s var(--ease) both; animation-delay:.5s;">
+        <a href={hero.ctaPrimaryHref} class="btn-accent" style="display:inline-flex; align-items:center; gap:10px; padding:17px 30px; border-radius:999px; font-size:15.5px; font-weight:700; box-shadow:0 18px 44px rgba(79,106,87,0.36);">
+          {hero.ctaPrimary}<span style="font-size:17px;">→</span>
+        </a>
+        <a href={hero.ctaSecondaryHref} class="btn-glass" style="display:inline-flex; align-items:center; gap:8px; padding:16px 24px; border-radius:999px; font-size:15px; font-weight:600;">
+          {hero.ctaSecondary}
+        </a>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:clamp(30px,4vw,42px); animation:dropIn .9s var(--ease) both; animation-delay:.6s;">
+        {hero.trust.map((item) => (
+          <span style="display:inline-flex; align-items:center; gap:9px; font-size:14px; font-weight:500; color:var(--ink-2);">
+            <span aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:21px; height:21px; border-radius:50%; background:rgba(126,154,134,0.3); color:var(--sage-deep); font-size:11px;">✓</span>{item}
+          </span>
+        ))}
+      </div>
     </div>
 
-    <h1 style="margin:0 0 clamp(28px,4vw,40px); font-family:var(--serif); font-weight:500; font-size:clamp(42px,10.6vw,152px); line-height:0.92; letter-spacing:-0.018em; color:var(--bone);">
-      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:150ms;">{hero.titleLine1}</span>
-      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:260ms;">{hero.titleLine2Before}<span class="shimmer-accent" style="font-style:italic;">{hero.titleAccent}</span></span>
-      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:370ms;">{hero.titleLine3}</span>
-    </h1>
+    <!-- Sağ: modern görsel — glow ring + dairesel portre + cam kartlar -->
+    <div class="hero-media" style="position:relative; display:flex; align-items:center; justify-content:center; animation:dropIn 1s var(--ease) both; animation-delay:.35s;">
+      <div class="glow-ring" aria-hidden="true"></div>
 
-    <p style="margin:0 0 clamp(32px,4vw,44px); max-width:600px; font-size:clamp(16px,1.5vw,19px); line-height:1.74; color:var(--mist); animation:dropIn .9s var(--ease) both; animation-delay:480ms;">{hero.subtitle}</p>
+      <!-- Nefes alan orb: portreyi saran, nefes alan eş-merkezli halkalar (simetrik, dönen yay yok) -->
+      <span class="hp-ring hp-ring-1" aria-hidden="true"></span>
+      <span class="hp-ring hp-ring-2" aria-hidden="true"></span>
+      <span class="hp-ring hp-ring-3" aria-hidden="true"></span>
 
-    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; animation:dropIn .9s var(--ease) both; animation-delay:580ms;">
-      <a
-        href={hero.ctaPrimaryHref}
-        data-magnet
-        class="btn-accent btn-breathe"
-        style="display:inline-flex; align-items:center; gap:10px; padding:18px 32px; border-radius:999px; font-size:15.5px; font-weight:700; will-change:transform;"
-      >
-        {hero.ctaPrimary}<span style="font-size:18px;">→</span>
-      </a>
-      <a
-        href={hero.ctaSecondaryHref}
-        class="btn-ghost"
-        style="display:inline-flex; align-items:center; gap:9px; padding:18px 26px; border-radius:999px; font-size:15px; font-weight:600;"
-      >
-        {hero.ctaSecondary}
-      </a>
-    </div>
+      <div class="hero-portrait" style="position:relative; z-index:1; width:clamp(250px,33vw,400px); aspect-ratio:1; border-radius:50%; overflow:hidden; background:linear-gradient(160deg,#EADCC6,#D6C4A6); box-shadow:0 40px 90px rgba(38,48,42,0.26), inset 0 0 0 1px rgba(255,255,255,0.45);">
+        <div aria-hidden="true" style="position:absolute; top:16%; left:50%; transform:translateX(-50%); width:64%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(250,242,224,0.95), rgba(224,190,140,0.18) 60%, transparent 74%);"></div>
+        <span aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(76px,10vw,124px); letter-spacing:0.01em; color:rgba(79,106,87,0.32);">AD</span>
+        <svg aria-hidden="true" viewBox="0 0 120 120" fill="none" style="position:absolute; bottom:11%; right:13%; width:26%; opacity:0.3;">
+          <path d="M22 106 C 40 70, 52 44, 66 16" stroke="#5E7A66" stroke-width="2" stroke-linecap="round"/>
+          <path d="M46 60 C 56 52, 68 52, 76 44 M46 60 C 42 48, 44 38, 38 30" stroke="#5E7A66" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <!-- Gerçek portre: /public/images/arzu.jpg bırakılınca görünür; yoksa yer tutucu (monogram) kalır. -->
+        <img src="/images/arzu.jpg" alt="Uzman Klinik Psikolog Arzu Duman" onerror="this.remove()" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 28%; z-index:3;" />
+      </div>
 
-    <div class="hero-trust" style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:46px; animation:dropIn .9s var(--ease) both; animation-delay:680ms;">
-      {hero.trust.map((item, i) => (
-        <>
-          {i > 0 && <span style="width:4px; height:4px; border-radius:50%; background:var(--gold-deep);"></span>}
-          <span class="label-mono" style="color:var(--mist-dim);">{item}</span>
-        </>
-      ))}
+      <!-- Cam kart: müsaitlik -->
+      <div class="glass" style="position:absolute; z-index:2; left:-4%; bottom:11%; display:flex; align-items:center; gap:11px; padding:13px 17px; border-radius:16px; box-shadow:0 20px 44px rgba(38,48,42,0.16);">
+        <span aria-hidden="true" style="position:relative; display:inline-flex; width:11px; height:11px;"><span style="position:absolute; inset:0; border-radius:50%; background:#7BAE86;"></span><span style="position:absolute; inset:-4px; border-radius:50%; border:1px solid rgba(123,174,134,.5); animation:breatheRing 6s ease-in-out infinite;"></span></span>
+        <span style="line-height:1.35;"><span style="display:block; font-size:13px; font-weight:700; color:var(--ink);">Ön görüşmeye açık</span><span style="display:block; font-size:11.5px; color:var(--ink-soft);">48 saat içinde dönüş</span></span>
+      </div>
+
+      <!-- Cam kart: nefes visualizer -->
+      <div class="glass" style="position:absolute; z-index:2; right:-2%; top:9%; display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; box-shadow:0 18px 40px rgba(38,48,42,0.14);">
+        <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span style="font-size:12px; font-weight:600; color:var(--ink-2);">nefes al · nefes ver</span>
+      </div>
     </div>
   </div>
 
-  <div class="hero-scroll" style="position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:9px; color:var(--mist-dim);">
-    <span class="label-mono" style="letter-spacing:0.24em;">{hero.scrollHint}</span>
+  <div class="hero-scroll" style="position:absolute; left:50%; bottom:24px; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--ink-dim);">
+    <span class="label-soft">{hero.scrollHint}</span>
     <span style="font-size:18px; animation:bob 2.4s ease-in-out infinite;">↓</span>
   </div>
 </header>
 
 <style>
-  @media (max-width: 760px) {
-    [data-hero] {
-      min-height: auto !important;
-      align-items: flex-start !important;
-      padding-top: 110px !important;
-      padding-bottom: 78px !important;
-    }
-    [data-orb] {
-      top: 2% !important;
-      right: -26% !important;
-      transform: none !important;
-      width: 300px !important;
-      height: 300px !important;
-      opacity: 0.5;
-    }
-    [data-orb] [data-breath] { display: none !important; }
-    .hero-mast-right { display: none !important; }
-    .hero-scroll { display: none !important; }
+  /* Yumuşak, simetrik, nefes alan aura (dönen yay yok) */
+  .glow-ring {
+    position: absolute; z-index: 0; top: 50%; left: 50%;
+    width: clamp(322px, 43vw, 500px); aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, rgba(140,174,149,.30) 0%, rgba(224,180,120,.16) 52%, transparent 72%);
+    filter: blur(30px); transform: translate(-50%, -50%);
+    animation: heroGlow 8s ease-in-out infinite;
   }
-  @media (max-width: 520px) {
-    .hero-eyebrow { gap: 9px !important; }
-    .hero-eyebrow-line { width: 20px !important; }
-    .hero-eyebrow .eyebrow { font-size: 10px !important; letter-spacing: 0.14em !important; }
+  @keyframes heroGlow {
+    0%, 100% { transform: translate(-50%,-50%) scale(0.94); opacity: .55; }
+    50%      { transform: translate(-50%,-50%) scale(1.06); opacity: .95; }
+  }
+
+  /* Portreyi saran, nefes alan eş-merkezli halkalar — sıkı ve simetrik */
+  .hp-ring {
+    position: absolute; top: 50%; left: 50%; z-index: 0;
+    aspect-ratio: 1; border-radius: 50%; border: 1.5px solid transparent;
+    transform: translate(-50%, -50%); pointer-events: none;
+  }
+  .hp-ring-1 { width: clamp(262px, 34.6vw, 420px); border-color: rgba(126,154,134,.72); }
+  .hp-ring-2 { width: clamp(280px, 36.8vw, 448px); border-color: rgba(224,180,120,.6); }
+  .hp-ring-3 { width: clamp(300px, 39vw, 476px); border-color: rgba(192,131,90,.44); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hp-ring-1 { animation: heroPulse 7s ease-in-out infinite; }
+    .hp-ring-2 { animation: heroPulse 7s ease-in-out infinite .55s; }
+    .hp-ring-3 { animation: heroPulse 7s ease-in-out infinite 1.1s; }
+  }
+  @keyframes heroPulse {
+    0%, 100% { transform: translate(-50%,-50%) scale(0.97); opacity: .45; }
+    50%      { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
+  }
+
+  @media (max-width: 900px) {
+    .hero-wrap { grid-template-columns: 1fr !important; gap: 46px !important; }
+    [data-hero] { min-height: auto !important; align-items: flex-start !important; padding-top: 116px !important; }
+    .hero-media { max-width: 400px; margin: 0 auto; width: 100%; }
+    .hero-scroll { display: none !important; }
   }
 </style>
