@@ -63,7 +63,6 @@ const { nav } = Astro.props;
     };
     toggle.addEventListener('click', () => setOpen(!overlay.classList.contains('open')));
     overlay.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
-    // Overlay boşluğuna dokununca kapat
     overlay.addEventListener('click', (e) => { if (e.target === overlay) setOpen(false); });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) setOpen(false);

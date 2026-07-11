@@ -21,7 +21,6 @@ export default defineConfig({
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
-      // Ana sayfaya en yüksek öncelik; diğer sayfalar daha düşük.
       serialize(item) {
         if (item.url === 'https://www.arzuduman.com/') {
           item.priority = 1.0;

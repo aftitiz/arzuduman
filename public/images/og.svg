@@ -33,7 +33,6 @@
   <rect width="1200" height="630" fill="url(#blobA)"/>
   <rect width="1200" height="630" fill="url(#blobB)"/>
 
-  <!-- Portre — cam halka + monogram -->
   <g transform="translate(1028,315)">
     <circle cx="0" cy="0" r="182" fill="url(#ring)"/>
     <circle cx="0" cy="0" r="136" fill="url(#portrait)" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
@@ -41,7 +40,6 @@
     <text x="0" y="48" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="118" font-weight="500" fill="#4F6A57" fill-opacity="0.32">AD</text>
   </g>
 
-  <!-- Metin -->
   <g transform="translate(90,244)">
     <rect x="0" y="-16" width="52" height="2" fill="#6E8B76"/>
     <text x="72" y="-8" font-family="-apple-system, system-ui, sans-serif" font-size="21" font-weight="700" letter-spacing="4" fill="#4F6A57">UZMAN KLİNİK PSİKOLOG · YETİŞKİN TERAPİSİ</text>

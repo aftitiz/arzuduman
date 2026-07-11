@@ -39,7 +39,6 @@ const { manifesto } = Astro.props;
   @keyframes tw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .tw-caret { display: none; } }
 
-  /* Bölüm sonu şık divider — Hakkımda ile karışmasın */
   .mf-divider {
     display: flex; align-items: center; justify-content: center; gap: 16px;
     margin-top: clamp(40px, 5.5vw, 68px);
@@ -63,12 +62,17 @@ const { manifesto } = Astro.props;
     const full = segs.map((s) => s.textContent);
 
     if (reduce || !('IntersectionObserver' in window)) {
-      // Hareket azaltma / IO yok: tam metin olduğu gibi görünür kalır.
       if (caret) caret.remove();
     } else {
-      // Başlangıçta segmentleri boşalt, görünür olsun (opacity'e dokunma).
-      segs.forEach((s) => (s.textContent = ''));
       let started = false;
+      const origWrap = p.style.textWrap;
+
+      const lockLayout = () => {
+        p.style.minHeight = '';
+        p.style.minHeight = p.getBoundingClientRect().height + 'px';
+        p.style.textWrap = 'normal';
+        segs.forEach((s) => (s.textContent = ''));
+      };
 
       const type = () => {
         let si = 0;
@@ -76,10 +80,12 @@ const { manifesto } = Astro.props;
         const step = () => {
           if (si >= segs.length) {
             if (caret) caret.classList.add('tw-done');
+            p.style.textWrap = origWrap;
+            p.style.minHeight = '';
             return;
           }
           const target = full[si];
-          if (ci === 0 && caret) segs[si].after(caret); // imleç aktif segmentin ardında
+          if (ci === 0 && caret) segs[si].after(caret);
           if (ci < target.length) {
             const ch = target[ci];
             segs[si].textContent += ch;
@@ -103,7 +109,10 @@ const { manifesto } = Astro.props;
             if (e.isIntersecting && !started) {
               started = true;
               io.disconnect();
-              setTimeout(type, 240);
+              setTimeout(() => {
+                lockLayout();
+                type();
+              }, 240);
             }
           });
         },

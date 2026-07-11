@@ -18,9 +18,11 @@ const p = content.privacy;
       <h1 style="margin:0 0 12px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,54px); line-height:1.04; letter-spacing:-0.015em; color:var(--ink);">{p.title}</h1>
       <p class="label-soft" style="margin:0 0 26px; text-transform:none; letter-spacing:0.03em; color:var(--ink-dim);">{p.updated}</p>
 
-      <div style="margin:0 0 34px; padding:16px 20px; border-radius:14px; background:var(--paper-hi); border:1px solid var(--line); border-left:3px solid var(--sage); font-size:13.5px; line-height:1.65; color:var(--ink-soft);">
-        {p.disclaimer}
-      </div>
+      {p.disclaimer && (
+        <div style="margin:0 0 34px; padding:16px 20px; border-radius:14px; background:var(--paper-hi); border:1px solid var(--line); border-left:3px solid var(--sage); font-size:13.5px; line-height:1.65; color:var(--ink-soft);">
+          {p.disclaimer}
+        </div>
+      )}
 
       <p style="margin:0 0 34px; font-size:16.5px; line-height:1.8; color:var(--ink-2);">{p.intro}</p>
 

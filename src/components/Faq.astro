@@ -48,7 +48,6 @@ const { faq } = Astro.props;
       panel.style.maxHeight = open ? '0px' : panel.scrollHeight + 'px';
     });
   });
-  // Pencere boyutu değişince açık panellerin yüksekliğini tazele
   window.addEventListener('resize', () => {
     document.querySelectorAll('[data-faq]').forEach((item) => {
       const btn = item.querySelector('button');

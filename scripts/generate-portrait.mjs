@@ -1,21 +1,14 @@
-// Sitedeki portreleri ham fotoğraftan (public/images/arzu.jpg) türetir:
-//   • arzu-portrait.jpg  → Hakkımda bölümü (4:5 kemer çerçeve)
-//   • arzu-hero.jpg      → Hero bölümü (1:1 daire; kemerle aynı ölçek/çerçeve)
-// İki kadraj da aynı yatay alanı (x 200..1200) paylaşır; böylece daire ile
-// kemer aynı yakınlıkta görünür. Fotoğraf değişince yeniden çalıştır:
-//   node scripts/generate-portrait.mjs
 import sharp from 'sharp';
 
-// Geniş 4:5 kadraj (Hakkımda) — yüz + gövde + ortam.
 const aboutRegion = { left: 200, top: 200, width: 1000, height: 1250 };
-// Kare kadraj (Hero) — en geniş: tam foto genişliği (daire için maksimum uzak kadraj).
 const heroRegion = { left: 0, top: 160, width: 1200, height: 1200 };
 
 // Fotoğraf değişirse bu iki bloğu yeni yüz konumuna göre güncelle.
 await sharp('public/images/arzu.jpg')
   .extract(aboutRegion)
+  .resize({ width: 900 })
   .sharpen({ sigma: 0.6 })
-  .jpeg({ quality: 84, mozjpeg: true })
+  .jpeg({ quality: 80, mozjpeg: true })
   .toFile('public/images/arzu-portrait.jpg');
 
 await sharp('public/images/arzu.jpg')

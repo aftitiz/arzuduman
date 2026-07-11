@@ -14,7 +14,6 @@
       "currency": "TRY",
       "areaServed": [
         "Samsun",
-        "İstanbul",
         "Türkiye"
       ],
       "inPersonArea": "Samsun",
@@ -30,6 +29,7 @@
     "person": {
       "name": "Arzu Duman",
       "jobTitle": "Uzman Klinik Psikolog",
+      "image": "/images/arzu-portrait.jpg",
       "description": "Yetişkinlerle çalışan uzman klinik psikolog. Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli bütüncül bir yaklaşımla; Samsun'da yüz yüze ve tüm Türkiye'de online terapi sunuyor.",
       "credentials": [
         "Klinik Psikoloji Yüksek Lisansı",
@@ -49,10 +49,10 @@
       ]
     },
     "contact": {
-      "email": "merhaba@arzuduman.com",
-      "phoneDisplay": "+90 (000) 000 00 00",
-      "phoneHref": "+900000000000",
-      "whatsapp": "905000000000",
+      "email": "arzudumann@icloud.com",
+      "phoneDisplay": "+90 546 405 59 64",
+      "phoneHref": "+905464055964",
+      "whatsapp": "905464055964",
       "instagram": "pskarzuduman",
       "location": "Samsun · Online & yüz yüze",
       "addressLocality": "Samsun",
@@ -127,7 +127,8 @@
   },
   "about": {
     "eyebrow": "01 — Hakkımda",
-    "heading": "Merhaba, ben Arzu.",
+    "headingBefore": "Merhaba, ben ",
+    "headingAccent": "Arzu.",
     "paragraphs": [
       "Samsun'da yüz yüze ve tüm Türkiye'de online olarak yetişkinlerle çalışan bir uzman klinik psikoloğum. Terapiyi, size bir şeyi “tamir eden” değil; kendi kaynaklarınızı yeniden fark ettiğiniz, birlikte yürüdüğümüz bir alan olarak görüyorum. İlk seansa gelirken hissedilen tedirginliği çok iyi biliyorum — bu yüzden süreci baştan sona şeffaf ve sakin tutuyorum.",
       "Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli, bütüncül bir yaklaşım kullanıyorum. Hazır bir reçete sunmuyorum; yöntemi sizin hikâyenize uyarlıyorum."
@@ -323,7 +324,10 @@
       "namePlaceholder": "Ad Soyad",
       "phonePlaceholder": "Telefon",
       "emailPlaceholder": "E-posta",
-      "notePlaceholder": "Kısaca ne yaşadığınızı paylaşmak isterseniz (opsiyonel)",
+      "phoneError": "Lütfen geçerli bir telefon numarası girin (en az 10 rakam).",
+      "emailError": "Lütfen geçerli bir e-posta adresi girin.",
+      "notePlaceholder": "Kısa bir not iletmek isterseniz (opsiyonel)",
+      "noteHint": "Lütfen bu alanda sağlık bilgisi paylaşmayın; ayrıntıları ilk görüşmede konuşuruz.",
       "doneTitlePrefix": "Talebiniz alındı",
       "summaryFormat": "Format",
       "summaryDate": "Tarih",
@@ -391,10 +395,6 @@
       {
         "label": "Gizlilik & KVKK",
         "href": "/gizlilik"
-      },
-      {
-        "label": "SSS",
-        "href": "/#sss"
       }
     ],
     "copyright": "© 2026 Arzu Duman · Tüm hakları saklıdır."
@@ -403,15 +403,14 @@
     "title": "Gizlilik ve KVKK Aydınlatma Metni",
     "metaDescription": "Arzu Duman — Uzman Klinik Psikolog. Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve gizlilik politikası.",
     "backLabel": "← Ana sayfaya dön",
-    "updated": "Yürürlük tarihi: [gerçek tarih ile değiştirin]",
-    "disclaimer": "Bu metin bir taslaktır. Yayınlamadan önce köşeli parantez içindeki alanları kendi bilgilerinizle doldurun ve metni bir hukuk danışmanına gözden geçirtin.",
-    "intro": "6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, veri sorumlusu sıfatıyla kişisel verilerinizi aşağıda açıklanan çerçevede işliyoruz.",
+    "updated": "Yürürlük tarihi: 11 Temmuz 2026",
+    "intro": "6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, veri sorumlusu sıfatıyla kişisel verilerinizi aşağıda açıklanan çerçevede işliyoruz. Bu metin, yalnızca web sitesindeki randevu formu aracılığıyla iletilen verilere ilişkindir; danışmanlık sürecinde işlenen sağlık verileri, ayrıca yürütülen onam ve meslekî gizlilik çerçevesine tabidir.",
     "sections": [
       {
         "heading": "1. Veri Sorumlusu",
         "paragraphs": [
           "Kişisel verileriniz, veri sorumlusu Uzman Klinik Psikolog Arzu Duman tarafından işlenmektedir.",
-          "İletişim: merhaba@arzuduman.com · +90 (000) 000 00 00 · Samsun. (Bu bilgileri gerçek iletişim bilgilerinizle güncelleyin.)"
+          "İletişim: arzudumann@icloud.com · +90 546 405 59 64 · Samsun."
         ]
       },
       {
@@ -430,14 +429,15 @@
       {
         "heading": "4. Hukuki Sebep",
         "paragraphs": [
-          "Kişisel verileriniz açık rızanıza (KVKK m. 5/1) dayanılarak işlenir. Paylaşmanız hâlinde sağlığa ilişkin özel nitelikli verileriniz yalnızca açık rızanız (KVKK m. 6) kapsamında işlenir."
+          "Ad-soyad ve iletişim bilgileriniz gibi genel nitelikli kişisel verileriniz; randevu talebinizin karşılanması ve bu kapsamda kurulacak danışmanlık ilişkisinin yürütülmesi amacıyla, bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması (KVKK m. 5/2-c) ve veri sorumlusunun meşru menfaati (KVKK m. 5/2-f) hukuki sebeplerine dayanılarak işlenir.",
+          "Formun açıklama alanında sağlığınıza ilişkin özel nitelikli bir veri paylaşmanız hâlinde bu veri, yalnızca açık rızanıza (KVKK m. 6) dayanılarak işlenir. Bu alanı doldurmamanız veya açık rıza vermemeniz, randevu talebinizi iletmenize engel değildir."
         ]
       },
       {
         "heading": "5. Aktarım",
         "paragraphs": [
           "Verileriniz, yasal zorunluluklar dışında üçüncü kişilerle paylaşılmaz.",
-          "Randevu talebinizi WhatsApp seçeneğiyle iletmeniz hâlinde, mesajınız ve içindeki bilgiler WhatsApp (Meta) altyapısı üzerinden iletilir ve bu hizmetin kendi gizlilik koşullarına tabidir. Bunun yerine e-posta ile iletişimi tercih edebilirsiniz."
+          "Randevu talebinizi WhatsApp üzerinden iletmeyi tercih etmeniz hâlinde mesajınız ve içindeki bilgiler, sunucuları yurt dışında bulunan WhatsApp (Meta) altyapısı üzerinden iletilir; bu yurt dışı aktarım tercihinize (açık rızanıza) bağlı olarak gerçekleşir ve WhatsApp'ın kendi gizlilik koşullarına tabidir. Dilerseniz bunun yerine e-posta ile iletişim kurabilirsiniz."
         ]
       },
       {
@@ -449,13 +449,13 @@
       {
         "heading": "7. Haklarınız (KVKK m. 11)",
         "paragraphs": [
-          "Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını öğrenme, eksik/yanlış işlenmişse düzeltilmesini, şartları oluştuğunda silinmesini/yok edilmesini isteme ve işlemenin kanuna aykırı olması hâlinde doğan zararın giderilmesini talep etme haklarına sahipsiniz."
+          "KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında verilerinizin aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş olması hâlinde düzeltilmesini isteme, şartların oluşması hâlinde silinmesini veya yok edilmesini isteme, düzeltme veya silme işlemlerinin verilerinizin aktarıldığı üçüncü kişilere bildirilmesini isteme, işlenen verilerin münhasıran otomatik sistemlerle analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve verilerinizin kanuna aykırı işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme haklarına sahipsiniz."
         ]
       },
       {
         "heading": "8. Başvuru",
         "paragraphs": [
-          "Haklarınıza ilişkin taleplerinizi merhaba@arzuduman.com adresine iletebilirsiniz. Talebiniz en kısa sürede ve en geç 30 gün içinde sonuçlandırılır."
+          "Haklarınıza ilişkin taleplerinizi arzudumann@icloud.com adresine iletebilirsiniz. Talebiniz, niteliğine göre en kısa sürede ve en geç 30 gün içinde ücretsiz olarak sonuçlandırılır."
         ]
       }
     ]

@@ -6,34 +6,30 @@ import '@fontsource-variable/cormorant-garamond/wght-italic.css';
 import '@fontsource-variable/manrope/index.css';
 import '../styles/global.css';
 
-// Ekranın üst kısmındaki kritik yazı tipi dosyalarını önden yükle (preload) →
-// logo, başlık ve vurgulu italik "nefes" ilk boyamada hazır olur, "bold yanıp sönme" biter.
 import cormorantLatin from '@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-normal.woff2?url';
 import cormorantItalicLatin from '@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-italic.woff2?url';
 import manropeLatin from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
 
-const { site, faqs = [], title, description } = Astro.props;
+const { site, faqs = [], title, description, noindex = false } = Astro.props;
 
-// Sayfa bazlı başlık/açıklama; verilmezse site varsayılanları kullanılır.
 const pageTitle = title ?? site.title;
 const pageDescription = description ?? site.description;
 
-// Kanonik / OG mutlak URL'leri astro.config `site` üzerinden üretilir.
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogImageUrl = new URL(site.ogImage, Astro.site ?? site.url).href;
 
-// --- Yerel SEO yardımcıları ---
+const robotsContent = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
 const seo = site.seo ?? {};
 const contact = site.contact ?? {};
 // Yer tutucu (0000…) telefonu yapısal veriye koyma; yalnızca gerçek numara ekle.
 const realPhone = contact.phoneHref && !/0{6,}/.test(contact.phoneHref) ? contact.phoneHref : null;
-// Instagram kullanıcı adından profil URL'i üret; sameAs listesine ekle.
 const instagramUrl = contact.instagram ? `https://www.instagram.com/${contact.instagram}` : null;
 const sameAs = [instagramUrl, ...(seo.sameAs ?? [])].filter(Boolean);
-// areaServed dizi ya da metin olabilir → normalize et.
 const areaList = Array.isArray(seo.areaServed) ? seo.areaServed : seo.areaServed ? [seo.areaServed] : [];
 
-// PostalAddress — yalnızca dolu alanları dahil et (yer tutucu boşları atla).
 const postalAddress = {
   '@type': 'PostalAddress',
   ...(seo.streetAddress ? { streetAddress: seo.streetAddress } : {}),
@@ -44,11 +40,11 @@ const postalAddress = {
 };
 
 const person = site.person ?? {};
+const personImageUrl = person.image ? new URL(person.image, Astro.site ?? site.url).href : ogImageUrl;
 const practiceId = `${site.url}/#practice`;
 const personId = `${site.url}/#person`;
 const websiteId = `${site.url}/#website`;
 
-// --- JSON-LD: WebSite ---
 const websiteLd = {
   '@type': 'WebSite',
   '@id': websiteId,
@@ -58,7 +54,6 @@ const websiteLd = {
   publisher: { '@id': practiceId },
 };
 
-// --- JSON-LD: Psychologist / LocalBusiness (ana işletme varlığı) ---
 const psychologistLd = {
   '@type': ['Psychologist', 'LocalBusiness'],
   '@id': practiceId,
@@ -76,7 +71,11 @@ const psychologistLd = {
   ...(seo.geo
     ? { geo: { '@type': 'GeoCoordinates', latitude: seo.geo.latitude, longitude: seo.geo.longitude } }
     : {}),
-  areaServed: areaList.map((a) => ({ '@type': 'AdministrativeArea', name: a })),
+  areaServed: areaList.map((a) => ({
+    // Ülke düzeyi (online = tüm Türkiye) Country; şehir/bölge AdministrativeArea.
+    '@type': /türkiye|turkey/i.test(a) ? 'Country' : 'AdministrativeArea',
+    name: a,
+  })),
   availableLanguage: { '@type': 'Language', name: 'Turkish' },
   ...(person.knowsAbout?.length ? { knowsAbout: person.knowsAbout } : {}),
   openingHoursSpecification: [
@@ -126,7 +125,6 @@ const psychologistLd = {
   ...(sameAs.length ? { sameAs } : {}),
 };
 
-// --- JSON-LD: Person (uygulayıcı — E-E-A-T / YMYL güveni) ---
 const personLd = {
   '@type': 'Person',
   '@id': personId,
@@ -134,7 +132,7 @@ const personLd = {
   jobTitle: person.jobTitle ?? 'Uzman Klinik Psikolog',
   description: person.description ?? site.description,
   url: site.url,
-  image: ogImageUrl,
+  image: personImageUrl,
   worksFor: { '@id': practiceId },
   knowsLanguage: { '@type': 'Language', name: 'Turkish' },
   ...(person.knowsAbout?.length ? { knowsAbout: person.knowsAbout } : {}),
@@ -149,7 +147,6 @@ const personLd = {
   ...(sameAs.length ? { sameAs } : {}),
 };
 
-// --- JSON-LD: FAQPage ---
 const faqLd = {
   '@type': 'FAQPage',
   '@id': `${canonical}#faq`,
@@ -160,13 +157,11 @@ const faqLd = {
   })),
 };
 
-// Tüm varlıkları tek bir @graph içinde birleştir (@id ile çapraz referanslı).
 const jsonLdGraph = {
   '@context': 'https://schema.org',
   '@graph': [websiteLd, psychologistLd, personLd, ...(faqs.length > 0 ? [faqLd] : [])],
 };
 
-// Geo meta etiketleri için konum bilgisi.
 const geoPosition = seo.geo ? `${seo.geo.latitude};${seo.geo.longitude}` : null;
 ---
 
@@ -177,9 +172,8 @@ const geoPosition = seo.geo ? `${seo.geo.latitude};${seo.geo.longitude}` : null;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    {site.keywords && <meta name="keywords" content={site.keywords} />}
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content={robotsContent} />
     <meta name="theme-color" content={site.themeColor} />
     <meta name="author" content={site.person?.name ?? site.name} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

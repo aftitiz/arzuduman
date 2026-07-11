@@ -1,73 +1,52 @@
-/* ============================================================
-   Arzu Duman — global stiller  ·  "Sıcak & Modern"
-   Aydınlık sıcak tuval (krem), sage yeşili marka, amber/kil sıcaklık,
-   glassmorphism + aurora + yumuşak organik formlar. İnsani + çağdaş.
-   (Bölüm-özel stiller bileşenlerde; burada token + tekrar edenler.)
-   ============================================================ */
-
 :root {
-  /* — Sıcak-aydınlık tuval — */
-  --paper:   #F6F0E6;   /* ana krem zemin */
-  --paper-2: #F1E8D8;   /* panel / bölüm modülasyonu */
-  --paper-3: #EBDFCC;   /* daha derin krem */
-  --paper-hi:#FCF8F0;   /* en açık (kart) */
+  --paper:   #F6F0E6;
+  --paper-2: #F1E8D8;
+  --paper-3: #EBDFCC;
+  --paper-hi:#FCF8F0;
 
-  /* — Metin (sıcak yeşil-antrasit) — */
   --ink:      #26302A;
   --ink-2:    #3A443C;
   --ink-soft: #57625A;
   --ink-dim:  #7A857C;
 
-  /* — Sage yeşili (marka) — */
   --sage:      #6E8B76;
   --sage-deep: #4F6A57;
   --sage-soft: #8CAE95;
 
-  /* — Sıcaklık aksanları — */
   --amber: #E0B478;
   --clay:  #C0835A;
 
-  /* — Çizgi / cam — */
   --line:      rgba(38,48,42,0.12);
   --line-soft: rgba(38,48,42,0.07);
   --glass:     rgba(255,255,255,0.55);
   --glass-2:   rgba(255,255,255,0.42);
   --glass-brd: rgba(255,255,255,0.62);
 
-  /* — Nocturne (Nefes molası + Footer): serin, derin gece — “alacakaranlıkta sıcak oda” — */
-  --night:      #0F1A18;   /* nocturne temel: derin teal-çam gecesi */
-  --night-2:    #172822;   /* içeriden ışıma için hafif açılmış nocturne */
-  --night-deep: #0A1310;   /* kenar vignette — en koyu (temiz kenar için) */
+  --night:      #0F1A18;
+  --night-2:    #172822;
+  --night-deep: #0A1310;
   --cream-on-dark: #F4EDE0;
-  --dark:    #0F1A18;   /* geriye dönük uyum */
+  --dark:    #0F1A18;
   --dark-2:  #172822;
 
-  /* — Alacakaranlık köprüsü: krem → gece geçişini yumuşatan ara tonlar — */
-  --dusk-1: #CBBCA4;   /* sıcak greige (gün batımı) */
-  --dusk-2: #7F8A7C;   /* soluk sage (alacakaranlık) */
-  --dusk-3: #384A42;   /* derin sage-gece */
+  --dusk-1: #CBBCA4;
+  --dusk-2: #7F8A7C;
+  --dusk-3: #384A42;
 
-  /* — Tek düz krem tuval —
-     Bölümler arası renk geçişi/ramp yok: bütün açık bölümler aynı sıcak-ışıklı kremdir.
-     (Ritmi tipografi + boşluk + aurora ışık lekeleri + iki nocturne anı taşır.)
-     Ramp'e dönmek istersek: tone-0..4'e farklı değerler vermek yeterli. */
-  --canvas: #F7F1E6;   /* sıcak, ışıklı krem — tüm açık bölümler */
+  --canvas: #F7F1E6;
   --tone-0: var(--canvas);
   --tone-1: var(--canvas);
   --tone-2: var(--canvas);
   --tone-3: var(--canvas);
   --tone-4: var(--canvas);
 
-  /* — Tipografi — */
   --serif: 'Cormorant Garamond Variable', 'Cormorant Fallback', Georgia, 'Times New Roman', serif;
   --sans:  'Manrope Variable', 'Manrope Fallback', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
-  /* — Ritim — */
   --pad-x: clamp(20px, 6vw, 96px);
   --ease:  cubic-bezier(.2,.7,.2,1);
 }
 
-/* Metriği eşlenmiş yedek fontlar. */
 @font-face {
   font-family: 'Cormorant Fallback';
   src: local('Georgia');
@@ -102,7 +81,6 @@ a { color: var(--sage-deep); text-decoration: none; }
 a:hover { color: var(--sage); }
 ::selection { background: var(--sage-soft); color: var(--ink); }
 
-/* ---------- İnce grain (aydınlık için çok hafif) ---------- */
 .grain {
   position: fixed; inset: 0; z-index: 100; pointer-events: none;
   opacity: 0.028; mix-blend-mode: multiply;
@@ -110,7 +88,6 @@ a:hover { color: var(--sage); }
   background-size: 160px 160px;
 }
 
-/* ---------- Editoryal etiket yardımcıları (sans, sage) ---------- */
 .eyebrow {
   font-family: var(--sans); font-size: 12px; font-weight: 700;
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-deep);
@@ -122,27 +99,42 @@ a:hover { color: var(--sage); }
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim);
 }
 
-/* Vurgu: sıcak gradient metin */
 .glow-accent {
   background: linear-gradient(102deg, var(--sage-deep), var(--sage) 32%, var(--amber) 64%, var(--clay));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
 
-/* ---------- Cam yüzey ---------- */
+.footer-closing { will-change: text-shadow; }
+.footer-closing.is-glowing { animation: footer-breath-glow 5s ease-in-out infinite; }
+.footer-closing.is-glowing .footer-dot { animation: footer-dot-glow 5s ease-in-out infinite; }
+
+@keyframes footer-breath-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(140,174,149,0.12), 0 0 26px rgba(140,174,149,0.04); }
+  35%      { text-shadow: 0 0 20px rgba(140,174,149,0.55), 0 0 46px rgba(140,174,149,0.30), 0 0 72px rgba(140,174,149,0.12); }
+  65%      { text-shadow: 0 0 20px rgba(224,180,120,0.55), 0 0 46px rgba(224,180,120,0.30), 0 0 72px rgba(224,180,120,0.12); }
+}
+
+@keyframes footer-dot-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(224,180,120,0.20); }
+  35%      { box-shadow: 0 0 12px rgba(140,174,149,0.75); }
+  65%      { box-shadow: 0 0 13px rgba(224,180,120,0.85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-closing.is-glowing,
+  .footer-closing.is-glowing .footer-dot { animation: none; }
+}
+
 .glass {
   background: var(--glass);
   backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
   border: 1px solid var(--glass-brd);
 }
 
-/* ---------- Aurora (canlı yumuşak gradient lekeleri) ---------- */
 .aur { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; z-index: 0; }
-/* Tek renk tuval: açık bölümlerdeki aurora parıltıları kapalı → hiç renk/parlaklık farkı yok.
-   (Nocturne bölümleri .aur kullanmaz, etkilenmez.) Geri açmak için bu satırı silmek yeterli. */
 .aur { display: none; }
 
-/* ---------- Keyframe'ler ---------- */
 @keyframes breathe     { 0%,100% { transform: scale(1); opacity:.6; } 50% { transform: scale(1.12); opacity:1; } }
 @keyframes breatheRing { 0%,100% { transform: scale(1); opacity:.4; } 50% { transform: scale(1.22); opacity:.82; } }
 @keyframes breatheDot  { 0%,100% { transform: scale(1); opacity:.6; } 50% { transform: scale(1.7); opacity:1; } }
@@ -151,23 +143,13 @@ a:hover { color: var(--sage); }
 @keyframes bob         { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
 @keyframes dropIn      { from { opacity:0; transform: translateY(-32px); } to { opacity:1; transform: translateY(0); } }
 @keyframes spin        { to { transform: rotate(360deg); } }
-@keyframes waveA       { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1); } }
 
-/* Nefes dalga-görselleştirici */
-.wave { display: inline-flex; align-items: center; gap: 3px; height: 20px; }
-.wave i { width: 3px; border-radius: 2px; background: var(--sage); animation: waveA 1.4s ease-in-out infinite; }
-.wave i:nth-child(1){height:8px;animation-delay:0s;} .wave i:nth-child(2){height:16px;animation-delay:.15s;}
-.wave i:nth-child(3){height:11px;animation-delay:.3s;} .wave i:nth-child(4){height:18px;animation-delay:.45s;}
-.wave i:nth-child(5){height:7px;animation-delay:.6s;}
-
-/* ---------- Butonlar ---------- */
 .btn-accent {
   background: linear-gradient(135deg, var(--sage), var(--sage-deep)); color: var(--paper);
   transition: filter .25s ease, box-shadow .3s ease, transform .2s var(--ease);
 }
 .btn-accent:hover { filter: brightness(1.05); transform: translateY(-2px); }
 
-/* Footer CTA: tek sade animasyon (hafif kalkma) — mıknatıs/kayma yok */
 .footer-cta { transition: transform .2s var(--ease), filter .25s ease, box-shadow .3s ease; }
 .footer-cta:hover { transform: translateY(-2px); filter: brightness(1.04); }
 .btn-glass {
@@ -192,15 +174,10 @@ a:hover { color: var(--sage); }
 .field { transition: border-color .2s ease; }
 .field:focus { border-color: var(--sage); outline: none; }
 
-/* ---------- Bölümler içerik-boyutlu (tam ekran zorlaması yok) ----------
-   Kullanıcı tercihi: tam ekran değil, bölümler arası aşırı boşluk olmasın.
-   Yükseklik artık içerik + tutarlı dikey padding ile belirlenir. */
 .section-full { }
 
-/* Nav bağlantı sıçramalarında başlık yüzen nav'ın altında kalmasın. */
 #hakkimda, #uzmanlik, #surec, #randevu, #sss, #nefes { scroll-margin-top: 92px; }
 
-/* ---------- Mobil / masaüstü görünürlük (nav) ---------- */
 .nav-links { display: flex; }
 .nav-cta { display: inline-flex; }
 .nav-toggle { display: none; }
@@ -213,7 +190,6 @@ body.is-mobile .nav-toggle { display: inline-flex; }
   .nav-toggle { display: inline-flex; }
 }
 
-/* ---------- Mobil menü: hamburger ---------- */
 .nav-toggle {
   width: 42px; height: 42px; flex-shrink: 0;
   align-items: center; justify-content: center;
@@ -232,7 +208,6 @@ body.is-mobile .nav-toggle { display: inline-flex; }
 .nav-toggle[aria-expanded='true'] .nav-toggle-bars::before { top: 5px; transform: rotate(45deg); }
 .nav-toggle[aria-expanded='true'] .nav-toggle-bars::after  { top: 5px; transform: rotate(-45deg); }
 
-/* ---------- Mobil menü: tam ekran overlay ---------- */
 .nav-overlay {
   position: fixed; inset: 0; z-index: 79;
   display: flex; align-items: center; justify-content: center;
@@ -266,14 +241,12 @@ body.is-mobile .nav-toggle { display: inline-flex; }
 .nav-overlay.open .nav-menu-link:nth-child(4) { transition-delay: .26s; }
 .nav-overlay.open .nav-menu-cta { transition-delay: .32s; }
 
-/* ---------- Klavye odak halkası ---------- */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
   outline: 2px solid var(--sage);
   outline-offset: 3px;
   border-radius: 6px;
 }
 
-/* ---------- Hareket azaltma ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }

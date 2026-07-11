@@ -10,12 +10,12 @@
 
 Bunlar tamamlanmadan aşağıdaki SEO adımları yarım kalır. Hepsi `src/data/content.json` içinde:
 
-- [ ] **Telefon** — `site.contact.phoneHref` (ör. `+905XXXXXXXXX`) ve `phoneDisplay`. *Placeholder `0000…` olduğu sürece schema'ya telefon EKLENMİYOR; gerçek numara girilince otomatik dahil olur.*
-- [ ] **WhatsApp** — `site.contact.whatsapp` (randevu sihirbazı bunu kullanıyor).
-- [ ] **Adres** — `seo.streetAddress` ve `seo.postalCode` (şu an boş).
-- [ ] **Koordinat** — `seo.geo.latitude/longitude` gerçek ofis konumuyla güncelle (şu an Samsun merkez yaklaşık).
-- [ ] **E-posta** — `site.contact.email` (şu an `merhaba@arzuduman.com` placeholder).
-- [ ] **Instagram** — `site.contact.instagram` (`pskarzuduman`) doğrula.
+- [x] **Telefon** — `site.contact.phoneHref` = `+905464055964` girildi; schema'ya `telephone` olarak otomatik dahil ediliyor.
+- [x] **WhatsApp** — `site.contact.whatsapp` = `905464055964` girildi (randevu sihirbazı bunu kullanıyor).
+- [ ] **Adres** — `seo.streetAddress` ve `seo.postalCode` **HÂLÂ BOŞ** → gerçek ofis adresi girilmeli (LocalBusiness `PostalAddress`'i tamamlar). **Bekleyen tek kod-içi veri.**
+- [ ] **Koordinat** — `seo.geo.latitude/longitude` şu an **Samsun merkez yaklaşık** → gerçek ofis konumuyla güncelle.
+- [x] **E-posta** — `site.contact.email` = `arzudumann@icloud.com` girildi.
+- [x] **Instagram** — `site.contact.instagram` = `pskarzuduman` girildi (schema `sameAs`'e otomatik ekleniyor).
 - [ ] Domain gerçekten `https://www.arzuduman.com` mu? Değilse `astro.config.mjs` → `site` ve `content.json` → `site.url` birlikte güncellenmeli.
 - [ ] HTTPS + www yönlendirmesi çalışıyor mu (http → https, çıplak domain → www ya da tam tersi tek bir kanonik).
 

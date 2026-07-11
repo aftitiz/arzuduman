@@ -7,7 +7,6 @@
     </radialGradient>
   </defs>
   <rect width="480" height="600" fill="url(#g)"/>
-  <!-- soft silüet -->
   <circle cx="240" cy="235" r="86" fill="#C4834F" opacity="0.22"/>
   <path d="M112 560c0-88 57-150 128-150s128 62 128 150z" fill="#C4834F" opacity="0.22"/>
   <text x="240" y="252" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="600" fill="#1B2621" opacity="0.72">AD</text>

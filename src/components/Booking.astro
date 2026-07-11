@@ -40,7 +40,15 @@ const L = booking.labels;
           <div style="display:flex; flex-direction:column; gap:12px;">
             {booking.formats.map((f) => (
               <button type="button" class="bk-format" data-format={f.id}>
-                <span style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:rgba(27,38,33,0.07); font-size:21px;">{f.icon}</span>
+                <span style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; background:rgba(126,154,134,0.14); color:var(--sage-deep);">
+                  {f.id === 'online' ? (
+                    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="6.6" width="12.6" height="10.8" rx="2.6"/><path d="M15 10.2l5.6-3.2v10l-5.6-3.2"/></svg>
+                  ) : f.id === 'yuzyuze' ? (
+                    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.8 18.6c0-2.9 2.3-4.9 5.2-4.9s5.2 2 5.2 4.9"/><circle cx="17.2" cy="9.2" r="2.2"/><path d="M16.5 14c2.3.3 4 2.2 4 4.6"/></svg>
+                  ) : (
+                    <span style="font-size:21px;">{f.icon}</span>
+                  )}
+                </span>
                 <span style="flex:1;">
                   <span style="display:block; font-size:16px; font-weight:600; color:#1B2621;">{f.title}</span>
                   <span style="display:block; font-size:13px; color:#6A756D; margin-top:2px;">{f.desc}</span>
@@ -89,9 +97,18 @@ const L = booking.labels;
           <div data-summary style="padding:12px 14px; border-radius:12px; background:rgba(27,38,33,0.05); font-size:13.5px; color:#1B2621; margin-bottom:18px; line-height:1.5;"></div>
           <div style="display:flex; flex-direction:column; gap:12px;">
             <input class="bk-input" data-field="name" placeholder={L.namePlaceholder} aria-label={L.namePlaceholder} autocomplete="name" />
-            <input class="bk-input" data-field="phone" placeholder={L.phonePlaceholder} aria-label={L.phonePlaceholder} inputmode="tel" autocomplete="tel" />
-            <input class="bk-input" data-field="email" placeholder={L.emailPlaceholder} aria-label={L.emailPlaceholder} inputmode="email" autocomplete="email" />
-            <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} aria-label={L.notePlaceholder} rows="3" style="resize:vertical;"></textarea>
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <input class="bk-input" data-field="phone" type="tel" placeholder={L.phonePlaceholder} aria-label={L.phonePlaceholder} inputmode="tel" autocomplete="tel" pattern="[0-9+()\-\s]*" aria-describedby="bk-phone-err" />
+              <p id="bk-phone-err" data-error="phone" class="bk-error" hidden aria-live="polite">{L.phoneError}</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <input class="bk-input" data-field="email" type="email" placeholder={L.emailPlaceholder} aria-label={L.emailPlaceholder} inputmode="email" autocomplete="email" aria-describedby="bk-email-err" />
+              <p id="bk-email-err" data-error="email" class="bk-error" hidden aria-live="polite">{L.emailError}</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} aria-label={L.notePlaceholder} aria-describedby="bk-note-hint" rows="3" style="resize:vertical;"></textarea>
+              <p id="bk-note-hint" style="margin:0; font-size:11.5px; line-height:1.45; color:#A6ADA2;">{L.noteHint}</p>
+            </div>
           </div>
           <label style="display:flex; gap:10px; align-items:flex-start; margin-top:16px; cursor:pointer;">
             <input type="checkbox" data-consent style="margin-top:3px; width:18px; height:18px; flex-shrink:0; accent-color:var(--sage-deep); cursor:pointer;" />
@@ -149,6 +166,9 @@ const L = booking.labels;
 
   [data-booking] .bk-input { padding:14px 16px; border:1.5px solid rgba(38,48,42,0.16); border-radius:12px; background:#fff; font-size:15px; font-family:inherit; color:var(--ink); outline:none; transition:border-color .2s ease; }
   [data-booking] .bk-input:focus { border-color:var(--sage); }
+  [data-booking] .bk-input.invalid { border-color:#C25A43; }
+  [data-booking] .bk-input.invalid:focus { border-color:#C25A43; }
+  [data-booking] .bk-error { margin:0; font-size:11.5px; line-height:1.45; color:#C25A43; }
 
   [data-booking] .bk-primary { padding:14px; border:none; border-radius:14px; background:linear-gradient(135deg,var(--sage),var(--sage-deep)); color:var(--paper); font-size:15.5px; font-weight:700; font-family:inherit; cursor:pointer; transition:filter .25s ease; }
   [data-booking] .bk-primary:hover:not(.off) { filter:brightness(1.06); }
@@ -180,16 +200,21 @@ const L = booking.labels;
     const monthLabel = monthNames[M] + ' ' + Y;
     const dateLabel = (d) => d + ' ' + monthNames[M] + ' ' + Y + ', ' + dayNames[new Date(Y, M, d).getDay()];
     const formatLabel = () => (state.format ? formatLabels[state.format] : '—');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneValid = () => state.form.phone.replace(/\D/g, '').length >= 10;
+    const emailValid = () => EMAIL_RE.test(state.form.email.trim());
+    const phoneBad = () => state.form.phone.trim() !== '' && !phoneValid();
+    const emailBad = () => state.form.email.trim() !== '' && !emailValid();
     const formValid = () =>
       state.form.name.trim().length > 1 &&
-      (state.form.phone.trim().length > 5 || state.form.email.trim().length > 4) &&
+      (phoneValid() || emailValid()) &&
+      !phoneBad() && !emailBad() &&
       state.consent;
     const canProceed = () => ({ 1: !!state.format, 2: !!state.date, 3: !!state.time, 4: formValid() }[state.step] ?? true);
 
-    // ---- Takvimi bir kez oluştur (içinde bulunulan ay) ----
     const grid = root.querySelector('[data-cal-grid]');
     const first = new Date(Y, M, 1);
-    const startDay = (first.getDay() + 6) % 7; // Pazartesi başlangıç
+    const startDay = (first.getDay() + 6) % 7;
     const daysInMonth = new Date(Y, M + 1, 0).getDate();
     for (let i = 0; i < startDay; i++) {
       const b = document.createElement('div');
@@ -208,7 +233,6 @@ const L = booking.labels;
       grid.appendChild(b);
     }
 
-    // ---- Render ----
     function render() {
       root.querySelectorAll('[data-step]').forEach((el) => {
         el.hidden = Number(el.dataset.step) !== state.step;
@@ -238,9 +262,19 @@ const L = booking.labels;
       root.querySelector('[data-done-format]').textContent = formatLabel();
       root.querySelector('[data-done-date]').textContent = state.date ? dateLabel(state.date) : '';
       root.querySelector('[data-done-time]').textContent = state.time || '';
+
+      const pBad = phoneBad();
+      const eBad = emailBad();
+      const phoneEl = root.querySelector('[data-field="phone"]');
+      const emailEl = root.querySelector('[data-field="email"]');
+      const phoneErr = root.querySelector('[data-error="phone"]');
+      const emailErr = root.querySelector('[data-error="email"]');
+      if (phoneEl) phoneEl.classList.toggle('invalid', pBad);
+      if (emailEl) emailEl.classList.toggle('invalid', eBad);
+      if (phoneErr) phoneErr.hidden = !pBad;
+      if (emailErr) emailErr.hidden = !eBad;
     }
 
-    // ---- Mesaj + link ----
     function buildMessage() {
       const lines = [
         L.messageIntro,
@@ -277,7 +311,6 @@ const L = booking.labels;
       render();
     }
 
-    // ---- Olaylar ----
     root.addEventListener('click', (e) => {
       const fmt = e.target.closest('[data-format]');
       if (fmt) { state.format = fmt.dataset.format; render(); return; }
@@ -292,7 +325,19 @@ const L = booking.labels;
     });
     root.addEventListener('input', (e) => {
       const f = e.target.closest('[data-field]');
-      if (f) { state.form[f.dataset.field] = e.target.value; render(); }
+      if (!f) return;
+      if (f.dataset.field === 'phone') {
+        const cleaned = e.target.value.replace(/[^\d+()\-\s]/g, '');
+        if (cleaned !== e.target.value) {
+          const pos = Math.max(0, e.target.selectionStart - 1);
+          e.target.value = cleaned;
+          try { e.target.setSelectionRange(pos, pos); } catch (_) {}
+        }
+        state.form.phone = cleaned;
+      } else {
+        state.form[f.dataset.field] = e.target.value;
+      }
+      render();
     });
     root.addEventListener('change', (e) => {
       if (e.target.matches('[data-consent]')) { state.consent = e.target.checked; render(); }
