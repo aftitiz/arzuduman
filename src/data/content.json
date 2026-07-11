@@ -7,7 +7,7 @@
     "url": "https://www.arzuduman.com",
     "locale": "tr_TR",
     "ogImage": "/images/og.svg",
-    "themeColor": "#0B1410",
+    "themeColor": "#F6F0E6",
     "seo": {
       "priceRange": "₺₺",
       "areaServed": "İstanbul, Türkiye",
@@ -18,6 +18,7 @@
       "phoneDisplay": "+90 (000) 000 00 00",
       "phoneHref": "+900000000000",
       "whatsapp": "905000000000",
+      "instagram": "pskarzuduman",
       "location": "İstanbul · Online & yüz yüze",
       "addressLocality": "İstanbul",
       "addressCountry": "TR",
@@ -134,7 +135,7 @@
   },
 
   "booking": {
-    "eyebrow": "05 — Ön Görüşme",
+    "eyebrow": "04 — Ön Görüşme",
     "headingBefore": "15 dakika. ",
     "headingAccent": "Ücretsiz.",
     "headingAfter": " Yükümlülüksüz.",
@@ -190,7 +191,7 @@
   },
 
   "faq": {
-    "eyebrow": "06 — Sıkça Sorulan Sorular",
+    "eyebrow": "05 — Sıkça Sorulan Sorular",
     "heading": "Aklınızdaki soruların cevabı.",
     "items": [
       { "q": "Bir seans ne kadar sürüyor?", "a": "Standart bir seans 50 dakikadır. Genellikle haftada bir görüşürüz, ancak sıklığı ihtiyacınıza göre birlikte belirleriz." },

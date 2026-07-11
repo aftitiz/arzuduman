@@ -11,24 +11,24 @@ const p = content.privacy;
 <BaseLayout site={content.site} title={`${p.title} — ${content.site.name}`} description={p.metaDescription}>
   <Nav nav={content.nav} />
 
-  <main style="background:var(--ink); min-height:100vh; padding:clamp(120px,16vh,180px) var(--pad-x) clamp(60px,8vw,100px);">
+  <main style="background:var(--paper); min-height:100vh; padding:clamp(120px,16vh,180px) var(--pad-x) clamp(60px,8vw,100px);">
     <article style="max-width:800px; margin:0 auto;">
-      <a href="/" class="label-mono" style="display:inline-block; margin-bottom:30px; color:var(--gold);">{p.backLabel}</a>
+      <a href="/" class="label-soft" style="display:inline-block; margin-bottom:30px; color:var(--sage-deep);">{p.backLabel}</a>
 
-      <h1 style="margin:0 0 12px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,54px); line-height:1.04; letter-spacing:-0.015em; color:var(--bone);">{p.title}</h1>
-      <p class="label-mono" style="margin:0 0 26px; text-transform:none; letter-spacing:0.04em; color:var(--mist-dim);">{p.updated}</p>
+      <h1 style="margin:0 0 12px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,54px); line-height:1.04; letter-spacing:-0.015em; color:var(--ink);">{p.title}</h1>
+      <p class="label-soft" style="margin:0 0 26px; text-transform:none; letter-spacing:0.03em; color:var(--ink-dim);">{p.updated}</p>
 
-      <div style="margin:0 0 34px; padding:16px 20px; border-radius:14px; background:var(--ink-2); border:1px solid var(--line); border-left:3px solid var(--gold); font-size:13.5px; line-height:1.65; color:var(--mist);">
+      <div style="margin:0 0 34px; padding:16px 20px; border-radius:14px; background:var(--paper-hi); border:1px solid var(--line); border-left:3px solid var(--sage); font-size:13.5px; line-height:1.65; color:var(--ink-soft);">
         {p.disclaimer}
       </div>
 
-      <p style="margin:0 0 34px; font-size:16.5px; line-height:1.8; color:var(--bone-2);">{p.intro}</p>
+      <p style="margin:0 0 34px; font-size:16.5px; line-height:1.8; color:var(--ink-2);">{p.intro}</p>
 
       {p.sections.map((s) => (
         <section style="margin-bottom:32px;">
-          <h2 style="margin:0 0 12px; font-family:var(--serif); font-weight:500; font-size:clamp(21px,2.6vw,28px); letter-spacing:-0.01em; color:var(--bone);">{s.heading}</h2>
+          <h2 style="margin:0 0 12px; font-family:var(--serif); font-weight:500; font-size:clamp(21px,2.6vw,28px); letter-spacing:-0.01em; color:var(--ink);">{s.heading}</h2>
           {s.paragraphs.map((par) => (
-            <p style="margin:0 0 12px; font-size:15.5px; line-height:1.75; color:var(--mist);">{par}</p>
+            <p style="margin:0 0 12px; font-size:15.5px; line-height:1.75; color:var(--ink-soft);">{par}</p>
           ))}
         </section>
       ))}

@@ -3,36 +3,31 @@ import Eyebrow from './Eyebrow.astro';
 const { process } = Astro.props;
 ---
 
-<section
-  id="surec"
-  data-index-section
-  data-label="Süreç"
-  style="position:relative; overflow:hidden; background:var(--ink-2); color:var(--bone); padding:clamp(84px,11vw,150px) var(--pad-x);"
->
-  <div aria-hidden="true" style="position:absolute; top:8%; right:-10%; width:min(58vw,600px); height:min(58vw,600px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(134,164,145,0.14), rgba(134,164,145,0) 66%); filter:blur(26px); animation:drift1 24s ease-in-out infinite; pointer-events:none;"></div>
+<section id="surec" class="section-full" style="position:relative; overflow:hidden; background:linear-gradient(180deg,var(--tone-1),var(--tone-2)); padding:clamp(52px,6vw,88px) var(--pad-x);">
+  <div aria-hidden="true" class="aur" style="top:8%; right:-10%; width:min(50vw,540px); height:min(50vw,540px); background:radial-gradient(circle,rgba(126,154,134,0.2),transparent 66%); animation:drift1 24s ease-in-out infinite;"></div>
 
-  <div style="position:relative; z-index:2; max-width:960px; margin:0 auto;">
-    <div data-reveal style="max-width:680px; margin-bottom:clamp(48px,6vw,72px);">
+  <div style="position:relative; z-index:2; width:100%; max-width:960px; margin:0 auto;">
+    <div data-reveal style="max-width:680px; margin-bottom:clamp(26px,3.2vw,42px);">
       <Eyebrow label={process.eyebrow} />
-      <h2 style="margin:0 0 18px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--bone);">{process.heading}</h2>
-      <p style="margin:0; font-size:16.5px; line-height:1.74; color:var(--mist);">{process.intro}</p>
+      <h2 style="margin:0 0 18px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--ink);">{process.heading}</h2>
+      <p style="margin:0; font-size:16.5px; line-height:1.74; color:var(--ink-soft);">{process.intro}</p>
     </div>
 
     <div style="display:flex; flex-direction:column;">
       {process.steps.map((st, i) => (
         <div style="display:flex; gap:clamp(20px,4vw,48px); align-items:stretch;">
           <div style="display:flex; flex-direction:column; align-items:center; flex-shrink:0;">
-            <div data-reveal style="display:flex; align-items:center; justify-content:center; width:60px; height:60px; border-radius:50%; border:1px solid var(--line); background:rgba(201,161,107,0.06); font-family:var(--serif); font-size:25px; color:var(--gold);">{st.n}</div>
+            <div data-reveal style="display:flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:50%; background:linear-gradient(150deg,#F3ECDD,#EADFCC); border:1px solid var(--line); box-shadow:0 12px 30px rgba(38,48,42,0.08); font-family:var(--serif); font-size:22px; color:var(--sage-deep);">{st.n}</div>
             {i < process.steps.length - 1 && (
-              <div data-grow style="width:1px; flex:1; min-height:44px; background:linear-gradient(rgba(201,161,107,0.5), rgba(239,235,222,0.04));"></div>
+              <div data-grow style="width:1px; flex:1; min-height:22px; background:linear-gradient(var(--sage), rgba(38,48,42,0.06));"></div>
             )}
           </div>
-          <div data-reveal data-reveal-delay="80" style="flex:1; padding-bottom:clamp(32px,4vw,50px);">
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:12px;">
-              <h3 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(22px,2.7vw,32px); letter-spacing:-0.01em; color:var(--bone);">{st.title}</h3>
-              <span class="label-mono" style="padding:5px 12px; border-radius:999px; background:rgba(201,161,107,0.12); color:var(--gold); border:1px solid rgba(201,161,107,0.2);">{st.tag}</span>
+          <div data-reveal data-reveal-delay="80" style="flex:1; padding-bottom:clamp(16px,2.2vw,26px);">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:8px;">
+              <h3 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(20px,2.4vw,28px); letter-spacing:-0.01em; color:var(--ink);">{st.title}</h3>
+              <span style="padding:6px 13px; border-radius:999px; background:rgba(126,154,134,0.14); color:var(--sage-deep); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border:1px solid rgba(126,154,134,0.24);">{st.tag}</span>
             </div>
-            <p style="margin:0; max-width:620px; font-size:15.5px; line-height:1.74; color:var(--mist);">{st.desc}</p>
+            <p style="margin:0; max-width:620px; font-size:15.5px; line-height:1.6; color:var(--ink-soft);">{st.desc}</p>
           </div>
         </div>
       ))}

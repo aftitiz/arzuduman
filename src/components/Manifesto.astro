@@ -3,20 +3,114 @@ import Eyebrow from './Eyebrow.astro';
 const { manifesto } = Astro.props;
 ---
 
-<section style="position:relative; overflow:hidden; background:var(--ink-2); padding:clamp(100px,15vw,200px) var(--pad-x);">
-  <!-- Havuzlanan sıcak ışık -->
-  <div aria-hidden="true" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:min(120vw,1100px); height:min(80vw,700px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.10), rgba(201,161,107,0) 62%); pointer-events:none;"></div>
+<section
+  class="section-full"
+  style="position:relative; overflow:hidden; background:linear-gradient(180deg,var(--tone-1),var(--tone-2)); padding:clamp(58px,7vw,96px) var(--pad-x);"
+>
+  <!-- Açık ışık bloom (bölümü aydınlatır) -->
+  <div aria-hidden="true" class="aur" style="top:50%; left:50%; transform:translate(-50%,-50%); width:min(120vw,1120px); height:min(80vw,640px); background:radial-gradient(circle, rgba(255,251,242,0.9), rgba(246,240,230,0) 62%); filter:blur(52px);"></div>
+  <div aria-hidden="true" class="aur" style="top:44%; left:30%; width:min(46vw,480px); height:min(46vw,480px); background:radial-gradient(circle, rgba(224,180,120,0.14), transparent 66%); filter:blur(66px); animation:drift2 26s ease-in-out infinite;"></div>
 
-  <div style="position:relative; z-index:2; max-width:1040px; margin:0 auto; text-align:center;">
+  <div style="position:relative; z-index:2; width:100%; max-width:1000px; margin:0 auto; text-align:center;">
     <div data-reveal>
-      <Eyebrow label={manifesto.eyebrow} center={true} mb="34px" lineWidth="26px" />
+      <Eyebrow label={manifesto.eyebrow} center={true} mb="clamp(26px,4vw,42px)" lineWidth="26px" />
     </div>
+
     <p
-      data-reveal
-      data-reveal-delay="90"
-      style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.8vw,66px); line-height:1.16; letter-spacing:-0.012em; color:var(--bone); text-wrap:balance;"
-    >
-      {manifesto.quoteBefore}<span class="shimmer-accent" style="font-style:italic;">{manifesto.quoteAccent}</span>{manifesto.quoteAfter}
-    </p>
+      data-typewriter
+      class="mf-quote"
+      style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(28px,4.2vw,52px); line-height:1.22; letter-spacing:-0.012em; color:var(--ink); text-wrap:balance;"
+    ><span class="tw-seg">{manifesto.quoteBefore}</span><span class="tw-seg glow-accent" style="font-style:italic;">{manifesto.quoteAccent}</span><span class="tw-seg">{manifesto.quoteAfter}</span><span class="tw-caret" aria-hidden="true"></span></p>
+
+    <div class="mf-divider" data-reveal data-reveal-delay="480" aria-hidden="true">
+      <span class="mf-div-line"></span>
+      <span class="mf-div-dot"></span>
+      <span class="mf-div-line"></span>
+    </div>
   </div>
 </section>
+
+<style>
+  .tw-caret {
+    display: inline-block; width: 2px; height: 0.86em; margin-left: 3px;
+    vertical-align: -0.06em; background: var(--sage-deep); border-radius: 2px;
+    animation: tw-blink 1s steps(1) infinite;
+  }
+  .tw-caret.tw-done { opacity: 0.45; }
+  @keyframes tw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .tw-caret { display: none; } }
+
+  /* Bölüm sonu şık divider — Hakkımda ile karışmasın */
+  .mf-divider {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-top: clamp(40px, 5.5vw, 68px);
+  }
+  .mf-div-line { width: clamp(44px, 8vw, 84px); height: 1px; }
+  .mf-div-line:first-child { background: linear-gradient(90deg, transparent, rgba(110,139,118,0.6)); }
+  .mf-div-line:last-child  { background: linear-gradient(90deg, rgba(110,139,118,0.6), transparent); }
+  .mf-div-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    background: radial-gradient(circle at 38% 34%, var(--amber), var(--clay));
+    box-shadow: 0 0 0 5px rgba(126,154,134,0.1);
+  }
+</style>
+
+<script>
+  const p = document.querySelector('[data-typewriter]');
+  if (p) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const segs = Array.from(p.querySelectorAll('.tw-seg'));
+    const caret = p.querySelector('.tw-caret');
+    const full = segs.map((s) => s.textContent);
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      // Hareket azaltma / IO yok: tam metin olduğu gibi görünür kalır.
+      if (caret) caret.remove();
+    } else {
+      // Başlangıçta segmentleri boşalt, görünür olsun (opacity'e dokunma).
+      segs.forEach((s) => (s.textContent = ''));
+      let started = false;
+
+      const type = () => {
+        let si = 0;
+        let ci = 0;
+        const step = () => {
+          if (si >= segs.length) {
+            if (caret) caret.classList.add('tw-done');
+            return;
+          }
+          const target = full[si];
+          if (ci === 0 && caret) segs[si].after(caret); // imleç aktif segmentin ardında
+          if (ci < target.length) {
+            const ch = target[ci];
+            segs[si].textContent += ch;
+            ci++;
+            let delay = 72 + Math.random() * 48;
+            if (ch === ',' || ch === '.') delay += 440;
+            else if (ch === '”' || ch === '“') delay += 210;
+            setTimeout(step, delay);
+          } else {
+            si++;
+            ci = 0;
+            setTimeout(step, 80);
+          }
+        };
+        step();
+      };
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && !started) {
+              started = true;
+              io.disconnect();
+              setTimeout(type, 240);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      io.observe(p);
+    }
+  }
+</script>

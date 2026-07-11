@@ -1,18 +1,18 @@
 ---
-// Bölüm üstü küçük etiket: "— çizgi — ETİKET" (mono, şampanya altını).
+// Bölüm üstü küçük etiket: "— çizgi — ETİKET" (sans, sage yeşili).
 const {
   label,
-  color = 'var(--gold)',
-  line = 'var(--gold)',
+  color = 'var(--sage-deep)',
+  line = 'var(--sage)',
   center = false,
   mb = '22px',
   lineWidth = '30px',
-  spacing = '0.26em',
+  spacing = '0.2em',
 } = Astro.props;
 ---
 
 <div
-  style={`display:${center ? 'inline-flex' : 'flex'}; align-items:center; gap:12px; margin-bottom:${mb}; font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:${spacing}; text-transform:uppercase; color:${color};`}
+  style={`display:${center ? 'inline-flex' : 'flex'}; align-items:center; gap:12px; margin-bottom:${mb}; font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:${spacing}; text-transform:uppercase; color:${color};`}
 >
-  <span style={`width:${lineWidth}; height:1px; background:${line}; opacity:.8;`}></span>{label}
+  <span style={`width:${lineWidth}; height:1px; background:${line};`}></span>{label}
 </div>

@@ -3,27 +3,28 @@ import Eyebrow from './Eyebrow.astro';
 const { faq } = Astro.props;
 ---
 
-<section id="sss" data-index-section data-label="SSS" style="background:var(--ink); padding:clamp(84px,11vw,150px) var(--pad-x);">
-  <div style="max-width:860px; margin:0 auto;">
+<section id="sss" class="section-full" style="position:relative; overflow:hidden; background:linear-gradient(180deg,var(--tone-3),var(--tone-4)); padding:clamp(52px,6vw,88px) var(--pad-x);">
+  <div aria-hidden="true" class="aur" style="top:6%; right:-8%; width:min(44vw,480px); height:min(44vw,480px); background:radial-gradient(circle,rgba(126,154,134,0.18),transparent 66%);"></div>
+  <div style="position:relative; z-index:2; width:100%; max-width:860px; margin:0 auto;">
     <div data-reveal style="margin-bottom:clamp(44px,5vw,60px);">
       <Eyebrow label={faq.eyebrow} />
-      <h2 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--bone);">{faq.heading}</h2>
+      <h2 style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--ink);">{faq.heading}</h2>
     </div>
 
     <div style="display:flex; flex-direction:column; gap:10px;">
       {faq.items.map((f, i) => (
-        <div data-faq data-reveal data-reveal-delay={(i % 3) * 50} style="border:1px solid var(--line); border-radius:16px; background:var(--ink-2); overflow:hidden; transition:border-color .3s ease, background .3s ease;">
+        <div data-faq data-reveal data-reveal-delay={(i % 3) * 50} style="border:1px solid var(--line); border-radius:16px; background:var(--paper-hi); overflow:hidden; transition:border-color .3s ease, box-shadow .3s ease;">
           <button
             type="button"
             aria-expanded="false"
             aria-controls={`faq-panel-${i}`}
             style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; text-align:left; padding:22px 24px; border:none; background:transparent; cursor:pointer; font-family:inherit;"
           >
-            <span style="font-size:17px; font-weight:600; color:var(--bone);">{f.q}</span>
-            <span class="faq-icon" aria-hidden="true" style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:rgba(201,161,107,0.12); color:var(--gold); font-size:18px; transition:transform .3s ease;">+</span>
+            <span style="font-size:17px; font-weight:600; color:var(--ink);">{f.q}</span>
+            <span class="faq-icon" aria-hidden="true" style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:rgba(126,154,134,0.14); color:var(--sage-deep); font-size:18px; transition:transform .3s ease;">+</span>
           </button>
           <div id={`faq-panel-${i}`} class="faq-panel" role="region" style="max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.4,0,.2,1);">
-            <p style="margin:0; padding:0 24px 26px; font-size:15px; line-height:1.74; color:var(--mist);">{f.a}</p>
+            <p style="margin:0; padding:0 24px 26px; font-size:15px; line-height:1.74; color:var(--ink-soft);">{f.a}</p>
           </div>
         </div>
       ))}
@@ -32,7 +33,7 @@ const { faq } = Astro.props;
 </section>
 
 <style>
-  [data-faq]:hover { border-color: rgba(201,161,107,0.3) !important; background: var(--ink-3) !important; }
+  [data-faq]:hover { border-color: rgba(110,139,118,0.4) !important; box-shadow: 0 16px 36px rgba(38,48,42,0.08) !important; }
 </style>
 
 <script>
