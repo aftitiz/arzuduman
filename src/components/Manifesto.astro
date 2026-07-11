@@ -3,17 +3,20 @@ import Eyebrow from './Eyebrow.astro';
 const { manifesto } = Astro.props;
 ---
 
-<section style="background:#F3EEE4; padding:clamp(90px,13vw,168px) clamp(20px,6vw,88px);">
-  <div style="max-width:1000px; margin:0 auto; text-align:center;">
+<section style="position:relative; overflow:hidden; background:var(--ink-2); padding:clamp(100px,15vw,200px) var(--pad-x);">
+  <!-- Havuzlanan sıcak ışık -->
+  <div aria-hidden="true" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:min(120vw,1100px); height:min(80vw,700px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.10), rgba(201,161,107,0) 62%); pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2; max-width:1040px; margin:0 auto; text-align:center;">
     <div data-reveal>
-      <Eyebrow label={manifesto.eyebrow} center={true} mb="30px" lineWidth="26px" spacing="0.22em" />
+      <Eyebrow label={manifesto.eyebrow} center={true} mb="34px" lineWidth="26px" />
     </div>
     <p
       data-reveal
       data-reveal-delay="90"
-      style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.6vw,64px); line-height:1.16; letter-spacing:-0.01em; color:#1B2621; text-wrap:balance;"
+      style="margin:0; font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.8vw,66px); line-height:1.16; letter-spacing:-0.012em; color:var(--bone); text-wrap:balance;"
     >
-      {manifesto.quoteBefore}<span style="font-style:italic; color:#B0763F;">{manifesto.quoteAccent}</span>{manifesto.quoteAfter}
+      {manifesto.quoteBefore}<span class="shimmer-accent" style="font-style:italic;">{manifesto.quoteAccent}</span>{manifesto.quoteAfter}
     </p>
   </div>
 </section>

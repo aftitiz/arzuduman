@@ -2,10 +2,12 @@
 import content from '../data/content.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
+import SideIndex from '../components/SideIndex.astro';
 import Hero from '../components/Hero.astro';
 import Manifesto from '../components/Manifesto.astro';
 import About from '../components/About.astro';
 import Specialties from '../components/Specialties.astro';
+import BreathInterlude from '../components/BreathInterlude.astro';
 import Process from '../components/Process.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Booking from '../components/Booking.astro';
@@ -17,11 +19,13 @@ import Reveal from '../components/Reveal.astro';
 
 <BaseLayout site={content.site} faqs={content.faq.items}>
   <Nav nav={content.nav} />
+  <SideIndex />
   <main>
     <Hero hero={content.hero} />
     <Manifesto manifesto={content.manifesto} />
     <About about={content.about} />
     <Specialties specialties={content.specialties} />
+    <BreathInterlude breath={content.breath} />
     <Process process={content.process} />
     <Testimonials testimonials={content.testimonials} />
     <Booking booking={content.booking} contact={content.site.contact} />

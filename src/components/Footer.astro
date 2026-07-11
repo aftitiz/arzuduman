@@ -2,54 +2,58 @@
 const { footer, contact } = Astro.props;
 ---
 
-<footer style="background:#0B1512; color:#B9C3BA; padding:clamp(56px,7vw,88px) clamp(20px,6vw,88px) 40px;">
-  <div style="max-width:1120px; margin:0 auto;">
+<footer style="position:relative; overflow:hidden; background:var(--ink); color:var(--mist); padding:clamp(64px,8vw,104px) var(--pad-x) 40px;">
+  <div aria-hidden="true" style="position:absolute; top:-30%; left:50%; transform:translateX(-50%); width:min(120vw,1000px); height:min(70vw,560px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.09), rgba(201,161,107,0) 62%); pointer-events:none;"></div>
+
+  <div style="position:relative; z-index:2; max-width:1200px; margin:0 auto;">
     <!-- Kapanış CTA -->
-    <div data-reveal style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:clamp(28px,4vw,40px); padding-bottom:clamp(52px,6vw,76px); border-bottom:1px solid rgba(255,255,255,0.08);">
-      <span style="font-size:11.5px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#7C8880;">{footer.closingEyebrow}</span>
-      <div style="font-family:var(--serif); font-style:italic; font-size:clamp(30px,4.2vw,50px); line-height:1; color:#F1EBDE; display:flex; align-items:center; gap:clamp(18px,2.6vw,28px); flex-wrap:wrap; justify-content:center;">
+    <div data-reveal style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:clamp(30px,4vw,44px); padding-bottom:clamp(56px,7vw,84px); border-bottom:1px solid var(--line);">
+      <span class="eyebrow eyebrow-dim">{footer.closingEyebrow}</span>
+      <div style="font-family:var(--serif); font-style:italic; font-size:clamp(34px,6vw,72px); line-height:1; color:var(--bone); display:flex; align-items:center; gap:clamp(18px,3vw,34px); flex-wrap:wrap; justify-content:center; letter-spacing:-0.01em;">
         {footer.closingWords.map((w, i) => (
           <>
-            {i > 0 && <span aria-hidden="true" style="width:7px; height:7px; border-radius:50%; background:#D69A6A;"></span>}
+            {i > 0 && <span aria-hidden="true" style="width:7px; height:7px; border-radius:50%; background:var(--gold);"></span>}
             <span>{w}</span>
           </>
         ))}
       </div>
-      <a href={footer.ctaHref} class="btn-accent" style="display:inline-flex; align-items:center; gap:10px; padding:17px 32px; border-radius:999px; font-size:15px; font-weight:700; box-shadow:0 16px 40px rgba(214,154,106,0.28);">{footer.ctaLabel}<span style="font-size:17px;">→</span></a>
+      <a href={footer.ctaHref} data-magnet class="btn-accent btn-breathe" style="display:inline-flex; align-items:center; gap:10px; padding:18px 34px; border-radius:999px; font-size:15px; font-weight:700; will-change:transform;">{footer.ctaLabel}<span style="font-size:17px;">→</span></a>
     </div>
 
     <!-- Bilgi sütunları -->
-    <div style="display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; padding:40px 0;">
+    <div style="display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; padding:clamp(40px,5vw,56px) 0;">
       <div style="flex:1 1 280px; min-width:240px;">
-        <div style="font-family:var(--serif); font-size:24px; color:#F1EBDE; margin-bottom:12px;">{footer.brandName}</div>
-        <p style="margin:0; max-width:320px; font-size:14px; line-height:1.65; color:#8E9A90;">{footer.tagline}</p>
+        <div style="display:inline-flex; align-items:center; gap:10px; font-family:var(--serif); font-size:25px; color:var(--bone); margin-bottom:14px;">
+          <span aria-hidden="true" style="width:6px; height:6px; border-radius:50%; background:var(--gold);"></span>{footer.brandName}
+        </div>
+        <p style="margin:0; max-width:320px; font-size:14px; line-height:1.7; color:var(--mist-dim);">{footer.tagline}</p>
       </div>
-      <div style="display:flex; gap:56px; flex-wrap:wrap;">
+      <div style="display:flex; gap:clamp(40px,6vw,72px); flex-wrap:wrap;">
         <div>
-          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#6E7A70; margin-bottom:16px;">{footer.contactHeading}</div>
-          <div style="display:flex; flex-direction:column; gap:10px; font-size:14.5px;">
-            <a href={`mailto:${contact.email}`} style="color:#D5DCD5;">{contact.email}</a>
-            <a href={`tel:${contact.phoneHref}`} style="color:#D5DCD5;">{contact.phoneDisplay}</a>
-            <span style="color:#8E9A90;">{contact.location}</span>
+          <div class="label-mono" style="margin-bottom:18px;">{footer.contactHeading}</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14.5px;">
+            <a href={`mailto:${contact.email}`} style="color:var(--bone-2);">{contact.email}</a>
+            <a href={`tel:${contact.phoneHref}`} style="color:var(--bone-2);">{contact.phoneDisplay}</a>
+            <span style="color:var(--mist-dim);">{contact.location}</span>
           </div>
         </div>
         <div>
-          <div style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#6E7A70; margin-bottom:16px;">{footer.hoursHeading}</div>
-          <div style="display:flex; flex-direction:column; gap:10px; font-size:14.5px; color:#D5DCD5;">
+          <div class="label-mono" style="margin-bottom:18px;">{footer.hoursHeading}</div>
+          <div style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; color:var(--bone-2);">
             <span>{contact.hours.days}</span>
             <span>{contact.hours.time}</span>
-            <span style="color:#8E9A90;">{contact.hours.note}</span>
+            <span style="color:var(--mist-dim);">{contact.hours.note}</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Alt bar -->
-    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); font-size:13px; color:#6E7A70;">
+    <div class="label-mono" style="display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; padding-top:26px; border-top:1px solid var(--line); text-transform:none; letter-spacing:0.04em; color:var(--mist-dim);">
       <span>{footer.copyright}</span>
-      <div style="display:flex; gap:22px;">
+      <div style="display:flex; gap:24px;">
         {footer.links.map((link) => (
-          <a href={link.href} style="color:#8E9A90;">{link.label}</a>
+          <a href={link.href} style="color:var(--mist);">{link.label}</a>
         ))}
       </div>
     </div>

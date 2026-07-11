@@ -3,29 +3,77 @@ import Eyebrow from './Eyebrow.astro';
 const { specialties } = Astro.props;
 ---
 
-<section id="uzmanlik" style="background:#F3EEE4; padding:clamp(72px,9vw,128px) clamp(20px,6vw,88px);">
-  <div style="max-width:1160px; margin:0 auto;">
-    <div data-reveal style="max-width:680px; margin-bottom:clamp(40px,5vw,60px);">
-      <Eyebrow label={specialties.eyebrow} />
-      <h2 style="margin:0 0 16px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-0.01em; color:#1B2621;">{specialties.heading}</h2>
-      <p style="margin:0; font-size:16.5px; line-height:1.7; color:#55605A;">{specialties.intro}</p>
-    </div>
+<section
+  id="uzmanlik"
+  data-index-section
+  data-label="Uzmanlık"
+  style="position:relative; background:var(--ink-2); padding:clamp(84px,11vw,150px) var(--pad-x);"
+>
+  <div style="max-width:1240px; margin:0 auto;">
+    <div class="spec-grid" style="display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.5fr); gap:clamp(40px,6vw,96px); align-items:start;">
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;">
-      {specialties.items.map((s, i) => (
-        <div
-          data-reveal
-          data-reveal-delay={(i % 3) * 80}
-          class="card-lift"
-          style="position:relative; padding:30px 28px; border-radius:20px; background:#FBF7EE; border:1px solid rgba(27,38,33,0.09);"
-        >
-          <div style="font-family:var(--serif); font-size:40px; font-weight:600; color:#D0A377; line-height:1; margin-bottom:18px;">
-            {String(i + 1).padStart(2, '0')}
-          </div>
-          <h3 style="margin:0 0 10px; font-family:var(--serif); font-weight:600; font-size:24px; color:#1B2621;">{s.title}</h3>
-          <p style="margin:0; font-size:14.5px; line-height:1.62; color:#55605A;">{s.desc}</p>
-        </div>
-      ))}
+      <!-- Sol: başlık bloğu -->
+      <div data-reveal class="spec-head">
+        <Eyebrow label={specialties.eyebrow} />
+        <h2 style="margin:0 0 20px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,60px); line-height:1.02; letter-spacing:-0.015em; color:var(--bone);">{specialties.heading}</h2>
+        <p style="margin:0; max-width:420px; font-size:16.5px; line-height:1.74; color:var(--mist);">{specialties.intro}</p>
+      </div>
+
+      <!-- Sağ: editoryal içindekiler listesi -->
+      <ul class="spec-list" style="list-style:none; margin:0; padding:0; border-top:1px solid var(--line);">
+        {specialties.items.map((s, i) => (
+          <li data-reveal data-reveal-delay={(i % 4) * 60} style="border-bottom:1px solid var(--line);">
+            <div class="spec-row">
+              <span class="spec-num label-mono">{String(i + 1).padStart(2, '0')}</span>
+              <div class="spec-body">
+                <h3 class="spec-title">{s.title}</h3>
+                <p class="spec-desc">{s.desc}</p>
+              </div>
+              <span class="spec-arrow" aria-hidden="true">→</span>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
+
+<style>
+  .spec-row {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 28px;
+    align-items: baseline;
+    gap: clamp(14px, 2vw, 28px);
+    padding: clamp(20px, 2.4vw, 30px) 6px;
+    transition: padding .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .spec-num { color: var(--mist-dim); padding-top: 8px; transition: color .35s ease; }
+  .spec-title {
+    margin: 0 0 6px;
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(23px, 2.6vw, 33px); line-height: 1.1; letter-spacing: -0.01em;
+    color: var(--bone); transition: color .35s ease;
+  }
+  .spec-desc {
+    margin: 0; max-width: 46ch;
+    font-size: 14.5px; line-height: 1.62; color: var(--mist);
+  }
+  .spec-arrow {
+    align-self: center; font-size: 19px; color: var(--gold);
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .spec-list li { transition: background .35s ease; }
+  .spec-list li:hover { background: var(--ink-3); }
+  .spec-list li:hover .spec-row { padding-left: 18px; padding-right: 18px; }
+  .spec-list li:hover .spec-num { color: var(--gold); }
+  .spec-list li:hover .spec-arrow { opacity: 1; transform: none; }
+
+  @media (max-width: 880px) {
+    .spec-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 520px) {
+    .spec-row { grid-template-columns: 40px minmax(0,1fr); }
+    .spec-arrow { display: none; }
+  }
+</style>

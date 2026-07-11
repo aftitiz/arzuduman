@@ -5,104 +5,111 @@ const { hero } = Astro.props;
 <header
   id="top"
   data-hero
-  style="position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; background:#0E1A16; padding:clamp(116px,14vh,172px) clamp(20px,6vw,88px) clamp(88px,10vh,116px);"
+  data-index-section
+  data-label="Başlangıç"
+  style="position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; background:var(--ink); padding:clamp(120px,15vh,180px) var(--pad-x) clamp(88px,10vh,120px);"
 >
-  <!-- Drift eden gradyan lekeler -->
-  <div aria-hidden="true" style="position:absolute; top:-12%; right:-6%; width:min(72vw,780px); height:min(72vw,780px); border-radius:50%; background:radial-gradient(circle at 40% 40%, rgba(122,158,142,0.30), rgba(122,158,142,0) 68%); filter:blur(22px); animation:drift1 22s ease-in-out infinite; pointer-events:none;"></div>
-  <div aria-hidden="true" style="position:absolute; bottom:-16%; left:-8%; width:min(60vw,640px); height:min(60vw,640px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(214,154,106,0.20), rgba(214,154,106,0) 66%); filter:blur(26px); animation:drift2 28s ease-in-out infinite; pointer-events:none;"></div>
+  <!-- Havuzlanan sıcak ışık (başlığın arkasında sabit) -->
+  <div aria-hidden="true" style="position:absolute; top:44%; left:16%; width:min(90vw,900px); height:min(90vw,900px); transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.12), rgba(201,161,107,0) 60%); pointer-events:none;"></div>
 
-  <!-- Nefes alan orb -->
-  <div data-orb aria-hidden="true" style="position:absolute; top:50%; right:5%; transform:translateY(-50%); z-index:1; width:clamp(190px,40vw,460px); height:clamp(190px,40vw,460px); pointer-events:none;">
-    <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 42% 40%, rgba(168,196,176,0.55), rgba(122,158,142,0.16) 54%, rgba(122,158,142,0) 72%); filter:blur(4px); animation:breathe 8s ease-in-out infinite;"></div>
-    <div style="position:absolute; inset:6%; border-radius:50%; border:1px solid rgba(241,235,222,0.20); animation:breatheRing 8s ease-in-out infinite;"></div>
-    <div style="position:absolute; inset:20%; border-radius:50%; border:1px solid rgba(241,235,222,0.10); animation:breatheRing 8s ease-in-out infinite .3s;"></div>
+  <!-- Drift eden yumuşak lekeler -->
+  <div aria-hidden="true" style="position:absolute; top:-14%; right:-8%; width:min(72vw,760px); height:min(72vw,760px); border-radius:50%; background:radial-gradient(circle at 40% 40%, rgba(134,164,145,0.24), rgba(134,164,145,0) 68%); filter:blur(26px); animation:drift1 24s ease-in-out infinite; pointer-events:none;"></div>
+  <div aria-hidden="true" style="position:absolute; bottom:-18%; left:-10%; width:min(58vw,620px); height:min(58vw,620px); border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(201,161,107,0.16), rgba(201,161,107,0) 66%); filter:blur(30px); animation:drift2 30s ease-in-out infinite; pointer-events:none;"></div>
+
+  <!-- Nefes alan ışık orb'u (imza) -->
+  <div data-orb aria-hidden="true" style="position:absolute; top:50%; right:6%; transform:translateY(-50%); z-index:1; width:clamp(200px,42vw,500px); height:clamp(200px,42vw,500px); pointer-events:none;">
+    <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 44% 40%, rgba(227,197,147,0.42), rgba(134,164,145,0.14) 52%, rgba(134,164,145,0) 72%); filter:blur(5px); animation:breathe 8s ease-in-out infinite;"></div>
+    <div style="position:absolute; inset:5%; border-radius:50%; border:1px solid rgba(239,231,214,0.18); animation:breatheRing 8s ease-in-out infinite;"></div>
+    <div style="position:absolute; inset:20%; border-radius:50%; border:1px solid rgba(201,161,107,0.20); animation:breatheRing 8s ease-in-out infinite .3s;"></div>
+    <div style="position:absolute; inset:36%; border-radius:50%; border:1px solid rgba(239,231,214,0.08); animation:breatheRing 8s ease-in-out infinite .6s;"></div>
     <div
       data-breath
       data-words={JSON.stringify(hero.orbWords)}
-      style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:clamp(19px,2vw,28px); color:rgba(241,235,222,0.85); transition:opacity .45s ease, transform .45s ease;"
+      style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.1vw,30px); color:rgba(239,231,214,0.88); transition:opacity .45s ease, transform .45s ease;"
     >
       {hero.orbWords[0]}
     </div>
   </div>
 
   <!-- İmleç ışığı -->
-  <div data-spotlight aria-hidden="true" style="position:absolute; top:0; left:0; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(214,154,106,0.16), rgba(214,154,106,0) 60%); opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1; will-change:transform;"></div>
+  <div data-spotlight aria-hidden="true" style="position:absolute; top:0; left:0; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(201,161,107,0.14), rgba(201,161,107,0) 60%); opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1; will-change:transform;"></div>
 
-  <div style="position:relative; z-index:2; max-width:1200px; margin:0 auto; width:100%;">
-    <div class="hero-eyebrow" style="display:flex; align-items:center; gap:14px; margin-bottom:clamp(24px,4vw,34px); animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:40ms;">
-      <span class="hero-eyebrow-line" style="width:40px; height:1px; background:#D69A6A;"></span>
-      <span class="hero-eyebrow-text" style="font-size:12px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:#9FACA1;">{hero.eyebrow}</span>
+  <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; width:100%;">
+
+    <!-- Editoryal masthead -->
+    <div class="hero-masthead" style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:clamp(22px,4vw,34px); margin-bottom:clamp(26px,4vw,38px); border-bottom:1px solid var(--line); animation:dropIn .9s var(--ease) both; animation-delay:40ms;">
+      <span class="hero-eyebrow" style="display:flex; align-items:center; gap:14px;">
+        <span class="hero-eyebrow-line" style="width:32px; height:1px; background:var(--gold);"></span>
+        <span class="eyebrow">{hero.eyebrow}</span>
+      </span>
+      <span class="hero-mast-right label-mono" style="white-space:nowrap;">İstanbul · Online &amp; yüz yüze</span>
     </div>
 
-    <h1 style="margin:0 0 clamp(26px,4vw,36px); font-family:var(--serif); font-weight:500; font-size:clamp(40px,10.5vw,150px); line-height:0.94; letter-spacing:-0.015em; color:#F1EBDE;">
-      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:150ms;">{hero.titleLine1}</span>
-      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:260ms;">{hero.titleLine2Before}<span class="shimmer-accent" style="font-style:italic;">{hero.titleAccent}</span></span>
-      <span style="display:block; animation:dropIn .95s cubic-bezier(.2,.7,.2,1) both; animation-delay:370ms;">{hero.titleLine3}</span>
+    <h1 style="margin:0 0 clamp(28px,4vw,40px); font-family:var(--serif); font-weight:500; font-size:clamp(42px,10.6vw,152px); line-height:0.92; letter-spacing:-0.018em; color:var(--bone);">
+      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:150ms;">{hero.titleLine1}</span>
+      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:260ms;">{hero.titleLine2Before}<span class="shimmer-accent" style="font-style:italic;">{hero.titleAccent}</span></span>
+      <span style="display:block; animation:dropIn .95s var(--ease) both; animation-delay:370ms;">{hero.titleLine3}</span>
     </h1>
 
-    <p style="margin:0 0 clamp(30px,4vw,42px); max-width:560px; font-size:clamp(16px,1.5vw,19px); line-height:1.72; color:#C6CFC7; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:480ms;">{hero.subtitle}</p>
+    <p style="margin:0 0 clamp(32px,4vw,44px); max-width:600px; font-size:clamp(16px,1.5vw,19px); line-height:1.74; color:var(--mist); animation:dropIn .9s var(--ease) both; animation-delay:480ms;">{hero.subtitle}</p>
 
-    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:580ms;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; animation:dropIn .9s var(--ease) both; animation-delay:580ms;">
       <a
         href={hero.ctaPrimaryHref}
         data-magnet
-        class="btn-accent"
-        style="display:inline-flex; align-items:center; gap:10px; padding:17px 30px; border-radius:999px; font-size:15.5px; font-weight:700; box-shadow:0 16px 42px rgba(214,154,106,0.32); will-change:transform;"
+        class="btn-accent btn-breathe"
+        style="display:inline-flex; align-items:center; gap:10px; padding:18px 32px; border-radius:999px; font-size:15.5px; font-weight:700; will-change:transform;"
       >
         {hero.ctaPrimary}<span style="font-size:18px;">→</span>
       </a>
       <a
         href={hero.ctaSecondaryHref}
         class="btn-ghost"
-        style="display:inline-flex; align-items:center; gap:9px; padding:17px 24px; border-radius:999px; border:1px solid rgba(241,235,222,0.25); color:#F1EBDE; font-size:15px; font-weight:600;"
+        style="display:inline-flex; align-items:center; gap:9px; padding:18px 26px; border-radius:999px; font-size:15px; font-weight:600;"
       >
         {hero.ctaSecondary}
       </a>
     </div>
 
-    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:44px; font-size:13px; color:#8E9A90; animation:dropIn .9s cubic-bezier(.2,.7,.2,1) both; animation-delay:680ms;">
+    <div class="hero-trust" style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:46px; animation:dropIn .9s var(--ease) both; animation-delay:680ms;">
       {hero.trust.map((item, i) => (
         <>
-          {i > 0 && <span style="width:4px; height:4px; border-radius:50%; background:#D69A6A;"></span>}
-          <span>{item}</span>
+          {i > 0 && <span style="width:4px; height:4px; border-radius:50%; background:var(--gold-deep);"></span>}
+          <span class="label-mono" style="color:var(--mist-dim);">{item}</span>
         </>
       ))}
     </div>
   </div>
 
-  <div class="hero-scroll" style="position:absolute; left:50%; bottom:24px; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; color:#8E9A90;">
-    <span style="font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; font-weight:600;">{hero.scrollHint}</span>
+  <div class="hero-scroll" style="position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:9px; color:var(--mist-dim);">
+    <span class="label-mono" style="letter-spacing:0.24em;">{hero.scrollHint}</span>
     <span style="font-size:18px; animation:bob 2.4s ease-in-out infinite;">↓</span>
   </div>
 </header>
 
 <style>
-  /* Mobil (≤760px): dikey ritmi sıkılaştır, orb'u başlığın arkasında sağ üstten
-     taşan yumuşak bir haleye indir. Metinle çakışan "nefes al/ver" sözcüğü
-     mobilde gizlenir; hale, sakin atmosferi korur. */
   @media (max-width: 760px) {
     [data-hero] {
       min-height: auto !important;
       align-items: flex-start !important;
-      padding-top: 104px !important;
-      padding-bottom: 76px !important;
+      padding-top: 110px !important;
+      padding-bottom: 78px !important;
     }
     [data-orb] {
-      top: 3% !important;
-      right: -24% !important;
+      top: 2% !important;
+      right: -26% !important;
       transform: none !important;
       width: 300px !important;
       height: 300px !important;
-      opacity: 0.55;
+      opacity: 0.5;
     }
     [data-orb] [data-breath] { display: none !important; }
+    .hero-mast-right { display: none !important; }
     .hero-scroll { display: none !important; }
   }
-
-  /* Küçük telefonlarda eyebrow'u tek satırda tut: harf aralığı ve boyut kısılır. */
   @media (max-width: 520px) {
     .hero-eyebrow { gap: 9px !important; }
-    .hero-eyebrow-line { width: 22px !important; }
-    .hero-eyebrow-text { font-size: 10.5px !important; letter-spacing: 0.08em !important; }
+    .hero-eyebrow-line { width: 20px !important; }
+    .hero-eyebrow .eyebrow { font-size: 10px !important; letter-spacing: 0.14em !important; }
   }
 </style>
