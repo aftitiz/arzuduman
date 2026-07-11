@@ -151,7 +151,18 @@ const chatIcon = `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" str
   .spec-cta:hover .spec-cta-arrow { transform: translateX(5px); }
 
   @media (max-width: 560px) {
-    .spec-grid { grid-template-columns: 1fr; gap: 12px; }
-    .spec-card { border-radius: 18px; padding: 22px 22px 24px; }
+    .spec-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .spec-card { border-radius: 16px; padding: 18px 16px 20px; }
+    .spec-ico {
+      width: 46px; height: 46px; border-radius: 13px; margin-bottom: 14px;
+    }
+    .spec-ico :global(svg) { width: 23px; height: 23px; }
+    .spec-title { font-size: 18px; margin-bottom: 6px; }
+    .spec-desc { font-size: 13px; line-height: 1.5; }
+    .spec-cta-link { margin-top: 14px; font-size: 12.5px; }
+  }
+  @media (max-width: 360px) {
+    .spec-grid { gap: 10px; }
+    .spec-card { padding: 16px 13px 18px; }
   }
 </style>
