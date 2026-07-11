@@ -136,7 +136,13 @@
       { "title": "Panik Atak & Fobiler", "desc": "Panik ataklarını anlamlandırma, beden tepkilerini yönetme ve kaçınmayı azaltma." },
       { "title": "Öfke & Duygu Düzenleme", "desc": "Duyguları bastırmadan ya da patlamadan, sağlıklı biçimde ifade edebilme." },
       { "title": "Travma & Kayıp / Yas", "desc": "Zorlayıcı deneyimler ve kayıpların ardından güvenli bir iyileşme alanı." }
-    ]
+    ],
+    "closing": {
+      "title": "Sizinki listede yok mu?",
+      "desc": "Her hikâye kendine özel. Ücretsiz ön görüşmede birlikte adını koyabiliriz.",
+      "cta": "Ön görüşme planla",
+      "href": "#randevu"
+    }
   },
 
   "process": {
