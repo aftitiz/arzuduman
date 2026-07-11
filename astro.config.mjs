@@ -21,6 +21,8 @@ export default defineConfig({
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
+      // KVKK/gizlilik sayfası noindex (ince yasal metin) → sitemap'ten de çıkar.
+      filter: (page) => page !== 'https://www.arzuduman.com/gizlilik/',
       serialize(item) {
         if (item.url === 'https://www.arzuduman.com/') {
           item.priority = 1.0;

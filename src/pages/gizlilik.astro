@@ -8,7 +8,7 @@ import Reveal from '../components/Reveal.astro';
 const p = content.privacy;
 ---
 
-<BaseLayout site={content.site} title={`${p.title} — ${content.site.name}`} description={p.metaDescription}>
+<BaseLayout site={content.site} title={`${p.title} — ${content.site.name}`} description={p.metaDescription} noindex={true}>
   <Nav nav={content.nav} />
 
   <main style="background:var(--paper); min-height:100vh; padding:clamp(120px,16vh,180px) var(--pad-x) clamp(60px,8vw,100px);">
