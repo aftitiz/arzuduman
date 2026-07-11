@@ -66,7 +66,7 @@ Bölümlerle birebir eşleşen şema (tüm Türkçe içerik tasarımdan aynen ç
       "phoneDisplay": "+90 (000) 000 00 00",   // PLACEHOLDER
       "phoneHref": "+900000000000",            // PLACEHOLDER
       "whatsapp": "905000000000",              // PLACEHOLDER (uluslararası, + ve boşluksuz)
-      "location": "İstanbul · Online & yüz yüze",
+      "location": "Samsun · Online & yüz yüze",
       "hours": { "days": "Pazartesi – Cuma", "time": "10:00 – 19:00", "note": "Cumartesi randevuya göre" }
     }
   },
@@ -85,7 +85,7 @@ Bölümlerle birebir eşleşen şema (tüm Türkçe içerik tasarımdan aynen ç
     "eyebrow":"05 — Ön Görüşme", "heading":"...", "subtitle":"...",
     "perks": [3 madde],
     "formats": [ {"id":"online","icon":"💻","title":"Online görüşme","desc":"..."},
-                 {"id":"yuzyuze","icon":"🪴","title":"Yüz yüze","desc":"İstanbul ofisinde"} ],
+                 {"id":"yuzyuze","icon":"🪴","title":"Yüz yüze","desc":"Samsun ofisinde"} ],
     "timeSlots": ["10:00","11:00","12:00","14:00","15:00","16:00"],
     "kvkkNote": "...", "confirmLine": "..."
   },
@@ -136,7 +136,7 @@ Tüm event listener'lar sayfa yaşam döngüsünde düzgün eklenir/temizlenir.
 - `<title>` + `<meta name="description">` (`site`'tan), `<link rel="canonical">`
 - **Open Graph** + **Twitter Card** (title, description, image, url, locale=tr_TR, type=website)
 - **JSON-LD yapısal veri:**
-  - `Psychologist` / `MedicalBusiness` (LocalBusiness): name, description, url, telephone, email, address (İstanbul), areaServed, openingHoursSpecification, priceRange, image
+  - `Psychologist` / `MedicalBusiness` (LocalBusiness): name, description, url, telephone, email, address (Samsun), areaServed, openingHoursSpecification, priceRange, image
   - **`FAQPage`** — 6 SSS sorusu `content.json`'dan otomatik üretilir (Google zengin sonuç)
 - `@astrojs/sitemap` → `sitemap-index.xml`; `public/robots.txt` (sitemap referansıyla)
 - Görsellerde açıklayıcı `alt`; favicon; `theme-color`

@@ -5,5 +5,19 @@ import sitemap from '@astrojs/sitemap';
 // Sitemap ve canonical/OG mutlak URL'leri bu değere göre üretilir.
 export default defineConfig({
   site: 'https://www.arzuduman.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date(),
+      // Ana sayfaya en yüksek öncelik; diğer sayfalar daha düşük.
+      serialize(item) {
+        if (item.url === 'https://www.arzuduman.com/') {
+          item.priority = 1.0;
+          item.changefreq = 'monthly';
+        }
+        return item;
+      },
+    }),
+  ],
 });

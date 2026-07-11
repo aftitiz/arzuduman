@@ -2,16 +2,44 @@
   "site": {
     "name": "Arzu Duman",
     "role": "Uzman Klinik Psikolog",
-    "title": "Arzu Duman — Uzman Klinik Psikolog | Yetişkin Terapisi",
-    "description": "Yetişkinler için kaygı, tükenmişlik ve ilişki zorluklarında kanıta dayalı, gizli ve size özel terapi. İstanbul'da online & yüz yüze. 15 dakikalık ücretsiz ön görüşme.",
+    "title": "Arzu Duman — Samsun Uzman Klinik Psikolog | Yetişkin Terapisi",
+    "description": "Samsun'da yüz yüze ve tüm Türkiye'de online terapi. Uzman Klinik Psikolog Arzu Duman ile kaygı, tükenmişlik ve ilişki zorluklarında kanıta dayalı, gizli ve size özel destek. 15 dakikalık ücretsiz ön görüşme.",
     "url": "https://www.arzuduman.com",
     "locale": "tr_TR",
-    "ogImage": "/images/og.svg",
+    "ogImage": "/images/og.png",
     "themeColor": "#F6F0E6",
+    "keywords": "Samsun psikolog, Samsun klinik psikolog, Samsun terapi, Samsun psikoterapi, Samsun uzman klinik psikolog, online terapi, online psikolog, kaygı terapisi, çift terapisi, tükenmişlik, panik atak, yetişkin terapisi, Arzu Duman",
     "seo": {
       "priceRange": "₺₺",
-      "areaServed": "İstanbul, Türkiye",
+      "currency": "TRY",
+      "areaServed": ["Samsun", "İstanbul", "Türkiye"],
+      "inPersonArea": "Samsun",
+      "addressRegion": "Samsun",
+      "streetAddress": "",
+      "postalCode": "",
+      "geo": { "latitude": 41.2867, "longitude": 36.33 },
       "sameAs": []
+    },
+    "person": {
+      "name": "Arzu Duman",
+      "jobTitle": "Uzman Klinik Psikolog",
+      "description": "Yetişkinlerle çalışan uzman klinik psikolog. Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli bütüncül bir yaklaşımla; Samsun'da yüz yüze ve tüm Türkiye'de online terapi sunuyor.",
+      "credentials": [
+        "Klinik Psikoloji Yüksek Lisansı",
+        "Bilişsel Davranışçı Terapi (BDT) eğitimi",
+        "Şema Terapi eğitimi"
+      ],
+      "knowsAbout": [
+        "Kaygı ve anksiyete bozuklukları",
+        "Panik atak ve fobiler",
+        "İş stresi ve tükenmişlik",
+        "İlişki ve çift problemleri",
+        "Özgüven ve kişisel gelişim",
+        "Öfke ve duygu düzenleme",
+        "Travma, kayıp ve yas",
+        "Bilişsel Davranışçı Terapi",
+        "Şema Terapi"
+      ]
     },
     "contact": {
       "email": "merhaba@arzuduman.com",
@@ -19,8 +47,8 @@
       "phoneHref": "+900000000000",
       "whatsapp": "905000000000",
       "instagram": "pskarzuduman",
-      "location": "İstanbul · Online & yüz yüze",
-      "addressLocality": "İstanbul",
+      "location": "Samsun · Online & yüz yüze",
+      "addressLocality": "Samsun",
       "addressCountry": "TR",
       "hours": {
         "days": "Pazartesi – Cuma",
@@ -44,7 +72,7 @@
   },
 
   "hero": {
-    "eyebrow": "Uzman Klinik Psikolog · Yetişkin Terapisi",
+    "eyebrow": "Uzman Klinik Psikolog · Samsun & Online Terapi",
     "titleLine1": "Burada,",
     "titleLine2Before": "bir ",
     "titleAccent": "nefes",
@@ -54,7 +82,7 @@
     "ctaPrimaryHref": "#randevu",
     "ctaSecondary": "Nasıl çalışıyorum?",
     "ctaSecondaryHref": "#surec",
-    "trust": ["Online & yüz yüze", "%100 gizli", "Yalnızca yetişkin danışanlar"],
+    "trust": ["Samsun'da yüz yüze & online", "%100 gizli", "Yalnızca yetişkin danışanlar"],
     "orbWords": ["nefes al", "nefes ver"],
     "scrollHint": "Kaydırın"
   },
@@ -80,7 +108,7 @@
     "eyebrow": "01 — Hakkımda",
     "heading": "Merhaba, ben Arzu.",
     "paragraphs": [
-      "Yetişkinlerle çalışan bir uzman klinik psikoloğum. Terapiyi, size bir şeyi “tamir eden” değil; kendi kaynaklarınızı yeniden fark ettiğiniz, birlikte yürüdüğümüz bir alan olarak görüyorum. İlk seansa gelirken hissedilen tedirginliği çok iyi biliyorum — bu yüzden süreci baştan sona şeffaf ve sakin tutuyorum.",
+      "Samsun'da yüz yüze ve tüm Türkiye'de online olarak yetişkinlerle çalışan bir uzman klinik psikoloğum. Terapiyi, size bir şeyi “tamir eden” değil; kendi kaynaklarınızı yeniden fark ettiğiniz, birlikte yürüdüğümüz bir alan olarak görüyorum. İlk seansa gelirken hissedilen tedirginliği çok iyi biliyorum — bu yüzden süreci baştan sona şeffaf ve sakin tutuyorum.",
       "Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli, bütüncül bir yaklaşım kullanıyorum. Hazır bir reçete sunmuyorum; yöntemi sizin hikâyenize uyarlıyorum."
     ],
     "credentials": [
@@ -146,12 +174,12 @@
       "Genellikle 48 saat içinde dönüş"
     ],
     "formats": [
-      { "id": "online", "icon": "💻", "title": "Online görüşme", "desc": "Görüntülü, evinizin rahatlığında" },
-      { "id": "yuzyuze", "icon": "🪴", "title": "Yüz yüze", "desc": "İstanbul ofisinde" }
+      { "id": "online", "icon": "💻", "title": "Online görüşme", "desc": "Görüntülü — Türkiye'nin her yerinden, evinizin rahatlığında" },
+      { "id": "yuzyuze", "icon": "🪴", "title": "Yüz yüze", "desc": "Samsun ofisinde" }
     ],
     "formatLabels": {
       "online": "Online görüşme",
-      "yuzyuze": "Yüz yüze (İstanbul ofisi)"
+      "yuzyuze": "Yüz yüze (Samsun ofisi)"
     },
     "timeSlots": ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"],
     "weekdayLabels": ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
@@ -195,7 +223,7 @@
     "heading": "Aklınızdaki soruların cevabı.",
     "items": [
       { "q": "Bir seans ne kadar sürüyor?", "a": "Standart bir seans 50 dakikadır. Genellikle haftada bir görüşürüz, ancak sıklığı ihtiyacınıza göre birlikte belirleriz." },
-      { "q": "Online mı yüz yüze mi çalışıyorsunuz?", "a": "Her ikisi de mümkün. Görüntülü online seanslar yüz yüze kadar etkili ve daha esnektir; dilerseniz ofiste yüz yüze de görüşebiliriz." },
+      { "q": "Online mı yüz yüze mi çalışıyorsunuz?", "a": "Her ikisi de mümkün. Görüntülü online seanslar yüz yüze kadar etkili ve daha esnektir; Türkiye'nin her yerinden (Samsun, İstanbul ve diğer illerden) katılabilirsiniz. Yüz yüze görüşmeler ise Samsun'daki ofiste gerçekleşir." },
       { "q": "Görüştüklerimiz gizli kalıyor mu?", "a": "Kesinlikle. Paylaştığınız her şey mesleki etik ve KVKK kapsamında tam gizlilikle korunur. Yasal zorunluluklar dışında hiçbir bilgi paylaşılmaz." },
       { "q": "İlk kez terapiye geleceğim, ne beklemeliyim?", "a": "Tedirginlik çok doğal. İlk görüşmede sizi bir şeye zorlamam; sadece tanışır, rahat hissettiğiniz kadar paylaşırsınız. Süreci sizin hızınızda kurgularız." },
       { "q": "Randevu iptal / erteleme politikası nedir?", "a": "Randevunuzu en az 24 saat öncesinden haber vererek ücretsiz erteleyebilir veya iptal edebilirsiniz. Bu süreden sonra seans ücreti geçerli olabilir." },
@@ -231,7 +259,7 @@
         "heading": "1. Veri Sorumlusu",
         "paragraphs": [
           "Kişisel verileriniz, veri sorumlusu Uzman Klinik Psikolog Arzu Duman tarafından işlenmektedir.",
-          "İletişim: merhaba@arzuduman.com · +90 (000) 000 00 00 · İstanbul. (Bu bilgileri gerçek iletişim bilgilerinizle güncelleyin.)"
+          "İletişim: merhaba@arzuduman.com · +90 (000) 000 00 00 · Samsun. (Bu bilgileri gerçek iletişim bilgilerinizle güncelleyin.)"
         ]
       },
       {

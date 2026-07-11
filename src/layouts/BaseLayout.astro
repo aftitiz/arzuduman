@@ -22,22 +22,63 @@ const pageDescription = description ?? site.description;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogImageUrl = new URL(site.ogImage, Astro.site ?? site.url).href;
 
-// --- JSON-LD: Psychologist (LocalBusiness) ---
-const psychologistLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Psychologist',
+// --- Yerel SEO yardımcıları ---
+const seo = site.seo ?? {};
+const contact = site.contact ?? {};
+// Yer tutucu (0000…) telefonu yapısal veriye koyma; yalnızca gerçek numara ekle.
+const realPhone = contact.phoneHref && !/0{6,}/.test(contact.phoneHref) ? contact.phoneHref : null;
+// Instagram kullanıcı adından profil URL'i üret; sameAs listesine ekle.
+const instagramUrl = contact.instagram ? `https://www.instagram.com/${contact.instagram}` : null;
+const sameAs = [instagramUrl, ...(seo.sameAs ?? [])].filter(Boolean);
+// areaServed dizi ya da metin olabilir → normalize et.
+const areaList = Array.isArray(seo.areaServed) ? seo.areaServed : seo.areaServed ? [seo.areaServed] : [];
+
+// PostalAddress — yalnızca dolu alanları dahil et (yer tutucu boşları atla).
+const postalAddress = {
+  '@type': 'PostalAddress',
+  ...(seo.streetAddress ? { streetAddress: seo.streetAddress } : {}),
+  addressLocality: contact.addressLocality,
+  ...(seo.addressRegion ? { addressRegion: seo.addressRegion } : {}),
+  ...(seo.postalCode ? { postalCode: seo.postalCode } : {}),
+  addressCountry: contact.addressCountry,
+};
+
+const person = site.person ?? {};
+const practiceId = `${site.url}/#practice`;
+const personId = `${site.url}/#person`;
+const websiteId = `${site.url}/#website`;
+
+// --- JSON-LD: WebSite ---
+const websiteLd = {
+  '@type': 'WebSite',
+  '@id': websiteId,
+  url: site.url,
   name: site.name,
+  inLanguage: 'tr-TR',
+  publisher: { '@id': practiceId },
+};
+
+// --- JSON-LD: Psychologist / LocalBusiness (ana işletme varlığı) ---
+const psychologistLd = {
+  '@type': ['Psychologist', 'LocalBusiness'],
+  '@id': practiceId,
+  name: site.name,
+  alternateName: `${person.jobTitle ?? 'Uzman Klinik Psikolog'} ${site.name}`,
   description: site.description,
   url: site.url,
-  email: site.contact.email,
+  email: contact.email,
+  ...(realPhone ? { telephone: realPhone } : {}),
   image: ogImageUrl,
-  priceRange: site.seo?.priceRange,
-  areaServed: site.seo?.areaServed,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: site.contact.addressLocality,
-    addressCountry: site.contact.addressCountry,
-  },
+  logo: ogImageUrl,
+  priceRange: seo.priceRange,
+  ...(seo.currency ? { currenciesAccepted: seo.currency } : {}),
+  address: postalAddress,
+  ...(seo.geo
+    ? { geo: { '@type': 'GeoCoordinates', latitude: seo.geo.latitude, longitude: seo.geo.longitude } }
+    : {}),
+  areaServed: areaList.map((a) => ({ '@type': 'AdministrativeArea', name: a })),
+  availableLanguage: { '@type': 'Language', name: 'Turkish' },
+  ...(person.knowsAbout?.length ? { knowsAbout: person.knowsAbout } : {}),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -46,19 +87,87 @@ const psychologistLd = {
       closes: '19:00',
     },
   ],
-  ...(site.seo?.sameAs?.length ? { sameAs: site.seo.sameAs } : {}),
+  founder: { '@id': personId },
+  employee: { '@id': personId },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Psikoterapi Hizmetleri',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Online Terapi',
+          serviceType: 'Psikoterapi',
+          areaServed: { '@type': 'Country', name: 'Türkiye' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Yüz Yüze Terapi',
+          serviceType: 'Psikoterapi',
+          areaServed: { '@type': 'City', name: seo.inPersonArea ?? 'Samsun' },
+        },
+      },
+      {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: seo.currency ?? 'TRY',
+        itemOffered: {
+          '@type': 'Service',
+          name: '15 Dakikalık Ücretsiz Ön Görüşme',
+          serviceType: 'Ön görüşme',
+        },
+      },
+    ],
+  },
+  ...(sameAs.length ? { sameAs } : {}),
+};
+
+// --- JSON-LD: Person (uygulayıcı — E-E-A-T / YMYL güveni) ---
+const personLd = {
+  '@type': 'Person',
+  '@id': personId,
+  name: person.name ?? site.name,
+  jobTitle: person.jobTitle ?? 'Uzman Klinik Psikolog',
+  description: person.description ?? site.description,
+  url: site.url,
+  image: ogImageUrl,
+  worksFor: { '@id': practiceId },
+  knowsLanguage: { '@type': 'Language', name: 'Turkish' },
+  ...(person.knowsAbout?.length ? { knowsAbout: person.knowsAbout } : {}),
+  ...(person.credentials?.length
+    ? {
+        hasCredential: person.credentials.map((c) => ({
+          '@type': 'EducationalOccupationalCredential',
+          name: c,
+        })),
+      }
+    : {}),
+  ...(sameAs.length ? { sameAs } : {}),
 };
 
 // --- JSON-LD: FAQPage ---
 const faqLd = {
-  '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
   mainEntity: faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+// Tüm varlıkları tek bir @graph içinde birleştir (@id ile çapraz referanslı).
+const jsonLdGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [websiteLd, psychologistLd, personLd, ...(faqs.length > 0 ? [faqLd] : [])],
+};
+
+// Geo meta etiketleri için konum bilgisi.
+const geoPosition = seo.geo ? `${seo.geo.latitude};${seo.geo.longitude}` : null;
 ---
 
 <!doctype html>
@@ -68,10 +177,22 @@ const faqLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {site.keywords && <meta name="keywords" content={site.keywords} />}
     <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content={site.themeColor} />
-    <meta name="author" content={site.name} />
+    <meta name="author" content={site.person?.name ?? site.name} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Dil / hreflang (tek dilli site: tr + x-default) -->
+    <link rel="alternate" hreflang="tr" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+
+    <!-- Yerel SEO: coğrafi konum (Samsun) -->
+    <meta name="geo.region" content="TR-55" />
+    <meta name="geo.placename" content={site.contact?.addressLocality} />
+    {geoPosition && <meta name="geo.position" content={geoPosition} />}
+    {geoPosition && <meta name="ICBM" content={geoPosition.replace(';', ', ')} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -80,6 +201,9 @@ const faqLd = {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Uzman Klinik Psikolog'}`} />
     <meta property="og:locale" content={site.locale} />
 
     <!-- Twitter -->
@@ -87,15 +211,15 @@ const faqLd = {
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Uzman Klinik Psikolog'}`} />
 
     <!-- Fonts (self-hosted; kritik dosyalar preload) -->
     <link rel="preload" href={cormorantLatin} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={cormorantItalicLatin} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={manropeLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 
-    <!-- Yapısal veri -->
-    <script type="application/ld+json" set:html={JSON.stringify(psychologistLd)} />
-    {faqs.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+    <!-- Yapısal veri (schema.org @graph: WebSite + Psychologist/LocalBusiness + Person + FAQPage) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdGraph)} />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>

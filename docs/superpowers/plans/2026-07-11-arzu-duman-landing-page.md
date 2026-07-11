@@ -217,7 +217,7 @@ Kritik dizilerin gerçek içeriği (tasarımın DCLogic'inden birebir):
 6. "Terapi ne kadar sürer?" — "Bu tamamen size ve hedeflerinize bağlı. Bazı konular birkaç seansta ilerlerken bazıları daha uzun sürebilir. Beklentileri en baştan şeffafça konuşuruz."
 
 `booking.perks`: ["Tamamen ücretsiz ve yükümlülüksüz", "Görüntülü veya telefonla, size uygun şekilde", "Genellikle 48 saat içinde dönüş"]
-`booking.formats`: [{id:"online",icon:"💻",title:"Online görüşme",desc:"Görüntülü, evinizin rahatlığında"},{id:"yuzyuze",icon:"🪴",title:"Yüz yüze",desc:"İstanbul ofisinde"}]
+`booking.formats`: [{id:"online",icon:"💻",title:"Online görüşme",desc:"Görüntülü, evinizin rahatlığında"},{id:"yuzyuze",icon:"🪴",title:"Yüz yüze",desc:"Samsun ofisinde"}]
 `booking.timeSlots`: ["10:00","11:00","12:00","14:00","15:00","16:00"]
 `booking.confirmLine`: "En kısa sürede (genellikle 48 saat içinde) sizinle iletişime geçip görüşmeyi kesinleştireceğim."
 `booking.kvkkNote`: "Bilgileriniz KVKK kapsamında yalnızca randevu için kullanılır ve üçüncü kişilerle paylaşılmaz."
@@ -258,7 +258,7 @@ git commit -m "feat: content.json — tüm landing page içeriği"
 - Font preconnect + `Cormorant Garamond`+`Manrope` stylesheet (design'daki link)
 - `import '../styles/global.css'`
 - İki `<script type="application/ld+json" set:html={JSON.stringify(...)}>`:
-  1. `Psychologist` (@context schema.org, name, description, url, telephone, email, image, `address` PostalAddress İstanbul TR, `areaServed`, `openingHoursSpecification` Mo–Fr 10:00–19:00, priceRange)
+  1. `Psychologist` (@context schema.org, name, description, url, telephone, email, image, `address` PostalAddress Samsun TR, `areaServed`, `openingHoursSpecification` Mo–Fr 10:00–19:00, priceRange)
   2. `FAQPage` — `mainEntity` = `faqs.map(f => ({"@type":"Question", name:f.q, acceptedAnswer:{"@type":"Answer", text:f.a}}))`
 
 `<body>` içine tasarımdaki progress bar + `<slot />`.
@@ -409,7 +409,7 @@ git commit -m "feat: Süreç ve Deneyimler bölümleri"
 const root = document.querySelector('[data-booking]');
 const wa = root.dataset.whatsapp, email = root.dataset.email;
 const state = { step:1, format:null, date:null, time:null, form:{name:'',phone:'',email:'',note:''} };
-const fmtLabel = id => id==='online' ? 'Online görüşme' : id==='yuzyuze' ? 'Yüz yüze (İstanbul ofisi)' : '—';
+const fmtLabel = id => id==='online' ? 'Online görüşme' : id==='yuzyuze' ? 'Yüz yüze (Samsun ofisi)' : '—';
 const days = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
 const months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
 const now = new Date();                     // DİNAMİK: içinde bulunulan ay
