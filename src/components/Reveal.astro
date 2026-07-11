@@ -9,10 +9,14 @@
 
   // ---- Scroll progress bar ----
   const bar = document.querySelector('[data-progress]');
+  const navEl = document.querySelector('[data-nav]');
   const onScroll = () => {
-    if (!bar) return;
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    const y = window.scrollY;
+    if (bar) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    if (navEl) navEl.classList.toggle('nav-small', y > 40);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -108,4 +112,25 @@
     { threshold: 0.4 }
   );
   growEls.forEach((el) => io2.observe(el));
+
+  // ---- Yan index: aktif bölüm (viewport ortasındaki bölüm) ----
+  const idxLinks = Array.from(document.querySelectorAll('[data-side-index] a'));
+  if (idxLinks.length) {
+    const idxMap = {};
+    idxLinks.forEach((a) => { idxMap[a.getAttribute('data-target')] = a; });
+    const idxSections = Array.from(document.querySelectorAll('[data-index-section]'));
+    const io3 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          const link = idxMap[e.target.id];
+          if (link && e.isIntersecting) {
+            idxLinks.forEach((a) => a.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    idxSections.forEach((s) => io3.observe(s));
+  }
 </script>

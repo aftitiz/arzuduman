@@ -4,6 +4,8 @@
 import '@fontsource-variable/cormorant-garamond/index.css';
 import '@fontsource-variable/cormorant-garamond/wght-italic.css';
 import '@fontsource-variable/manrope/index.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 
 // Ekranın üst kısmındaki kritik yazı tipi dosyalarını önden yükle (preload) →
@@ -99,9 +101,10 @@ const faqLd = {
     {faqs.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
   </head>
   <body>
+    <div class="grain" aria-hidden="true"></div>
     <div
       data-progress
-      style="position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,#D69A6A,#C4834F); z-index:90; transition:width .12s linear;"
+      style="position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--gold-deep),var(--gold-2)); z-index:101; transition:width .12s linear;"
     >
     </div>
     <slot />

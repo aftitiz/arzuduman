@@ -3,46 +3,73 @@ import Eyebrow from './Eyebrow.astro';
 const { about } = Astro.props;
 ---
 
-<section id="hakkimda" style="background:#ECE5D7; padding:clamp(72px,9vw,124px) clamp(20px,6vw,88px);">
-  <div style="max-width:1120px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(40px,6vw,80px); align-items:center;">
-    <!-- Portre -->
-    <div data-reveal style="flex:1 1 320px; min-width:280px; position:relative;">
-      <div style="position:absolute; inset:-20px -20px 26px 20px; border-radius:230px 230px 24px 24px; border:1px solid rgba(27,38,33,0.16); z-index:0;"></div>
-      <div style="position:relative; z-index:1; border-radius:220px 220px 20px 20px; overflow:hidden; aspect-ratio:4/5; background:#DBD2C0; box-shadow:0 40px 90px rgba(27,38,33,0.20);">
+<section
+  id="hakkimda"
+  data-index-section
+  data-label="Hakkımda"
+  style="position:relative; overflow:hidden; background:var(--ink); padding:clamp(84px,11vw,150px) var(--pad-x);"
+>
+  <div class="about-grid" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); gap:clamp(40px,6vw,90px); align-items:center;">
+
+    <!-- Portre levhası -->
+    <div data-reveal class="about-portrait" style="position:relative;">
+      <div aria-hidden="true" style="position:absolute; inset:-16px -16px 22px 16px; border-radius:230px 230px 22px 22px; border:1px solid var(--line); z-index:0;"></div>
+      <div
+        class="plate-ph"
+        data-ph={about.portrait.placeholder}
+        style="position:relative; z-index:1; border-radius:220px 220px 20px 20px; aspect-ratio:4/5; box-shadow:0 50px 110px rgba(0,0,0,0.45);"
+      >
         <img
           src={about.portrait.src}
           alt={about.portrait.alt}
           width="480"
           height="600"
           loading="lazy"
-          style="width:100%; height:100%; object-fit:cover;"
+          style="position:relative; z-index:1; width:100%; height:100%; object-fit:cover; opacity:0.9; mix-blend-mode:luminosity;"
         />
       </div>
+      <span class="label-mono" style="display:block; margin-top:16px; text-align:center;">Fig. 01 — Arzu Duman, İstanbul</span>
     </div>
 
     <!-- Metin -->
-    <div data-reveal data-reveal-delay="120" style="flex:1.25 1 420px; min-width:300px;">
+    <div data-reveal data-reveal-delay="120" class="about-text">
       <Eyebrow label={about.eyebrow} />
-      <h2 style="margin:0 0 24px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.4vw,54px); line-height:1.06; letter-spacing:-0.01em; color:#1B2621;">{about.heading}</h2>
+      <h2 style="margin:0 0 26px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-0.015em; color:var(--bone);">{about.heading}</h2>
 
-      {about.paragraphs.map((p) => (
-        <p style="margin:0 0 18px; font-size:16.5px; line-height:1.74; color:#3E463F;">{p}</p>
+      {about.paragraphs.map((p, i) => (
+        <p class={i === 0 ? 'about-lead' : ''} style="margin:0 0 20px; font-size:16.5px; line-height:1.8; color:var(--bone-2);">{p}</p>
       ))}
 
-      <div style="display:flex; flex-direction:column; gap:13px; margin:12px 0 30px;">
+      <div style="display:flex; flex-direction:column; gap:14px; margin:28px 0 32px;">
         {about.credentials.map((c) => (
-          <div style="display:flex; gap:14px; align-items:flex-start;">
-            <span style="flex-shrink:0; margin-top:2px; font-family:var(--serif); font-size:19px; font-style:italic; color:#C4834F;">✦</span>
-            <span style="font-size:15px; line-height:1.55; color:#2E3630;">{c}</span>
+          <div style="display:flex; gap:15px; align-items:flex-start;">
+            <span aria-hidden="true" style="flex-shrink:0; margin-top:3px; font-family:var(--serif); font-size:19px; font-style:italic; color:var(--gold);">✦</span>
+            <span style="font-size:15px; line-height:1.6; color:var(--mist);">{c}</span>
           </div>
         ))}
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:10px;">
         {about.values.map((v) => (
-          <span style="padding:9px 16px; border-radius:999px; background:rgba(27,38,33,0.05); border:1px solid rgba(27,38,33,0.12); font-size:13px; font-weight:600; color:#2E3630;">{v}</span>
+          <span class="label-mono" style="padding:9px 16px; border-radius:999px; background:rgba(239,231,214,0.04); border:1px solid var(--line); color:var(--mist);">{v}</span>
         ))}
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-lead::first-letter {
+    float: left;
+    font-family: var(--serif);
+    font-size: 3.4em;
+    line-height: 0.82;
+    padding: 6px 12px 0 0;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  @media (max-width: 880px) {
+    .about-grid { grid-template-columns: 1fr !important; }
+    .about-portrait { max-width: 360px; margin: 0 auto; }
+  }
+</style>

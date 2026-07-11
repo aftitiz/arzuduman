@@ -7,7 +7,7 @@
     "url": "https://www.arzuduman.com",
     "locale": "tr_TR",
     "ogImage": "/images/og.svg",
-    "themeColor": "#0E1A16",
+    "themeColor": "#0B1410",
     "seo": {
       "priceRange": "₺₺",
       "areaServed": "İstanbul, Türkiye",
@@ -63,6 +63,16 @@
     "quoteBefore": "Bazen en güçlü adım, ",
     "quoteAccent": "“yardıma ihtiyacım var”",
     "quoteAfter": " diyebilmektir."
+  },
+
+  "breath": {
+    "eyebrow": "Bir nefes molası",
+    "inhale": "nefes al",
+    "exhale": "nefes ver",
+    "lineBefore": "Okumayı bir an bırakın. ",
+    "lineAccent": "Omuzlarınızı indirin.",
+    "lineAfter": " Çenenizi gevşetin. Şu birkaç saniye yalnızca sizin.",
+    "cue": "Halka büyürken içinize çekin · küçülürken bırakın"
   },
 
   "about": {

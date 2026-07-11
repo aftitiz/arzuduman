@@ -4,20 +4,20 @@ const { booking, contact } = Astro.props;
 const L = booking.labels;
 ---
 
-<section id="randevu" style="position:relative; overflow:hidden; background:#0E1A16; padding:clamp(80px,10vw,132px) clamp(20px,6vw,88px);">
-  <div aria-hidden="true" style="position:absolute; bottom:-14%; left:-8%; width:min(56vw,600px); height:min(56vw,600px); border-radius:50%; background:radial-gradient(circle, rgba(214,154,106,0.18), rgba(214,154,106,0) 66%); filter:blur(26px); animation:drift2 26s ease-in-out infinite; pointer-events:none;"></div>
+<section id="randevu" data-index-section data-label="Ön Görüşme" style="position:relative; overflow:hidden; background:var(--ink); padding:clamp(84px,11vw,150px) var(--pad-x);">
+  <div aria-hidden="true" style="position:absolute; bottom:-14%; left:-8%; width:min(56vw,600px); height:min(56vw,600px); border-radius:50%; background:radial-gradient(circle, rgba(201,161,107,0.18), rgba(201,161,107,0) 66%); filter:blur(30px); animation:drift2 26s ease-in-out infinite; pointer-events:none;"></div>
 
-  <div style="position:relative; z-index:2; max-width:1080px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(32px,5vw,60px); align-items:stretch;">
+  <div style="position:relative; z-index:2; max-width:1120px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(32px,5vw,64px); align-items:center;">
     <!-- Sol sütun -->
-    <div data-reveal style="flex:1 1 320px; min-width:280px; color:#F1EBDE;">
-      <Eyebrow label={booking.eyebrow} color="#D69A6A" line="#D69A6A" />
-      <h2 style="margin:0 0 20px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.4vw,56px); line-height:1.02; letter-spacing:-0.01em; color:#F1EBDE;">{booking.headingBefore}<span style="font-style:italic; color:#E4B486;">{booking.headingAccent}</span>{booking.headingAfter}</h2>
-      <p style="margin:0 0 30px; font-size:16.5px; line-height:1.7; color:#B9C3BA; max-width:440px;">{booking.subtitle}</p>
-      <div style="display:flex; flex-direction:column; gap:15px;">
+    <div data-reveal style="flex:1 1 320px; min-width:280px; color:var(--bone);">
+      <Eyebrow label={booking.eyebrow} />
+      <h2 style="margin:0 0 22px; font-family:var(--serif); font-weight:500; font-size:clamp(32px,4.6vw,58px); line-height:1.0; letter-spacing:-0.015em; color:var(--bone);">{booking.headingBefore}<span class="shimmer-accent" style="font-style:italic;">{booking.headingAccent}</span>{booking.headingAfter}</h2>
+      <p style="margin:0 0 32px; font-size:16.5px; line-height:1.74; color:var(--mist); max-width:440px;">{booking.subtitle}</p>
+      <div style="display:flex; flex-direction:column; gap:16px;">
         {booking.perks.map((p) => (
           <div style="display:flex; gap:13px; align-items:center;">
-            <span style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:rgba(214,154,106,0.16); color:#E4B486; font-size:13px;">✓</span>
-            <span style="font-size:15px; color:#D5DCD5;">{p}</span>
+            <span style="flex-shrink:0; display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:rgba(201,161,107,0.14); color:var(--gold); font-size:13px;">✓</span>
+            <span style="font-size:15px; color:var(--bone-2);">{p}</span>
           </div>
         ))}
       </div>
@@ -29,7 +29,7 @@ const L = booking.labels;
         data-booking
         data-whatsapp={contact.whatsapp}
         data-email={contact.email}
-        style="background:#F6F1E7; border-radius:26px; padding:clamp(22px,3vw,34px); box-shadow:0 44px 100px rgba(0,0,0,0.44); border:1px solid rgba(241,235,222,0.08);"
+        style="background:linear-gradient(180deg,#F6F1E6,#F0E9DB); border-radius:26px; padding:clamp(22px,3vw,36px); box-shadow:0 50px 110px rgba(0,0,0,0.5); border:1px solid rgba(201,161,107,0.18);"
       >
         <!-- İlerleme noktaları -->
         <div data-dots style="align-items:center; gap:8px; margin-bottom:26px;">
@@ -100,8 +100,8 @@ const L = booking.labels;
             <textarea class="bk-input" data-field="note" placeholder={L.notePlaceholder} aria-label={L.notePlaceholder} rows="3" style="resize:vertical;"></textarea>
           </div>
           <label style="display:flex; gap:10px; align-items:flex-start; margin-top:16px; cursor:pointer;">
-            <input type="checkbox" data-consent style="margin-top:3px; width:18px; height:18px; flex-shrink:0; accent-color:#C4834F; cursor:pointer;" />
-            <span style="font-size:12.5px; line-height:1.5; color:#55605A;">{L.consentBefore}<a href="/gizlilik" target="_blank" rel="noopener" style="color:#B0763F; text-decoration:underline;">{L.consentLink}</a>{L.consentAfter}</span>
+            <input type="checkbox" data-consent style="margin-top:3px; width:18px; height:18px; flex-shrink:0; accent-color:var(--gold-deep); cursor:pointer;" />
+            <span style="font-size:12.5px; line-height:1.5; color:#5A625A;">{L.consentBefore}<a href="/gizlilik" target="_blank" rel="noopener" style="color:var(--gold-deep); text-decoration:underline;">{L.consentLink}</a>{L.consentAfter}</span>
           </label>
           <div style="display:flex; gap:12px; margin-top:20px;">
             <button type="button" data-back class="bk-back">{L.back}</button>
@@ -113,10 +113,10 @@ const L = booking.labels;
         <!-- ADIM 5: onay -->
         <div data-step="5" hidden>
           <div style="text-align:center; padding:12px 0;">
-            <div style="display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:rgba(214,154,106,0.16); color:#C4834F; margin:0 auto 20px; font-size:30px;">✓</div>
-            <h3 style="margin:0 0 12px; font-family:var(--serif); font-weight:600; font-size:29px; color:#1B2621;">{L.doneTitlePrefix}, <span data-done-name></span>.</h3>
-            <p style="margin:0 0 20px; font-size:15px; line-height:1.6; color:#55605A;">{booking.confirmLine}</p>
-            <div style="padding:16px 18px; border-radius:14px; background:rgba(27,38,33,0.05); text-align:left; font-size:14px; color:#1B2621; line-height:1.7; margin-bottom:22px;">
+            <div style="display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:rgba(201,161,107,0.18); color:var(--gold-deep); margin:0 auto 20px; font-size:30px;">✓</div>
+            <h3 style="margin:0 0 12px; font-family:var(--serif); font-weight:600; font-size:29px; color:var(--dawn-ink);">{L.doneTitlePrefix}, <span data-done-name></span>.</h3>
+            <p style="margin:0 0 20px; font-size:15px; line-height:1.6; color:#5A625A;">{booking.confirmLine}</p>
+            <div style="padding:16px 18px; border-radius:14px; background:rgba(28,42,34,0.05); text-align:left; font-size:14px; color:var(--dawn-ink); line-height:1.7; margin-bottom:22px;">
               <div><strong>{L.summaryFormat}:</strong> <span data-done-format></span></div>
               <div><strong>{L.summaryDate}:</strong> <span data-done-date></span></div>
               <div><strong>{L.summaryTime}:</strong> <span data-done-time></span></div>
@@ -131,38 +131,39 @@ const L = booking.labels;
 </section>
 
 <style is:global>
-  [data-booking] .bk-step-tag { font-size:12px; font-weight:700; letter-spacing:0.06em; color:#C4834F; margin-bottom:6px; }
-  [data-booking] .bk-step-title { margin:0 0 18px; font-family:var(--serif); font-weight:600; font-size:27px; color:#1B2621; }
+  [data-booking] .bk-step-tag { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:8px; }
+  [data-booking] .bk-step-title { margin:0 0 18px; font-family:var(--serif); font-weight:600; font-size:27px; color:var(--dawn-ink); }
 
   [data-booking] [data-dots] { display:flex; }
-  [data-booking] .bk-dot { flex:1; height:5px; border-radius:999px; background:rgba(27,38,33,0.12); transition:background .35s ease; }
-  [data-booking] .bk-dot.on { background:#D69A6A; }
+  [data-booking] .bk-dot { flex:1; height:4px; border-radius:999px; background:rgba(28,42,34,0.12); transition:background .35s ease; }
+  [data-booking] .bk-dot.on { background:var(--gold); }
 
-  [data-booking] .bk-format { display:flex; align-items:center; gap:14px; text-align:left; padding:18px; border-radius:16px; border:1.5px solid rgba(27,38,33,0.14); background:#fff; cursor:pointer; font-family:inherit; transition:border-color .2s ease, background .2s ease; }
-  [data-booking] .bk-format:hover { border-color:#C4834F; }
-  [data-booking] .bk-format-dot { display:flex; flex-shrink:0; width:22px; height:22px; border-radius:50%; border:2px solid rgba(27,38,33,0.25); background:transparent; transition:border-color .2s ease, background .2s ease; }
-  [data-booking] .bk-format.sel { border-color:#C4834F; background:rgba(214,154,106,0.08); }
-  [data-booking] .bk-format.sel .bk-format-dot { border-color:#C4834F; background:#C4834F; }
+  [data-booking] .bk-format { display:flex; align-items:center; gap:14px; text-align:left; padding:18px; border-radius:16px; border:1.5px solid rgba(28,42,34,0.12); background:#FCFAF4; cursor:pointer; font-family:inherit; transition:border-color .2s ease, background .2s ease; }
+  [data-booking] .bk-format:hover { border-color:var(--gold); }
+  [data-booking] .bk-format-dot { display:flex; flex-shrink:0; width:22px; height:22px; border-radius:50%; border:2px solid rgba(28,42,34,0.22); background:transparent; transition:border-color .2s ease, background .2s ease; }
+  [data-booking] .bk-format.sel { border-color:var(--gold); background:rgba(201,161,107,0.09); }
+  [data-booking] .bk-format.sel .bk-format-dot { border-color:var(--gold); background:var(--gold); }
 
-  [data-booking] .bk-time { padding:14px 6px; border:1.5px solid rgba(27,38,33,0.16); border-radius:12px; background:#fff; color:#2E3630; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:all .18s ease; }
-  [data-booking] .bk-time:hover { border-color:#C4834F; }
-  [data-booking] .bk-time.sel { border-color:#C4834F; background:rgba(214,154,106,0.10); color:#B0763F; }
+  [data-booking] .bk-time { padding:14px 6px; border:1.5px solid rgba(28,42,34,0.14); border-radius:12px; background:#FCFAF4; color:var(--dawn-ink); font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:all .18s ease; }
+  [data-booking] .bk-time:hover { border-color:var(--gold); }
+  [data-booking] .bk-time.sel { border-color:var(--gold); background:rgba(201,161,107,0.12); color:var(--gold-deep); }
 
-  [data-booking] .bk-day { aspect-ratio:1/1; border:none; border-radius:12px; background:rgba(27,38,33,0.05); color:#2E3630; font-size:14px; font-weight:500; font-family:inherit; cursor:pointer; transition:background .18s ease; }
-  [data-booking] .bk-day:hover:not(.disabled):not(.sel) { background:rgba(27,38,33,0.11); }
-  [data-booking] .bk-day.sel { background:#1B2621; color:#F6F1E7; font-weight:700; }
-  [data-booking] .bk-day.disabled { background:transparent; color:#C7CDC4; opacity:.5; cursor:default; }
+  [data-booking] .bk-day { aspect-ratio:1/1; border:none; border-radius:12px; background:rgba(28,42,34,0.05); color:var(--dawn-ink); font-size:14px; font-weight:500; font-family:inherit; cursor:pointer; transition:background .18s ease; }
+  [data-booking] .bk-day:hover:not(.disabled):not(.sel) { background:rgba(28,42,34,0.11); }
+  [data-booking] .bk-day.sel { background:var(--ink); color:var(--dawn); font-weight:700; }
+  [data-booking] .bk-day.disabled { background:transparent; color:#BFC6BB; opacity:.5; cursor:default; }
   [data-booking] .bk-day.blank { background:transparent; opacity:0; cursor:default; }
 
-  [data-booking] .bk-input { padding:14px 16px; border:1.5px solid rgba(27,38,33,0.18); border-radius:12px; background:#fff; font-size:15px; font-family:inherit; color:#1B2621; outline:none; transition:border-color .2s ease; }
-  [data-booking] .bk-input:focus { border-color:#C4834F; }
+  [data-booking] .bk-input { padding:14px 16px; border:1.5px solid rgba(28,42,34,0.16); border-radius:12px; background:#FCFAF4; font-size:15px; font-family:inherit; color:var(--dawn-ink); outline:none; transition:border-color .2s ease; }
+  [data-booking] .bk-input:focus { border-color:var(--gold); }
 
-  [data-booking] .bk-primary { padding:14px; border:none; border-radius:14px; background:#1B2621; color:#F6F1E7; font-size:15.5px; font-weight:600; font-family:inherit; cursor:pointer; transition:background .25s ease; }
+  [data-booking] .bk-primary { padding:14px; border:none; border-radius:14px; background:var(--ink); color:var(--dawn); font-size:15.5px; font-weight:600; font-family:inherit; cursor:pointer; transition:background .25s ease; }
+  [data-booking] .bk-primary:hover:not(.off) { background:var(--ink-3); }
   [data-booking] .bk-primary.full { width:100%; padding:15px; }
   [data-booking] .bk-primary.flex { flex:1; }
-  [data-booking] .bk-primary.off { background:rgba(27,38,33,0.28); cursor:not-allowed; }
+  [data-booking] .bk-primary.off { background:rgba(28,42,34,0.24); cursor:not-allowed; }
 
-  [data-booking] .bk-back { padding:14px 20px; border:1.5px solid rgba(27,38,33,0.2); border-radius:14px; background:transparent; color:#1B2621; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; }
+  [data-booking] .bk-back { padding:14px 20px; border:1.5px solid rgba(28,42,34,0.18); border-radius:14px; background:transparent; color:var(--dawn-ink); font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; }
 </style>
 
 <script define:vars={{
