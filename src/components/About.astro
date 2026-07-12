@@ -13,7 +13,11 @@ const { about } = Astro.props;
       <div style="position:relative; z-index:1; width:100%; max-width:400px; aspect-ratio:4/5; border-radius:200px 200px 28px 28px; overflow:hidden; background:linear-gradient(160deg,#EADCC6,#D6C4A6); box-shadow:0 44px 96px rgba(38,48,42,0.24), inset 0 0 0 1px rgba(255,255,255,0.4);">
         <div aria-hidden="true" style="position:absolute; top:20%; left:50%; transform:translateX(-50%); width:60%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(250,242,224,0.9), rgba(224,190,140,0.16) 60%, transparent 74%);"></div>
         <span aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(72px,9vw,108px); letter-spacing:0.01em; color:rgba(79,106,87,0.3);">AD</span>
-        <img src="/images/arzu-portrait.jpg" alt="Uzman Klinik Psikolog Arzu Duman portresi" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; z-index:3;" />
+        <picture>
+          <source srcset="/images/arzu-portrait.avif" type="image/avif" />
+          <source srcset="/images/arzu-portrait.webp" type="image/webp" />
+          <img src="/images/arzu-portrait.jpg" alt="Uzman Klinik Psikolog Arzu Duman portresi" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; z-index:3;" />
+        </picture>
       </div>
     </div>
 
