@@ -77,6 +77,18 @@ body {
 }
 button { -webkit-tap-highlight-color: transparent; font-family: inherit; }
 img { max-width: 100%; display: block; }
+
+/* Portre görsellerini kopyalama/kaydetme/büyütmeye karşı koru.
+   Not: ekran görüntüsü/geliştirici araçları engellenemez; bu yalnızca
+   basılı-tut menüsü, sağ tık ve sürükle-bırak ile kaydetmeyi zorlaştırır. */
+.korumali-gorsel {
+  pointer-events: none;          /* basılı tut / sağ tık / sürükleme görseli hedef alamaz */
+  -webkit-touch-callout: none;   /* iOS Safari "Görseli Kaydet" menüsünü kapatır */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
 a { color: var(--sage-deep); text-decoration: none; }
 a:hover { color: var(--sage); }
 ::selection { background: var(--sage-soft); color: var(--ink); }
