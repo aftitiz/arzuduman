@@ -1,0 +1,5 @@
+# Netlify default subdomain'ini asıl domain'e 301 ile yönlendir (SEO: duplicate content önleme).
+# `!` (force) zorunlu: subdomain'de dosya zaten var olduğu için force olmadan yönlendirme çalışmaz.
+# :splat → * ile eşleşen yolu koruyarak taşır (ör. /gizlilik → arzuduman.com/gizlilik).
+https://arzuduman.netlify.app/*  https://arzuduman.com/:splat  301!
+http://arzuduman.netlify.app/*   https://arzuduman.com/:splat  301!
