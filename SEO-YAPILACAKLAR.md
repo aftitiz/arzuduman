@@ -16,8 +16,8 @@ Bunlar tamamlanmadan aşağıdaki SEO adımları yarım kalır. Hepsi `src/data/
 - [ ] **Koordinat** — `seo.geo.latitude/longitude` şu an **Samsun merkez yaklaşık** → gerçek ofis konumuyla güncelle.
 - [x] **E-posta** — `site.contact.email` = `arzudumann@icloud.com` girildi.
 - [x] **Instagram** — `site.contact.instagram` = `pskarzuduman` girildi (schema `sameAs`'e otomatik ekleniyor).
-- [ ] Domain gerçekten `https://www.arzuduman.com` mu? Değilse `astro.config.mjs` → `site` ve `content.json` → `site.url` birlikte güncellenmeli.
-- [ ] HTTPS + www yönlendirmesi çalışıyor mu (http → https, çıplak domain → www ya da tam tersi tek bir kanonik).
+- [x] Domain: `https://arzuduman.com` (çıplak, kanonik). `astro.config.mjs` → `site` ve `content.json` → `site.url` bu değere ayarlı.
+- [ ] HTTPS + yönlendirme çalışıyor mu (http → https, `www.arzuduman.com` → çıplak `arzuduman.com`). Kanonik = çıplak domain; www ona yönlensin (Netlify domain ayarında otomatik).
 
 > **NAP kuralı:** Ad + Adres + Telefon her yerde **birebir aynı** yazılmalı (site, Google Business, dizinler, Instagram). Tutarsızlık yerel sıralamayı düşürür.
 
@@ -44,7 +44,7 @@ Bunlar tamamlanmadan aşağıdaki SEO adımları yarım kalır. Hepsi `src/data/
 ## 2. Google Search Console (GSC)
 
 - [ ] https://search.google.com/search-console → **Domain** özelliği ekle, DNS TXT ile doğrula.
-- [ ] Sitemap gönder: `https://www.arzuduman.com/sitemap-index.xml` *(zaten üretiliyor)*.
+- [ ] Sitemap gönder: `https://arzuduman.com/sitemap-index.xml` *(zaten üretiliyor)*.
 - [ ] "URL İncele" ile ana sayfayı **Dizine ekleme talep et**.
 - [ ] Zenginleştirilmiş sonuçlar: **Rich Results Test** ile schema'yı doğrula → https://search.google.com/test/rich-results (Psychologist/LocalBusiness + FAQ görünmeli).
 - [ ] İlk 2 hafta "Kapsam" (Coverage) ve "Deneyim/Core Web Vitals" raporlarını izle.

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 // NOT: `site` gerçek domain ile değiştirilmeli (content.json → site.url ile aynı olmalı).
 // Sitemap ve canonical/OG mutlak URL'leri bu değere göre üretilir.
 export default defineConfig({
-  site: 'https://www.arzuduman.com',
+  site: 'https://arzuduman.com',
   vite: {
     build: {
       // KRİTİK: CSS küçültücü (esbuild) medya sorgularını modern "aralık" sözdizimine
@@ -22,9 +22,9 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       // KVKK/gizlilik sayfası noindex (ince yasal metin) → sitemap'ten de çıkar.
-      filter: (page) => page !== 'https://www.arzuduman.com/gizlilik/',
+      filter: (page) => page !== 'https://arzuduman.com/gizlilik/',
       serialize(item) {
-        if (item.url === 'https://www.arzuduman.com/') {
+        if (item.url === 'https://arzuduman.com/') {
           item.priority = 1.0;
           item.changefreq = 'monthly';
         }
