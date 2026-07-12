@@ -58,7 +58,7 @@ const psychologistLd = {
   '@type': ['Psychologist', 'LocalBusiness'],
   '@id': practiceId,
   name: site.name,
-  alternateName: `${person.jobTitle ?? 'Uzman Klinik Psikolog'} ${site.name}`,
+  alternateName: `${person.jobTitle ?? 'Klinik Psikolog'} ${site.name}`,
   description: site.description,
   url: site.url,
   email: contact.email,
@@ -116,7 +116,7 @@ const psychologistLd = {
         priceCurrency: seo.currency ?? 'TRY',
         itemOffered: {
           '@type': 'Service',
-          name: '15 Dakikalık Ücretsiz Ön Görüşme',
+          name: 'Ücretsiz Ön Görüşme',
           serviceType: 'Ön görüşme',
         },
       },
@@ -129,7 +129,7 @@ const personLd = {
   '@type': 'Person',
   '@id': personId,
   name: person.name ?? site.name,
-  jobTitle: person.jobTitle ?? 'Uzman Klinik Psikolog',
+  jobTitle: person.jobTitle ?? 'Klinik Psikolog',
   description: person.description ?? site.description,
   url: site.url,
   image: personImageUrl,
@@ -197,14 +197,14 @@ const geoPosition = seo.geo ? `${seo.geo.latitude};${seo.geo.longitude}` : null;
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Uzman Klinik Psikolog'}`} />
+    <meta property="og:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Klinik Psikolog'}`} />
     <meta property="og:locale" content={site.locale} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Uzman Klinik Psikolog'}`} />
+    <meta name="twitter:image:alt" content={`${site.name} — ${site.person?.jobTitle ?? 'Klinik Psikolog'}`} />
 
     <link rel="preload" href={cormorantLatin} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={cormorantItalicLatin} as="font" type="font/woff2" crossorigin="anonymous" />

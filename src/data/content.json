@@ -1,14 +1,14 @@
 {
   "site": {
     "name": "Arzu Duman",
-    "role": "Uzman Klinik Psikolog",
-    "title": "Arzu Duman — Samsun Uzman Klinik Psikolog | Yetişkin Terapisi",
-    "description": "Samsun'da yüz yüze ve tüm Türkiye'de online terapi. Uzman Klinik Psikolog Arzu Duman ile kaygı, tükenmişlik ve ilişki zorluklarında kanıta dayalı, gizli ve size özel destek. 15 dakikalık ücretsiz ön görüşme.",
+    "role": "Klinik Psikolog",
+    "title": "Arzu Duman — Samsun Klinik Psikolog | Ergen & Yetişkin Terapisi",
+    "description": "Samsun'da yüz yüze ve tüm Türkiye'de online terapi. Klinik Psikolog Arzu Duman ile ergen ve yetişkinlere; kaygı, depresyon ve ilişki zorluklarında kanıta dayalı, gizli ve size özel destek. Ücretsiz ön görüşme.",
     "url": "https://arzuduman.com",
     "locale": "tr_TR",
     "ogImage": "/images/og.png",
     "themeColor": "#F6F0E6",
-    "keywords": "Samsun psikolog, Samsun klinik psikolog, Samsun terapi, Samsun psikoterapi, Samsun uzman klinik psikolog, online terapi, online psikolog, kaygı terapisi, çift terapisi, tükenmişlik, panik atak, yetişkin terapisi, Arzu Duman",
+    "keywords": "Samsun psikolog, Samsun klinik psikolog, Samsun terapi, Samsun psikoterapi, ergen psikolog Samsun, online terapi, online psikolog, kaygı terapisi, depresyon terapisi, panik atak, OKB, yeme bozukluğu, ergen ve yetişkin terapisi, Arzu Duman",
     "seo": {
       "priceRange": "₺₺",
       "currency": "TRY",
@@ -28,22 +28,25 @@
     },
     "person": {
       "name": "Arzu Duman",
-      "jobTitle": "Uzman Klinik Psikolog",
+      "jobTitle": "Klinik Psikolog",
       "image": "/images/arzu-portrait.jpg",
-      "description": "Yetişkinlerle çalışan uzman klinik psikolog. Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli bütüncül bir yaklaşımla; Samsun'da yüz yüze ve tüm Türkiye'de online terapi sunuyor.",
+      "description": "Ergen ve yetişkinlerle çalışan klinik psikolog. Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli bir yaklaşımla; Samsun'da yüz yüze ve tüm Türkiye'de online terapi sunuyor.",
       "credentials": [
-        "Klinik Psikoloji Yüksek Lisansı",
+        "Gelişim Üniversitesi — Psikoloji lisansı",
+        "Klinik Psikoloji yüksek lisansı",
         "Bilişsel Davranışçı Terapi (BDT) eğitimi",
         "Şema Terapi eğitimi"
       ],
       "knowsAbout": [
-        "Kaygı ve anksiyete bozuklukları",
-        "Panik atak ve fobiler",
-        "İş stresi ve tükenmişlik",
-        "İlişki ve çift problemleri",
-        "Özgüven ve kişisel gelişim",
-        "Öfke ve duygu düzenleme",
-        "Travma, kayıp ve yas",
+        "Depresyon ve duygudurum bozuklukları",
+        "Kaygı (anksiyete) bozuklukları",
+        "Panik bozukluk ve fobiler",
+        "Sosyal fobi",
+        "Travma sonrası stres bozukluğu (TSSB)",
+        "Obsesif kompulsif bozukluk (OKB)",
+        "Yeme bozuklukları",
+        "Uyku problemleri",
+        "İlişki problemleri",
         "Bilişsel Davranışçı Terapi",
         "Şema Terapi"
       ]
@@ -89,20 +92,20 @@
     "mobileCta": "Ön Görüşme Planla"
   },
   "hero": {
-    "eyebrow": "Uzman Klinik Psikolog",
+    "eyebrow": "Klinik Psikolog",
     "titleLine1": "Burada,",
     "titleLine2Before": "bir ",
     "titleAccent": "nefes",
     "titleLine3": "alabilirsiniz.",
-    "subtitle": "Yetişkinler için kaygı, tükenmişlik ve ilişki zorluklarında; yargılamadan dinleyen, kanıta dayalı ve tamamen size özel bir terapi süreci.",
-    "ctaPrimary": "15 dakikalık ücretsiz ön görüşme",
+    "subtitle": "Ergen ve yetişkinler için kaygı, depresyon ve ilişki zorluklarında; yargılamadan dinleyen, kanıta dayalı ve tamamen size özel bir terapi süreci.",
+    "ctaPrimary": "Ücretsiz ön görüşme",
     "ctaPrimaryHref": "#randevu",
     "ctaSecondary": "Nasıl çalışıyorum?",
     "ctaSecondaryHref": "#surec",
     "trust": [
       "Samsun'da yüz yüze & online",
       "%100 gizli",
-      "Yalnızca yetişkin danışanlar"
+      "Ergen ve yetişkin danışanlar"
     ],
     "orbWords": [
       "nefes al",
@@ -130,13 +133,13 @@
     "headingBefore": "Merhaba, ben ",
     "headingAccent": "Arzu.",
     "paragraphs": [
-      "Samsun'da yüz yüze ve tüm Türkiye'de online olarak yetişkinlerle çalışan bir uzman klinik psikoloğum. Terapiyi, size bir şeyi “tamir eden” değil; kendi kaynaklarınızı yeniden fark ettiğiniz, birlikte yürüdüğümüz bir alan olarak görüyorum. İlk seansa gelirken hissedilen tedirginliği çok iyi biliyorum — bu yüzden süreci baştan sona şeffaf ve sakin tutuyorum.",
-      "Bilişsel Davranışçı Terapi (BDT) ve şema terapi temelli, bütüncül bir yaklaşım kullanıyorum. Hazır bir reçete sunmuyorum; yöntemi sizin hikâyenize uyarlıyorum."
+      "Lisansımı Gelişim Üniversitesi Psikoloji Bölümü'nde, yüksek lisansımı ise Klinik Psikoloji alanında başarıyla tamamlayarak psikoterapist yetkinliğimi aldım. Alanımla ilgili çeşitli klinik ve okullarda deneyim kazandım; mesleğimde gerekli eğitimleri alarak kendimi geliştirdim ve gelişmeye devam ediyorum. Ergen ve yetişkin bireylere yönelik, bilişsel davranışçı terapi ve şema terapi temelli online ve yüz yüze psikoterapi seansları gerçekleştirmekteyim.",
+      "Psikolojik iyi oluş, psikolojik sağlamlık, motivasyon, yaşam kalitenizi ve ilişkilerinizi iyileştirebilmek, kendinizi keşfetmek ve azaldığını düşündüğünüz işlevselliğinizi değerlendirmek için destek veriyorum."
     ],
     "credentials": [
-      "Uzman Klinik Psikolog — Klinik Psikoloji Yüksek Lisansı",
+      "Klinik Psikolog — Gelişim Üniversitesi Psikoloji lisansı ve Klinik Psikoloji yüksek lisansı",
       "Bilişsel Davranışçı Terapi (BDT) ve Şema Terapi eğitimleri",
-      "Yalnızca yetişkin danışanlarla, bireysel terapi odağında çalışma"
+      "Ergen ve yetişkin bireylerle, bireysel terapi odağında çalışma"
     ],
     "values": [
       "Gizlilik",
@@ -146,42 +149,50 @@
     ],
     "portrait": {
       "src": "/images/arzu-portrait.jpg",
-      "alt": "Uzman Klinik Psikolog Arzu Duman portresi",
+      "alt": "Klinik Psikolog Arzu Duman portresi",
       "placeholder": "Profesyonel portre fotoğrafınız"
     }
   },
   "specialties": {
     "eyebrow": "02 — Uzmanlık Alanları",
     "heading": "Hangi konuda destek arıyorsunuz?",
-    "intro": "Yetişkinlikte en çok karşılaştığımız zorluklarda, kanıta dayalı yöntemlerle yanınızdayım. Yaşadığınız şey listede net değilse, ön görüşmede birlikte konuşabiliriz.",
+    "intro": "Depresyon, kaygı bozuklukları, fobiler, uyku problemleri, yeme bozuklukları, travmalar ve ilişki problemleri gibi zihinsel ve duygusal rahatsızlıklarda; kanıta dayalı yöntemlerle yanınızdayım. Yaşadığınız şey listede net değilse, ön görüşmede birlikte konuşabiliriz.",
     "items": [
       {
-        "title": "Kaygı & Anksiyete",
-        "desc": "Sürekli tetikte hissetme, endişe döngüleri ve “ya olmazsa” düşünceleriyle çalışma."
+        "title": "Depresyon",
+        "desc": "Sürekli üzüntü hali, hayattan zevk alamama ve enerji düşüklüğüyle (majör depresif bozukluk) çalışma."
       },
       {
-        "title": "İlişki & Çift Problemleri",
-        "desc": "İletişim tıkanıklıkları, güven, sınırlar ve tekrarlayan çatışma kalıpları."
+        "title": "Bipolar Bozukluk",
+        "desc": "Mani ve depresyon dönemleri arasında geçiş yapan aşırı duygudurum değişikliklerini anlamlandırma."
       },
       {
-        "title": "İş Stresi & Tükenmişlik",
-        "desc": "Sınır koyamama, sürekli yorgunluk ve anlam kaybıyla baş etme."
+        "title": "Yaygın Anksiyete Bozukluğu",
+        "desc": "Günlük olaylara dair kronik, aşırı ve kontrol edilemeyen endişe halini birlikte yönetme."
       },
       {
-        "title": "Özgüven & Kişisel Gelişim",
-        "desc": "Öz-değer ve “yeterince iyi değilim” inancını birlikte dönüştürme."
+        "title": "Panik Bozukluk",
+        "desc": "Ansızın gelen yoğun korku ve fiziksel belirtilerle (çarpıntı, nefes darlığı) baş etme."
       },
       {
-        "title": "Panik Atak & Fobiler",
-        "desc": "Panik ataklarını anlamlandırma, beden tepkilerini yönetme ve kaçınmayı azaltma."
+        "title": "Fobiler",
+        "desc": "Belirli nesne veya durumlara karşı duyulan mantık dışı ve aşırı korkuları azaltma."
       },
       {
-        "title": "Öfke & Duygu Düzenleme",
-        "desc": "Duyguları bastırmadan ya da patlamadan, sağlıklı biçimde ifade edebilme."
+        "title": "Sosyal Fobi",
+        "desc": "Toplumsal ortamlarda yargılanma, rezil olma korkusu ve kaçınma davranışıyla çalışma."
       },
       {
-        "title": "Travma & Kayıp / Yas",
-        "desc": "Zorlayıcı deneyimler ve kayıpların ardından güvenli bir iyileşme alanı."
+        "title": "Travma Sonrası Stres Bozukluğu (TSSB)",
+        "desc": "Ciddi travmatik bir olayın etkilerini, flashback ve kabusları güvenli bir alanda işleme."
+      },
+      {
+        "title": "Obsesif Kompulsif Bozukluk (OKB)",
+        "desc": "İstenmeyen, tekrarlayan düşünceleri (obsesyon) ve zorlantılı davranışları (kompulsiyon) ele alma."
+      },
+      {
+        "title": "Yeme Bozuklukları",
+        "desc": "Anoreksiya ve bulimiya nervoza; kilo alma korkusu ve telafi edici davranışlarla çalışma."
       }
     ],
     "closing": {
@@ -199,7 +210,7 @@
       {
         "n": "1",
         "title": "Ücretsiz Ön Görüşme",
-        "tag": "15 DAKİKA",
+        "tag": "Tanışma",
         "desc": "Kısa bir görüntülü ya da telefon görüşmesiyle tanışırız. Ne yaşadığınızı anlatır, sorularınızı sorarsınız. Hiçbir yükümlülük yok."
       },
       {
@@ -246,9 +257,9 @@
   },
   "booking": {
     "eyebrow": "04 — Ön Görüşme",
-    "headingBefore": "15 dakika. ",
+    "headingBefore": "",
     "headingAccent": "Ücretsiz.",
-    "headingAfter": " Yükümlülüksüz.",
+    "headingAfter": " ve yükümlülüksüz.",
     "subtitle": "Tanışmak, sorularınızı sormak ve size uygun olup olmadığımızı birlikte hissetmek için. Sadece sakin bir sohbet.",
     "perks": [
       "Tamamen ücretsiz ve yükümlülüksüz",
@@ -388,7 +399,7 @@
     "ctaLabel": "Ücretsiz ön görüşme planlayın",
     "ctaHref": "/#randevu",
     "brandName": "Arzu Duman",
-    "tagline": "Uzman Klinik Psikolog\nYetişkinlere yönelik online & yüz yüze terapi.",
+    "tagline": "Klinik Psikolog\nErgen ve yetişkinlere yönelik online & yüz yüze terapi.",
     "contactHeading": "İletişim",
     "hoursHeading": "Çalışma Saatleri",
     "links": [
@@ -401,7 +412,7 @@
   },
   "privacy": {
     "title": "Gizlilik ve KVKK Aydınlatma Metni",
-    "metaDescription": "Arzu Duman — Uzman Klinik Psikolog. Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve gizlilik politikası.",
+    "metaDescription": "Arzu Duman — Klinik Psikolog. Kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve gizlilik politikası.",
     "backLabel": "← Ana sayfaya dön",
     "updated": "Yürürlük tarihi: 11 Temmuz 2026",
     "intro": "6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, veri sorumlusu sıfatıyla kişisel verilerinizi aşağıda açıklanan çerçevede işliyoruz. Bu metin, yalnızca web sitesindeki randevu formu aracılığıyla iletilen verilere ilişkindir; danışmanlık sürecinde işlenen sağlık verileri, ayrıca yürütülen onam ve meslekî gizlilik çerçevesine tabidir.",
@@ -409,7 +420,7 @@
       {
         "heading": "1. Veri Sorumlusu",
         "paragraphs": [
-          "Kişisel verileriniz, veri sorumlusu Uzman Klinik Psikolog Arzu Duman tarafından işlenmektedir.",
+          "Kişisel verileriniz, veri sorumlusu Klinik Psikolog Arzu Duman tarafından işlenmektedir.",
           "İletişim: arzudumann@icloud.com · +90 546 405 59 64 · Samsun."
         ]
       },
