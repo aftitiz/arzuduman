@@ -43,33 +43,26 @@ Bunlar tamamlanmadan aşağıdaki SEO adımları yarım kalır. Hepsi `src/data/
 
 ## 2. Google Search Console (GSC)
 
-- [ ] https://search.google.com/search-console → **Domain** özelliği ekle, DNS TXT ile doğrula.
-- [ ] Sitemap gönder: `https://arzuduman.com/sitemap-index.xml` *(zaten üretiliyor)*.
+- [x] https://search.google.com/search-console → **Domain** özelliği ekle, DNS TXT ile doğrula. ✅
+- [x] Sitemap gönder: `https://arzuduman.com/sitemap-index.xml` *(zaten üretiliyor)*. ✅
 - [ ] "URL İncele" ile ana sayfayı **Dizine ekleme talep et**.
-- [ ] Zenginleştirilmiş sonuçlar: **Rich Results Test** ile schema'yı doğrula → https://search.google.com/test/rich-results (Psychologist/LocalBusiness + FAQ görünmeli).
+- [x] Zenginleştirilmiş sonuçlar: **Rich Results Test** ile schema'yı doğrula → https://search.google.com/test/rich-results (Psychologist/LocalBusiness + FAQ görünmeli). ✅
 - [ ] İlk 2 hafta "Kapsam" (Coverage) ve "Deneyim/Core Web Vitals" raporlarını izle.
 
 ---
 
-## 3. Bing Webmaster + Yandex (Türkiye'de önemli)
-
-- [ ] **Bing Webmaster Tools** → GSC'den içe aktar, sitemap gönder.
-- [ ] **Yandex Webmaster / Yandex Business** → Türkiye'de kayda değer trafik; işletmeyi ekle, sitemap gönder.
-
----
-
-## 4. Yerel dizinler & psikolog platformları (citations)
+## 3. Yerel dizinler & psikolog platformları (citations)
 
 Her kayıtta **NAP birebir aynı**. Öncelik sırası:
 
-- [ ] Google Maps (GBP ile gelir), **Yandex Maps**, Apple Maps, Foursquare.
+- [ ] Google Maps (GBP ile gelir), Apple Maps, Foursquare.
 - [ ] Türkiye psikolog/terapi dizinleri (güncel olanları araştırıp seç — ör. TerapiVitrini, Psikolog.com.tr benzeri platformlar).
 - [ ] Varsa meslek kuruluşu üye listeleri (ör. Türk Psikologlar Derneği üyelik dizini) — güçlü ve güvenilir backlink + E-E-A-T.
 - [ ] Yerel Samsun rehber/işletme siteleri.
 
 ---
 
-## 5. Analitik & dönüşüm takibi
+## 4. Analitik & dönüşüm takibi
 
 - [ ] **Google Analytics 4** (veya gizlilik-dostu Plausible/Umami) kur.
 - [ ] **KVKK/çerez:** GA4 çerez kullandığı için çerez onay bandı gerekebilir. Gizlilik-dostu analitik (Plausible gibi) çerezsiz çalışır, KVKK yükünü azaltır — psikolog sitesi için önerilir.
@@ -78,7 +71,7 @@ Her kayıtta **NAP birebir aynı**. Öncelik sırası:
 
 ---
 
-## 6. Anahtar kelime & içerik stratejisi (organik üst sıralar)
+## 5. Anahtar kelime & içerik stratejisi (organik üst sıralar)
 
 Mevcut hedefler `content.json` → `keywords`'te var. Genişletme:
 
@@ -90,7 +83,7 @@ Mevcut hedefler `content.json` → `keywords`'te var. Genişletme:
 
 ---
 
-## 7. Gerçek Google yorumları (yerel sıralama + güven)
+## 6. Gerçek Google yorumları (yerel sıralama + güven)
 
 - [ ] Danışanlardan **etik biçimde** GBP'ye gerçek yorum iste (memnun danışanlara nazik hatırlatma; teşvik/ödül YOK).
 - [ ] Yorumlara profesyonelce yanıt ver (gizliliği ihlal etmeden, genel dille).
@@ -98,7 +91,7 @@ Mevcut hedefler `content.json` → `keywords`'te var. Genişletme:
 
 ---
 
-## 8. Backlink / off-page (otorite)
+## 7. Backlink / off-page (otorite)
 
 - [ ] Meslek dernekleri, mezun olunan üniversite/klinik sayfaları, eğitim aldığı kurum dizinleri.
 - [ ] Yerel haber/blog/röportaj, uzman görüşü yazıları (konuk yazı).
@@ -107,11 +100,11 @@ Mevcut hedefler `content.json` → `keywords`'te var. Genişletme:
 
 ---
 
-## 9. Google Ads (ücretli — hızlı görünürlük)
+## 8. Google Ads (ücretli — hızlı görünürlük)
 
 > Not: Sağlık/ruh sağlığı reklamlarında Google ek doğrulama/kısıtlama isteyebilir; kampanya öncesi politikayı kontrol et.
 
-- [ ] Dönüşüm takibi (Adım 5) hazır olsun — yoksa bütçe kör harcanır.
+- [ ] Dönüşüm takibi (Adım 4) hazır olsun — yoksa bütçe kör harcanır.
 - [ ] **Arama kampanyası:** "Samsun psikolog", "Samsun terapi" vb. + niyet odaklı kelimeler.
 - [ ] **Konum hedefleme:** yüz yüze için Samsun ve çevresi; online kampanya için Türkiye (bütçeyi ayır).
 - [ ] Negatif kelimeler: "ücretsiz", "iş ilanı", "psikoloji bölümü", "ödev" vb. alakasız trafiği ele.
@@ -121,7 +114,7 @@ Mevcut hedefler `content.json` → `keywords`'te var. Genişletme:
 
 ---
 
-## 10. Teknik izleme & bakım (sürekli)
+## 9. Teknik izleme & bakım (sürekli)
 
 - [ ] **PageSpeed Insights** / Lighthouse ile mobil+masaüstü skorunu ölç → https://pagespeed.web.dev/ (portre optimize edildi, iyi başlangıç).
 - [ ] Core Web Vitals'ı GSC'den aylık izle (LCP/CLS/INP).
