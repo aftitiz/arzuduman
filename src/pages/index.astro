@@ -17,7 +17,7 @@ import Reveal from '../components/Reveal.astro';
 <BaseLayout site={content.site} faqs={content.faq.items}>
   <Nav nav={content.nav} />
   <main>
-    <Hero hero={content.hero} />
+    <Hero hero={content.hero} contact={content.site.contact} />
     <Manifesto manifesto={content.manifesto} />
     <About about={content.about} />
     <Specialties specialties={content.specialties} />

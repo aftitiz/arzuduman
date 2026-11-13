@@ -1,5 +1,6 @@
 ---
 import Eyebrow from './Eyebrow.astro';
+import QuickContact from './QuickContact.astro';
 const { booking, contact } = Astro.props;
 const L = booking.labels;
 ---
@@ -21,9 +22,10 @@ const L = booking.labels;
           </div>
         ))}
       </div>
+      <QuickContact contact={contact} labels={booking.quickContact} variant="buttons" />
     </div>
 
-    <div data-reveal data-reveal-delay="120" style="flex:1.05 1 400px; min-width:300px;">
+    <div id="seans-talebi" data-reveal data-reveal-delay="120" style="flex:1.05 1 400px; min-width:300px; scroll-margin-top:96px;">
       <div
         data-booking
         data-whatsapp={contact.whatsapp}

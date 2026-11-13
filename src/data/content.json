@@ -56,6 +56,7 @@
       "phoneDisplay": "+90 546 405 59 64",
       "phoneHref": "+905464055964",
       "whatsapp": "905464055964",
+      "whatsappMessage": "Merhaba, seans hakkında bilgi alabilir miyim?",
       "instagram": "pskarzuduman",
       "location": "Samsun · Online & yüz yüze",
       "addressLocality": "Samsun",
@@ -100,6 +101,13 @@
     "subtitle": "Ergen ve yetişkinler için yargılamadan dinleyen, kanıta dayalı ve tamamen size özel bir terapi süreci.",
     "ctaPrimary": "Ücretsiz ön görüşme",
     "ctaPrimaryHref": "#randevu",
+    "ctaChoices": {
+      "whatsapp": "WhatsApp'tan bilgi al",
+      "whatsappHint": "Hazır mesajla hemen yazın",
+      "call": "Hemen ara"
+    },
+    "ctaSession": "Seans talebi oluştur",
+    "ctaSessionHref": "#seans-talebi",
     "ctaSecondary": "Nasıl çalışıyorum?",
     "ctaSecondaryHref": "#surec",
     "trust": [
@@ -266,6 +274,10 @@
       "Görüntülü veya telefonla, size uygun şekilde",
       "Genellikle 48 saat içinde dönüş"
     ],
+    "quickContact": {
+      "whatsapp": "WhatsApp'tan yazın",
+      "call": "Hemen arayın"
+    },
     "formats": [
       {
         "id": "online",

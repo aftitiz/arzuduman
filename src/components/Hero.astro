@@ -1,5 +1,6 @@
 ---
-const { hero } = Astro.props;
+import QuickContact from './QuickContact.astro';
+const { hero, contact } = Astro.props;
 ---
 
 <header
@@ -29,8 +30,16 @@ const { hero } = Astro.props;
       <p style="margin:0 0 clamp(28px,3.4vw,38px); max-width:510px; font-size:clamp(16px,1.5vw,18.5px); line-height:1.72; color:var(--ink-soft); animation:dropIn .9s var(--ease) both; animation-delay:.4s;">{hero.subtitle}</p>
 
       <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; animation:dropIn .9s var(--ease) both; animation-delay:.5s;">
-        <a href={hero.ctaPrimaryHref} class="btn-accent" style="display:inline-flex; align-items:center; gap:10px; padding:17px 30px; border-radius:999px; font-size:15.5px; font-weight:700; box-shadow:0 18px 44px rgba(79,106,87,0.36);">
-          {hero.ctaPrimary}<span style="font-size:17px;">→</span>
+        <div class="cta-choice" data-cta-choice>
+          <button type="button" data-cta-toggle aria-expanded="false" aria-controls="hero-cta-menu" class="btn-accent" style="display:inline-flex; align-items:center; gap:10px; padding:17px 30px; border:0; border-radius:999px; font-family:inherit; font-size:15.5px; font-weight:700; cursor:pointer; box-shadow:0 18px 44px rgba(79,106,87,0.36);">
+            {hero.ctaPrimary}<span class="cta-caret" aria-hidden="true" style="font-size:17px;">→</span>
+          </button>
+          <div id="hero-cta-menu" class="cta-menu glass" data-cta-menu hidden>
+            <QuickContact contact={contact} labels={hero.ctaChoices} variant="menu" />
+          </div>
+        </div>
+        <a href={hero.ctaSessionHref} class="btn-glass" style="display:inline-flex; align-items:center; gap:8px; padding:16px 24px; border-radius:999px; font-size:15px; font-weight:600;">
+          {hero.ctaSession}
         </a>
         <a href={hero.ctaSecondaryHref} class="btn-glass" style="display:inline-flex; align-items:center; gap:8px; padding:16px 24px; border-radius:999px; font-size:15px; font-weight:600;">
           {hero.ctaSecondary}
@@ -113,6 +122,19 @@ const { hero } = Astro.props;
     50%      { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
   }
 
+  .cta-choice { position: relative; z-index: 5; }
+  .cta-caret { display: inline-block; transition: transform .25s var(--ease); }
+  [aria-expanded="true"] .cta-caret { transform: rotate(90deg); }
+  .cta-menu {
+    position: absolute; top: calc(100% + 10px); left: 0; width: max-content; min-width: 100%; max-width: calc(100vw - 2 * var(--pad-x));
+    padding: 8px; border-radius: 20px; background: rgba(255,252,246,0.94);
+    box-shadow: 0 24px 60px rgba(38,48,42,0.2);
+    animation: ctaMenuIn .22s var(--ease) both;
+  }
+  .cta-menu[hidden] { display: none; }
+  @keyframes ctaMenuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .cta-menu { animation: none; } }
+
   .hero-scroll { transition: opacity .45s ease, visibility .45s ease; }
   .hero-scroll.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -126,6 +148,23 @@ const { hero } = Astro.props;
 </style>
 
 <script>
+  // "Ücretsiz ön görüşme" → WhatsApp / arama seçenekleri
+  document.querySelectorAll('[data-cta-choice]').forEach((wrap) => {
+    const toggle = wrap.querySelector('[data-cta-toggle]');
+    const menu = wrap.querySelector('[data-cta-menu]');
+    if (!toggle || !menu) return;
+    const setOpen = (open) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', () => setOpen(menu.hidden));
+    menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); }
+    });
+  });
+
   const scrollHint = document.querySelector('.hero-scroll');
   if (scrollHint) {
     const toggleHint = () => scrollHint.classList.toggle('is-hidden', window.scrollY > 24);
